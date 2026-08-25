@@ -37,9 +37,19 @@ export function Floorplan({ halls, currentHallId, onSelectHall, onStartGuided }:
             transition={{ duration: 0.8, delay: 0.1 }}
             className="lg:col-span-7"
           >
-            <div className="relative aspect-[4/3] border border-stone/30 bg-[var(--color-museum-wall)] p-6 md:p-10">
+            <div
+              className={`relative border border-stone/30 bg-[var(--color-museum-wall)] p-6 md:p-10 ${
+                halls.length > 6 ? 'aspect-[3/4]' : halls.length > 4 ? 'aspect-square' : 'aspect-[4/3]'
+              }`}
+            >
               {/* Rooms */}
-              <div className="grid grid-cols-2 grid-rows-2 gap-4 h-full">
+              <div
+                className={`grid gap-4 h-full ${
+                  halls.length <= 4
+                    ? 'grid-cols-2 grid-rows-2'
+                    : 'grid-cols-3 grid-rows-2'
+                }`}
+              >
                 {halls.map((hall, index) => {
                   const isActive = hall.id === currentHallId
                   const positions = [
@@ -47,6 +57,10 @@ export function Floorplan({ halls, currentHallId, onSelectHall, onStartGuided }:
                     'items-start justify-end',
                     'items-end justify-start',
                     'items-end justify-end',
+                    'items-center justify-start',
+                    'items-center justify-end',
+                    'items-start justify-center',
+                    'items-end justify-center',
                   ]
                   return (
                     <button

@@ -1,4 +1,4 @@
-export type ProjectId = 'ar-museum' | 'digital-mural' | 'digital-landscape' | 'planet-summon' | 'online-museum' | 'irish-curation'
+export type ProjectId = 'ar-museum' | 'digital-mural' | 'digital-landscape' | 'planet-summon' | 'online-museum' | 'irish-curation' | 'irish-landscape'
 
 export type ImageSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
@@ -47,6 +47,7 @@ export interface Board {
 
 export interface Project {
   id: ProjectId
+  museumExhibitionId?: string
   title: string
   titleEn: string
   year: string
@@ -80,6 +81,7 @@ export const site = {
 export const projects: Project[] = [
   {
     id: 'ar-museum',
+    museumExhibitionId: 'ar-museum',
     title: '体乐里',
     titleEn: 'AR Museum of Ancient Sports',
     year: '2024',
@@ -208,6 +210,7 @@ export const projects: Project[] = [
   },
   {
     id: 'digital-mural',
+    museumExhibitionId: 'digital-mural',
     title: '云林寺壁画',
     titleEn: 'Digital Mural · Yunlin Temple',
     year: '2024',
@@ -336,6 +339,7 @@ export const projects: Project[] = [
   },
   {
     id: 'digital-landscape',
+    museumExhibitionId: 'digital-landscape',
     title: '数字山水',
     titleEn: 'Digital Landscape',
     year: '2024',
@@ -465,6 +469,7 @@ export const projects: Project[] = [
   },
   {
     id: 'planet-summon',
+    museumExhibitionId: 'planet-summon',
     title: '星球召唤',
     titleEn: 'Planet Summon',
     year: '2024',
@@ -594,6 +599,7 @@ export const projects: Project[] = [
   },
   {
     id: 'online-museum',
+    museumExhibitionId: 'online-museum',
     title: '线上博物馆',
     titleEn: 'The Weingreen Museum Online',
     year: '2024',
@@ -695,6 +701,7 @@ export const projects: Project[] = [
   },
   {
     id: 'irish-curation',
+    museumExhibitionId: 'irish-curation',
     title: '爱尔兰策展',
     titleEn: 'Curaidh — Photographs from Ireland',
     year: '2024',
@@ -754,6 +761,73 @@ export const projects: Project[] = [
           {
             type: 'statement',
             text: '在虚拟展馆里行走，目光就是脚步。每一张影像都被挂在某一面墙上、某一束顶光下，等待被缓慢地、单独地观看。',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'irish-landscape',
+    museumExhibitionId: 'irish-landscape',
+    title: '爱尔兰风景摄影',
+    titleEn: 'In Ireland — 14 Glimpses',
+    year: '2024',
+    medium: '摄影 / 虚拟策展',
+    tags: ['摄影', '爱尔兰', '虚拟展馆'],
+    cover: '/images/irish-landscape/cover.jpg',
+    coverAlt: '爱尔兰湖面与红帆船',
+    accent: '#4a6b7a',
+    accentSecondary: '#c8a366',
+    description:
+      '十四张爱尔兰的瞬间，五个展厅 —— 水畔厅、海岸厅、林荫厅、街巷厅、日常厅。虚拟展馆允许你按自己的速度走完一段被放慢的旅程。',
+    descriptionEn:
+      'Fourteen glimpses of Ireland, five halls — the Water, the Coast, the Trees, the Streets, the Everyday. The virtual gallery lets you walk through a slowed-down journey at your own pace.',
+    statement:
+      '风景不是被看见的，而是被走过的。',
+    statementEn:
+      'A landscape is not seen — it is walked through.',
+    role: '摄影 / 策展 / 数字展陈设计',
+    roleEn: 'Photography / Curation / Digital Exhibition Design',
+    tech: ['Photography', 'Vite + React', 'Virtual Gallery System'],
+    boards: [
+      {
+        id: '01',
+        title: '策展前言',
+        titleEn: 'Preface',
+        subtitle: '进入虚拟展厅之前',
+        modules: [
+          {
+            type: 'hero-split',
+            label: 'Exhibition 07',
+            title: '爱尔兰风景摄影',
+            text: '五间展厅，十四张影像。在虚拟展馆里，沿着水畔、海岸、林荫、街巷与日常，按自己的速度走完一段被放慢的爱尔兰。',
+            images: [
+              {
+                src: '/images/irish-landscape/cover.jpg',
+                alt: '爱尔兰湖面',
+                size: 'lg',
+                aspect: '16/9',
+                caption: 'Fig.01 水畔厅主视觉',
+              },
+              {
+                src: '/images/irish-landscape/07.jpg',
+                alt: '悬崖孤影',
+                size: 'xs',
+                aspect: '4/3',
+                caption: 'Fig.02 海岸厅',
+              },
+              {
+                src: '/images/irish-landscape/13.jpg',
+                alt: '通勤者',
+                size: 'xs',
+                aspect: '3/2',
+                caption: 'Fig.03 日常厅',
+              },
+            ],
+          },
+          {
+            type: 'statement',
+            text: '风景不是被看见的，而是被走过的。',
           },
         ],
       },

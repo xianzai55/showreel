@@ -34,7 +34,12 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/works" element={<Works />} />
                 <Route path="/works/online-museum" element={<OnlineMuseum />} />
+                <Route path="/works/ar-museum" element={<OnlineMuseum />} />
+                <Route path="/works/digital-mural" element={<OnlineMuseum />} />
+                <Route path="/works/digital-landscape" element={<OnlineMuseum />} />
+                <Route path="/works/planet-summon" element={<OnlineMuseum />} />
                 <Route path="/works/irish-curation" element={<OnlineMuseum />} />
+                <Route path="/works/irish-landscape" element={<OnlineMuseum />} />
                 <Route path="/works/:projectId" element={<ProjectDetail />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />

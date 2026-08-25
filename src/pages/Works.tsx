@@ -21,7 +21,7 @@ export function Works() {
             展览目录
           </h1>
           <p className="mt-6 text-sm text-rice/55 max-w-xl leading-relaxed">
-            五个项目，五组关于东方数字艺术的展板。点击任意作品进入独立策展空间，浏览每块展板的构图与细节。
+            七个项目，七座虚拟展馆。点击任意作品进入一座可漫游的数字展厅，按导览顺序或自由平面图选起点，点开作品可放大查看细节。
           </p>
         </motion.div>
 
@@ -36,7 +36,7 @@ export function Works() {
               className="group border-t border-stone/60 py-10 md:py-14"
             >
               <Link
-                to={`/works/${project.id}`}
+                to={project.museumExhibitionId ? `/works/${project.museumExhibitionId}` : `/works/${project.id}`}
                 className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center"
               >
                 <div className="md:col-span-1">
