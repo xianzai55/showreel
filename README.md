@@ -49,15 +49,14 @@ npm run preview
 
 ### 展示项目
 
-本站目前收录 7 个项目，数据定义在 `src/data/projects.ts`：
+本站目前收录 6 个项目，数据定义在 `src/data/projects.ts`：
 
 1. **体乐里 / AR Museum** — AR 博物馆
 2. **云林寺壁画 / Digital Mural** — 数字壁画
 3. **数字山水 / Digital Landscape** — 数字山水
-4. **星球召唤 / Planet Summon** — 星球召唤
-5. **线上博物馆 / The Weingreen Museum Online** — 虚拟展馆体验
-6. **爱尔兰策展 / Irish Curation** — 虚拟展馆体验
-7. **爱尔兰风景 / Irish Landscape** — 虚拟展馆体验
+4. **线上博物馆 / The Weingreen Museum Online** — 虚拟展馆体验
+5. **爱尔兰策展 / Irish Curation** — 虚拟展馆体验
+6. **爱尔兰风景 / Irish Landscape** — 虚拟展馆体验
 
 展馆类项目（线上博物馆、爱尔兰策展等）使用独立的 `Museum` 虚拟展馆系统，由 `OnlineMuseum` 页面根据 URL 中的展览 id 动态解析并渲染（见 [App.tsx](src/App.tsx) 与 [onlineMuseum.ts](src/data/onlineMuseum.ts)）：
 
@@ -76,7 +75,6 @@ npm run preview
 - `ar-museum/` — AR博物馆
 - `digital-mural/` — 数字壁画
 - `digital-landscape/` — 数字山水
-- `planet-summon/` — 星球召唤
 - `online-museum/` — 线上博物馆
   - `atmosphere/` — 展馆氛围/网站截图
   - `exhibits/` — 展品图

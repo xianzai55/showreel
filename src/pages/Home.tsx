@@ -99,7 +99,7 @@ export function Home() {
               展板目录
             </h2>
             <p className="mt-4 text-sm text-rice/55 max-w-xl">
-              七个项目，七座虚拟展馆。每座展馆由若干间展厅构成，点击项目进入可漫游的策展空间。
+              六个项目，六座虚拟展馆。每座展馆由若干间展厅构成，点击项目进入可漫游的策展空间。
             </p>
           </motion.div>
 
