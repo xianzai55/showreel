@@ -28,40 +28,42 @@ export function Navbar() {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-0 left-0 right-0 z-50 mix-blend-difference"
       >
-        <nav className="flex items-center justify-between px-6 md:px-[var(--spacing-gutter)] py-5">
-          <Link to="/" className="font-serif text-base md:text-lg tracking-[0.15em] text-rice">
-            {site.artist}
-          </Link>
+        <div className="max-w-[var(--board-max)] mx-auto px-6 md:px-[var(--board-gutter)] border-b border-stone/40">
+          <nav className="flex items-center justify-between py-5">
+            <Link to="/" className="font-serif text-base md:text-lg tracking-[0.15em] text-rice">
+              {site.artist}
+            </Link>
 
-          <ul className="hidden md:flex items-center gap-8 lg:gap-12">
-            {links.map((link) => (
-              <li key={link.href}>
-                <Link
-                  to={link.href}
-                  className={`relative font-sans text-xs tracking-[0.15em] uppercase text-rice/70 hover:text-rice transition-colors duration-300 ${
-                    isActive(link.href) ? 'text-rice' : ''
-                  }`}
-                >
-                  {link.label}
-                  {isActive(link.href) && (
-                    <motion.span
-                      layoutId="nav-underline"
-                      className="absolute -bottom-1 left-0 right-0 h-px bg-rice"
-                    />
-                  )}
-                </Link>
-              </li>
-            ))}
-          </ul>
+            <ul className="hidden md:flex items-center gap-8 lg:gap-12">
+              {links.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className={`relative font-sans text-xs tracking-[0.15em] uppercase text-rice/70 hover:text-rice transition-colors duration-300 ${
+                      isActive(link.href) ? 'text-rice' : ''
+                    }`}
+                  >
+                    {link.label}
+                    {isActive(link.href) && (
+                      <motion.span
+                        layoutId="nav-underline"
+                        className="absolute -bottom-1 left-0 right-0 h-px bg-rice"
+                      />
+                    )}
+                  </Link>
+                </li>
+              ))}
+            </ul>
 
-          <button
-            onClick={() => setOpen(!open)}
-            className="md:hidden text-rice p-2"
-            aria-label="Toggle menu"
-          >
-            {open ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </nav>
+            <button
+              onClick={() => setOpen(!open)}
+              className="md:hidden text-rice p-2"
+              aria-label="Toggle menu"
+            >
+              {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </nav>
+        </div>
       </motion.header>
 
       {/* Mobile drawer */}
