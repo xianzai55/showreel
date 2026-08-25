@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ImageOff } from 'lucide-react'
+import { imageUrl } from '../utils/imageUrl'
 
 interface LazyImageProps {
   src: string
@@ -48,7 +49,7 @@ export function LazyImage({
         />
       )}
       <img
-        src={src}
+        src={imageUrl(src)}
         alt={alt}
         loading={loading}
         decoding="async"

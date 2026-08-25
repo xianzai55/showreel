@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Section } from '../components/Section'
 import { site } from '../data/projects'
+import { imageUrl } from '../utils/imageUrl'
 
 const experiences = [
   { year: '2024', title: '数字艺术作品个展', titleEn: 'Solo Digital Art Exhibition' },
@@ -22,7 +23,7 @@ export function About() {
           >
             <div className="aspect-[3/4] bg-charcoal overflow-hidden border border-stone/40">
               <img
-                src="/images/artist-avatar.svg"
+                src={imageUrl('/images/artist-avatar.svg')}
                 alt="Kexin Hu 抽象肖像"
                 className="w-full h-full object-cover opacity-90"
               />

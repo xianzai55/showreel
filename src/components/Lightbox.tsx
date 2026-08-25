@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, X, ZoomIn, ZoomOut } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { ProjectImage } from '../data/projects'
+import { imageUrl } from '../utils/imageUrl'
 
 interface LightboxProps {
   images: ProjectImage[]
@@ -112,7 +113,7 @@ export function Lightbox({ images, open, index, onClose, onIndexChange, projectT
             <AnimatePresence mode="wait">
               <motion.img
                 key={currentImage.src}
-                src={currentImage.src}
+                src={imageUrl(currentImage.src)}
                 alt={currentImage.alt}
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -151,7 +152,7 @@ export function Lightbox({ images, open, index, onClose, onIndexChange, projectT
                   }`}
                   aria-label={`Go to image ${i + 1}`}
                 >
-                  <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+                  <img src={imageUrl(img.src)} alt={img.alt} className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
