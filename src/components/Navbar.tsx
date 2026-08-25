@@ -28,7 +28,7 @@ export function Navbar() {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-0 left-0 right-0 z-50 mix-blend-difference"
       >
-        <div className="max-w-[var(--board-max)] mx-auto px-6 md:px-[var(--board-gutter)] border-b border-stone/40">
+        <div className="max-w-[var(--board-max)] mx-auto px-6 md:px-[var(--board-gutter)]">
           <nav className="flex items-center justify-between py-5">
             <Link to="/" className="font-serif text-base md:text-lg tracking-[0.15em] text-rice">
               {site.artist}
