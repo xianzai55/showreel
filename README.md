@@ -68,7 +68,7 @@ src/index.css
 ## 占位项
 
 - `Kexin Hu` — 艺术家姓名，已同步更新至 `index.html`、导航、页脚、关于页
-- `hello@kexinhu.com` — 联系邮箱，已同步更新至联系页与 `src/data/projects.ts`
+- `k811138129@126.com` — 联系邮箱，已同步更新至联系页与 `src/data/projects.ts`
 - 艺术家照片 — `public/images/artist-avatar.svg`（抽象肖像，非真人照片）
 
 ## 设计说明
