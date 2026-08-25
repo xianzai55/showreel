@@ -1,23 +1,34 @@
 import { ArrowLeft, Home } from 'lucide-react'
 import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Floorplan, HallView, MuseumLightbox, MuseumLobby, MuseumShell } from '../components/museum'
-import { allExhibits, halls, onlineMuseum } from '../data/onlineMuseum'
 import type { Exhibit } from '../data/onlineMuseum'
+import { exhibitions, getExhibition, getExhibitionExhibits, getExhibitionHalls } from '../data/onlineMuseum'
 
 type MuseumMode = 'lobby' | 'guided' | 'free'
 
 export function OnlineMuseum() {
+  const location = useLocation()
+  // 从 URL 路径里解析展览 id：/works/irish-curation → irish-curation
+  const exhibitionId = useMemo(() => {
+    const match = location.pathname.match(/^\/works\/([^/]+)/)
+    return match ? match[1] : undefined
+  }, [location.pathname])
+  const exhibition = useMemo(() => getExhibition(exhibitionId), [exhibitionId])
+  const halls = useMemo(() => getExhibitionHalls(exhibitionId), [exhibitionId])
+  const allExhibits = useMemo(() => getExhibitionExhibits(exhibitionId), [exhibitionId])
+
   const [mode, setMode] = useState<MuseumMode>('lobby')
-  const [currentHallId, setCurrentHallId] = useState<string>(halls[0].id)
+  const [currentHallId, setCurrentHallId] = useState<string | undefined>(halls[0]?.id)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [currentExhibitId, setCurrentExhibitId] = useState<string | null>(null)
 
   const currentHallIndex = useMemo(
     () => halls.findIndex((h) => h.id === currentHallId),
-    [currentHallId]
+    [halls, currentHallId]
   )
-  const currentHall = halls[currentHallIndex]
+  const currentHall = currentHallIndex >= 0 ? halls[currentHallIndex] : undefined
+  const exhibitionIndex = exhibitions.findIndex((e) => e.id === exhibitionId)
 
   const handleOpenExhibit = (exhibit: Exhibit) => {
     setCurrentExhibitId(exhibit.id)
@@ -34,7 +45,7 @@ export function OnlineMuseum() {
   }
 
   const handleStartGuided = () => {
-    setCurrentHallId(halls[0].id)
+    if (halls[0]) setCurrentHallId(halls[0].id)
     setMode('guided')
   }
 
@@ -49,9 +60,20 @@ export function OnlineMuseum() {
   }
 
   const handleNextHall = () => {
-    if (currentHallIndex < halls.length - 1) {
+    if (currentHallIndex >= 0 && currentHallIndex < halls.length - 1) {
       setCurrentHallId(halls[currentHallIndex + 1].id)
     }
+  }
+
+  if (!exhibition || halls.length === 0) {
+    return (
+      <div className="pt-40 text-center text-ash">
+        <p>展览未找到</p>
+        <Link to="/works" className="text-rice underline mt-4 inline-block">
+          返回展览
+        </Link>
+      </div>
+    )
   }
 
   return (
@@ -77,18 +99,20 @@ export function OnlineMuseum() {
 
       {mode === 'lobby' && (
         <MuseumLobby
-          exhibition={onlineMuseum}
+          exhibition={exhibition}
           halls={halls}
+          exhibitionNumber={exhibitionIndex >= 0 ? exhibitionIndex + 1 : 1}
+          exhibitionCount={exhibitions.length}
           onStartGuided={handleStartGuided}
           onStartFree={handleStartFree}
           onSelectHall={handleSelectHall}
         />
       )}
 
-      {mode === 'free' && (
+      {mode === 'free' && currentHall && (
         <Floorplan
           halls={halls}
-          currentHallId={currentHallId}
+          currentHallId={currentHall.id}
           onSelectHall={handleSelectHall}
           onStartGuided={handleStartGuided}
         />

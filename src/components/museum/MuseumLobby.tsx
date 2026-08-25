@@ -6,6 +6,8 @@ import { imageUrl } from '../../utils/imageUrl'
 interface MuseumLobbyProps {
   exhibition: Exhibition
   halls: Hall[]
+  exhibitionNumber: number
+  exhibitionCount: number
   onStartGuided: () => void
   onStartFree: () => void
   onSelectHall: (hallId: string) => void
@@ -14,6 +16,8 @@ interface MuseumLobbyProps {
 export function MuseumLobby({
   exhibition,
   halls,
+  exhibitionNumber,
+  exhibitionCount,
   onStartGuided,
   onStartFree,
   onSelectHall,
@@ -30,7 +34,7 @@ export function MuseumLobby({
             className="lg:col-span-5"
           >
             <span className="font-mono text-xs tracking-[0.25em] text-[var(--color-museum-warm)] block mb-6">
-              Exhibition 05 · Virtual Gallery
+              Exhibition {String(exhibitionNumber).padStart(2, '0')} · {exhibitionCount > 1 ? `${exhibitionCount} Exhibitions` : 'Virtual Gallery'}
             </span>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-rice leading-[1.1] mb-4">
               {exhibition.title}

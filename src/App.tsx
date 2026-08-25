@@ -34,6 +34,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/works" element={<Works />} />
                 <Route path="/works/online-museum" element={<OnlineMuseum />} />
+                <Route path="/works/irish-curation" element={<OnlineMuseum />} />
                 <Route path="/works/:projectId" element={<ProjectDetail />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />

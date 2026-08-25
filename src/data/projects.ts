@@ -1,4 +1,4 @@
-export type ProjectId = 'ar-museum' | 'digital-mural' | 'digital-landscape' | 'planet-summon' | 'online-museum'
+export type ProjectId = 'ar-museum' | 'digital-mural' | 'digital-landscape' | 'planet-summon' | 'online-museum' | 'irish-curation'
 
 export type ImageSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
@@ -688,6 +688,72 @@ export const projects: Project[] = [
                 caption: 'Fig.06 故事与影像',
               },
             ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'irish-curation',
+    title: '爱尔兰策展',
+    titleEn: 'Curaidh — Photographs from Ireland',
+    year: '2024',
+    medium: '摄影 / 虚拟策展 / 数字展陈',
+    tags: ['摄影', '虚拟展馆', '爱尔兰'],
+    cover: '/images/irish-curation/cover.jpg',
+    coverAlt: '爱尔兰西海岸清晨的薄雾与岸线',
+    accent: '#6f8a76',
+    accentSecondary: '#b58a52',
+    description:
+      '十四张爱尔兰影像，四个展厅，像一次被放慢的行走。启程厅记录抵达、田野厅丈量地形、居所厅进入人造的房间、余光厅收集一天结束时眼睛里仍带着体温的画面。',
+    descriptionEn:
+      'Fourteen photographs across four halls, paced like a slowed-down walk. Departures · Open Land · Inhabited Places · Afterlight — click into the virtual gallery to enter.',
+    statement:
+      '策展是为风景留出停顿的方式。每一张影像都是一个被刻意放慢的瞬间。',
+    statementEn:
+      'Curation is a way of making pauses for landscape. Each image is a deliberately slowed-down moment.',
+    role: '摄影 / 策展 / 数字展陈设计',
+    roleEn: 'Photography / Curation / Digital Exhibition Design',
+    tech: ['Photography', 'Vite + React', 'Virtual Gallery System'],
+    boards: [
+      {
+        id: '01',
+        title: '策展前言',
+        titleEn: 'Preface',
+        subtitle: '进入虚拟展厅之前',
+        modules: [
+          {
+            type: 'hero-split',
+            label: 'Exhibition 06',
+            title: '爱尔兰策展',
+            text: '海岸、田野、居所、余光 —— 四个展厅、十四张影像。从虚拟展厅的门厅进入，可以按导览顺序逐厅观看（Guided Tour），也可以从总览平面图自由挑选起点（Free Explore），点击任意作品可放大查看细节。',
+            images: [
+              {
+                src: '/images/irish-curation/cover.jpg',
+                alt: '爱尔兰西海岸清晨',
+                size: 'lg',
+                aspect: '16/9',
+                caption: 'Fig.01 启程厅主视觉',
+              },
+              {
+                src: '/images/irish-curation/05.jpg',
+                alt: '石墙',
+                size: 'xs',
+                aspect: '4/3',
+                caption: 'Fig.02 田野厅',
+              },
+              {
+                src: '/images/irish-curation/09.jpg',
+                alt: '屋檐阴影',
+                size: 'xs',
+                aspect: '3/2',
+                caption: 'Fig.03 居所厅',
+              },
+            ],
+          },
+          {
+            type: 'statement',
+            text: '在虚拟展馆里行走，目光就是脚步。每一张影像都被挂在某一面墙上、某一束顶光下，等待被缓慢地、单独地观看。',
           },
         ],
       },

@@ -21,7 +21,7 @@ export function Works() {
             展览目录
           </h1>
           <p className="mt-6 text-sm text-rice/55 max-w-xl leading-relaxed">
-            四个项目，四组关于东方数字艺术的展板。点击任意作品进入独立策展空间，浏览每块展板的构图与细节。
+            五个项目，五组关于东方数字艺术的展板。点击任意作品进入独立策展空间，浏览每块展板的构图与细节。
           </p>
         </motion.div>
 

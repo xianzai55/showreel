@@ -99,7 +99,7 @@ export function Home() {
               展板目录
             </h2>
             <p className="mt-4 text-sm text-rice/55 max-w-xl">
-              四个项目，四组数字展板。每组由 2–4 块横向展板构成，点击项目进入独立策展空间。
+              五个项目，五组数字展板。每组由 2–4 块横向展板构成，点击项目进入独立策展空间。
             </p>
           </motion.div>
 
