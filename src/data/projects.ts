@@ -1,4 +1,4 @@
-export type ProjectId = 'ar-museum' | 'digital-mural' | 'digital-landscape' | 'planet-summon'
+export type ProjectId = 'ar-museum' | 'digital-mural' | 'digital-landscape' | 'planet-summon' | 'online-museum'
 
 export type ImageSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
@@ -586,6 +586,107 @@ export const projects: Project[] = [
             text: '以深空蓝紫为底，通过锈红地平线与青绿信号光建立视觉焦点。人物剪影小，巨构飞船大，强化孤独与敬畏感。',
             images: [
               { src: '/images/planet-summon/cover.png', alt: '主视觉', size: 'md', aspect: '16/9', caption: 'Fig.18 视觉总览' },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'online-museum',
+    title: '线上博物馆',
+    titleEn: 'The Weingreen Museum Online',
+    year: '2024',
+    medium: '网站设计 / 虚拟展厅 / 数字叙事',
+    tags: ['虚拟展馆', '数字叙事', '文化遗产'],
+    cover: '/images/online-museum/atmosphere/virtual-visit-screenshot.jpg',
+    coverAlt: 'Weingreen Museum 虚拟展厅入口，展柜中陈列古代文物',
+    accent: '#a85d5d',
+    accentSecondary: '#4a7c8c',
+    description:
+      '为一座收藏古代近东与埃及文物的博物馆设计的线上展厅。以虚拟展馆方式呈现护身符、圣甲虫与沙布提俑，支持线性导览与非线性自由观展。',
+    descriptionEn:
+      'An online gallery for a museum of ancient Near Eastern and Egyptian artefacts, presenting amulets, scarabs and shabtis through a virtual exhibition hall with guided and free-explore modes.',
+    statement:
+      '文物的沉默需要空间来承托。数字展馆为每一件器物提供一个被缓慢观看的房间。',
+    statementEn:
+      'The silence of artefacts needs space to hold it. The digital gallery gives each object a room in which to be seen slowly.',
+    role: '网站设计 / 虚拟展馆 / 数字叙事',
+    roleEn: 'Web Design / Virtual Gallery / Digital Narrative',
+    tech: ['React', 'Figma', 'Sketchfab Embed', 'WordPress'],
+    boards: [
+      {
+        id: '01',
+        title: '展览门厅',
+        titleEn: 'Exhibition Lobby',
+        subtitle: '走进数字展馆',
+        modules: [
+          {
+            type: 'hero-split',
+            label: 'Exhibition 05',
+            title: '线上博物馆',
+            text: '一座收藏古代近东与埃及文物的博物馆，被重新构筑为可漫游的数字展厅。展品从展柜走入光中，等待被逐一凝视。',
+            images: [
+              {
+                src: '/images/online-museum/atmosphere/virtual-visit-screenshot.jpg',
+                alt: '虚拟展厅入口',
+                size: 'lg',
+                aspect: '16/9',
+                caption: 'Fig.01 虚拟展厅入口',
+              },
+              {
+                src: '/images/online-museum/exhibits/scarab-beetle.jpg',
+                alt: '圣甲虫展品',
+                size: 'xs',
+                aspect: '4/3',
+                caption: 'Fig.02 圣甲虫',
+              },
+              {
+                src: '/images/online-museum/exhibits/shabti-of-nesikhons.jpg',
+                alt: '沙布提俑',
+                size: 'xs',
+                aspect: '3/2',
+                caption: 'Fig.03 沙布提俑',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: '02',
+        title: '展馆空间',
+        titleEn: 'Gallery Space',
+        subtitle: '从网页到展厅',
+        modules: [
+          {
+            type: 'statement',
+            text: '原项目以网站形式呈现博物馆收藏、故事与虚拟参观。本次升级将其转化为一座具有展馆氛围、导览动线与展签系统的数字展览馆。',
+          },
+          {
+            type: 'sequence',
+            label: '界面与氛围',
+            images: [
+              {
+                src: '/images/online-museum/atmosphere/home-screenshot.jpg',
+                alt: '网站首页',
+                size: 'sm',
+                aspect: '4/3',
+                caption: 'Fig.04 网站首页',
+              },
+              {
+                src: '/images/online-museum/atmosphere/collection-screenshot.jpg',
+                alt: '收藏页',
+                size: 'sm',
+                aspect: '4/3',
+                caption: 'Fig.05 收藏页',
+              },
+              {
+                src: '/images/online-museum/atmosphere/stories-screenshot.jpg',
+                alt: '故事页',
+                size: 'sm',
+                aspect: '4/3',
+                caption: 'Fig.06 故事与影像',
+              },
             ],
           },
         ],

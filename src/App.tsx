@@ -9,6 +9,7 @@ import { useLenis } from './hooks/useLenis'
 const Home = lazy(() => import('./pages/Home').then((m) => ({ default: m.Home })))
 const Works = lazy(() => import('./pages/Works').then((m) => ({ default: m.Works })))
 const ProjectDetail = lazy(() => import('./pages/ProjectDetail').then((m) => ({ default: m.ProjectDetail })))
+const OnlineMuseum = lazy(() => import('./pages/OnlineMuseum').then((m) => ({ default: m.OnlineMuseum })))
 const About = lazy(() => import('./pages/About').then((m) => ({ default: m.About })))
 const Contact = lazy(() => import('./pages/Contact').then((m) => ({ default: m.Contact })))
 
@@ -32,6 +33,7 @@ function App() {
               <Routes location={location}>
                 <Route path="/" element={<Home />} />
                 <Route path="/works" element={<Works />} />
+                <Route path="/works/online-museum" element={<OnlineMuseum />} />
                 <Route path="/works/:projectId" element={<ProjectDetail />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />

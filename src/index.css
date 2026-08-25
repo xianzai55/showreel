@@ -22,6 +22,14 @@
   --color-planet-blue: #5b9bd5;
   --color-planet-cyan: #4ecdc4;
 
+  /* Museum hall palette */
+  --color-museum-wall: #141211;
+  --color-museum-floor: #0e0d0c;
+  --color-museum-light: #f5f0e6;
+  --color-museum-warm: #c9a97a;
+  --color-museum-cool: #6a8fa3;
+  --color-museum-spot: rgba(245, 240, 230, 0.14);
+
   /* Typography */
   --font-serif: "Noto Serif SC", "Songti SC", "SimSun", "Georgia", serif;
   --font-sans: "Inter", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
