@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  /* Ink & paper palette */
+  --color-ink: #090908;
+  --color-ink-light: #111110;
+  --color-charcoal: #1a1a18;
+  --color-stone: #2a2926;
+  --color-ash: #8b8880;
+  --color-ash-light: #b0ada5;
+  --color-rice: #f4f1ea;
+  --color-rice-dim: #d8d4c8;
+
+  /* Project accents */
+  --color-ar-gold: #c9a86c;
+  --color-ar-wood: #8b6f4e;
+  --color-mural-cyan: #4a7c8c;
+  --color-mural-cinnabar: #b85c50;
+  --color-land-green: #5e7d6b;
+  --color-land-red: #a85d4d;
+  --color-planet-blue: #5b9bd5;
+  --color-planet-cyan: #4ecdc4;
+
+  /* Typography */
+  --font-serif: "Noto Serif SC", "Songti SC", "SimSun", "Georgia", serif;
+  --font-sans: "Inter", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+
+  /* Editorial spacing */
+  --spacing-section: min(92vh, 900px);
+  --spacing-gutter: clamp(1.5rem, 5vw, 5rem);
+  --spacing-max: 1340px;
+
+  /* Image size scale */
+  --img-xs: 160px;
+  --img-sm: 260px;
+  --img-md: 420px;
+  --img-lg: 640px;
+  --img-xl: 880px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-ink);
+  color: var(--color-rice);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.font-serif { font-family: var(--font-serif); }
+.font-sans { font-family: var(--font-sans); }
+
+.text-balance { text-wrap: balance; }
+
+::selection {
+  background-color: rgba(201, 168, 108, 0.22);
+  color: var(--color-rice);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-stone);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ash);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

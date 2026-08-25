@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#1a1a18"/>
+      <stop offset="60%" stop-color="#0f0f0e"/>
+      <stop offset="100%" stop-color="#090908"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(201,168,108,0.22)"/>
+      <stop offset="100%" stop-color="rgba(201,168,108,0)"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9a86c"/>
+      <stop offset="100%" stop-color="#8b6f4e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="800" fill="url(#bg)"/>
+
+  <!-- Soft top glow -->
+  <ellipse cx="300" cy="280" rx="220" ry="180" fill="url(#glow)"/>
+
+  <!-- Outer thin rings -->
+  <circle cx="300" cy="320" r="200" fill="none" stroke="#2a2926" stroke-width="1"/>
+  <circle cx="300" cy="320" r="170" fill="none" stroke="#2a2926" stroke-width="1"/>
+
+  <!-- Main golden ring -->
+  <circle cx="300" cy="320" r="140" fill="none" stroke="url(#ring)" stroke-width="1.5" opacity="0.9"/>
+
+  <!-- Inner geometric mask shape -->
+  <path d="M300 220
+           C360 220 400 270 400 330
+           C400 400 360 450 300 480
+           C240 450 200 400 200 330
+           C200 270 240 220 300 220Z"
+        fill="#111110" stroke="#2a2926" stroke-width="1"/>
+
+  <!-- Abstract facial structure: eyes as horizontal gold lines -->
+  <line x1="250" y1="310" x2="285" y2="310" stroke="#c9a86c" stroke-width="2" opacity="0.7"/>
+  <line x1="315" y1="310" x2="350" y2="310" stroke="#c9a86c" stroke-width="2" opacity="0.7"/>
+
+  <!-- Vertical nose line -->
+  <line x1="300" y1="310" x2="300" y2="360" stroke="#8b6f4e" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Subtle mouth arc -->
+  <path d="M280 375 Q300 385 320 375" fill="none" stroke="#8b6f4e" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Scattered star / particle dots -->
+  <g fill="#f4f1ea" opacity="0.35">
+    <circle cx="150" cy="180" r="1.2"/>
+    <circle cx="450" cy="160" r="1"/>
+    <circle cx="480" cy="380" r="1.5"/>
+    <circle cx="120" cy="420" r="1"/>
+    <circle cx="200" cy="580" r="1.2"/>
+    <circle cx="400" cy="600" r="1"/>
+    <circle cx="300" cy="680" r="1.5"/>
+    <circle cx="520" cy="520" r="1"/>
+    <circle cx="80" cy="300" r="1.2"/>
+  </g>
+
+  <!-- Decorative bottom line -->
+  <line x1="200" y1="650" x2="400" y2="650" stroke="#2a2926" stroke-width="1"/>
+  <text x="300" y="700" text-anchor="middle" font-family="'Noto Serif SC', Georgia, serif" font-size="14" letter-spacing="0.35em" fill="#8b8880">KEXIN HU</text>
+</svg>
