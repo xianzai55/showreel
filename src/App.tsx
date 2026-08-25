@@ -4,6 +4,7 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { PageLoader } from './components/PageLoader'
+import { ScrollToTop } from './components/ScrollToTop'
 import { useLenis } from './hooks/useLenis'
 
 const Home = lazy(() => import('./pages/Home').then((m) => ({ default: m.Home })))
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-ink text-rice font-sans">
+      <ScrollToTop />
       <Navbar />
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
