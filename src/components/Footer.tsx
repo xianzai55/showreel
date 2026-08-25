@@ -9,7 +9,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-stone/60 bg-ink">
-      <div className="max-w-[var(--spacing-max)] mx-auto px-6 md:px-[var(--spacing-gutter)] py-12 md:py-16">
+      <div className="max-w-[var(--board-max)] mx-auto px-[var(--board-gutter)] py-12 md:py-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
             <Link to="/" className="font-serif text-xl tracking-[0.15em] text-rice">

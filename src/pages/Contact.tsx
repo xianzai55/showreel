@@ -1,85 +1,54 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Mail, MapPin } from 'lucide-react'
-import { Starfield } from '../components/Starfield'
+import { Mail, MapPin } from 'lucide-react'
 import { site } from '../data/projects'
 
 export function Contact() {
   return (
-    <div className="relative min-h-screen pt-28 md:pt-40 pb-16 md:pb-24 bg-ink overflow-hidden">
-      <Starfield density={70} speed={0.15} />
-
-      <div className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+    <div className="pt-28 md:pt-32 pb-20 md:pb-28">
+      <div className="max-w-[var(--board-max)] mx-auto px-[var(--board-gutter)]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="md:col-span-7"
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-5"
           >
-            <p className="text-xs uppercase tracking-[0.35em] text-ash mb-4">Contact</p>
-            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl text-rice leading-tight">
-              开启一次
-              <br />
-              对话
+            <span className="font-mono text-xs tracking-[0.25em] text-ash block mb-6">
+              Contact
+            </span>
+            <h1 className="font-serif text-4xl md:text-5xl text-rice mb-6">
+              联系
             </h1>
-            <p className="mt-6 text-lg text-rice/60 max-w-xl leading-relaxed">
-              无论您是希望合作展览、委托创作，或只是对作品有疑问，都欢迎通过邮件联系我。
+            <p className="text-sm text-rice/60 leading-relaxed max-w-sm">
+              如有展览、合作或作品咨询，欢迎通过邮件联系。
             </p>
-
-            <a
-              href={`mailto:${site.email}`}
-              className="mt-10 inline-flex items-center gap-3 font-serif text-2xl md:text-3xl text-rice hover:text-ar-gold transition-colors duration-300"
-            >
-              {site.email}
-              <ArrowUpRight size={24} />
-            </a>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="md:col-span-5"
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="lg:col-span-7"
           >
-            <div className="p-8 md:p-10 border border-stone bg-charcoal/30 backdrop-blur-sm">
-              <h2 className="font-serif text-xl text-rice mb-8">联系方式</h2>
-
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <Mail size={18} className="text-ar-gold mt-1" />
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[0.25em] text-ash mb-1">Email</p>
-                    <a
-                      href={`mailto:${site.email}`}
-                      className="text-rice hover:text-ar-gold transition-colors"
-                    >
-                      {site.email}
-                    </a>
-                  </div>
+            <div className="space-y-8">
+              <a
+                href={`mailto:${site.email}`}
+                className="group flex items-start gap-5"
+              >
+                <Mail size={18} className="text-ash mt-1 group-hover:text-rice transition-colors" />
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-ash mb-1">Email</p>
+                  <p className="text-lg md:text-xl text-rice group-hover:text-rice-dim transition-colors">
+                    {site.email}
+                  </p>
                 </div>
+              </a>
 
-                <div className="flex items-start gap-4">
-                  <MapPin size={18} className="text-ar-gold mt-1" />
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[0.25em] text-ash mb-1">Location</p>
-                    <p className="text-rice">{site.location}</p>
-                    <p className="text-ash text-sm mt-1">Wuhan, China</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-10 pt-8 border-t border-stone/50">
-                <p className="text-[10px] uppercase tracking-[0.25em] text-ash mb-4">Social</p>
-                <div className="flex flex-wrap gap-4">
-                  {['Instagram', 'Behance', 'Vimeo', 'Weibo'].map((social) => (
-                    <a
-                      key={social}
-                      href="#"
-                      className="text-sm text-rice/70 hover:text-rice transition-colors"
-                    >
-                      {social}
-                    </a>
-                  ))}
+              <div className="flex items-start gap-5">
+                <MapPin size={18} className="text-ash mt-1" />
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-ash mb-1">Location</p>
+                  <p className="text-lg md:text-xl text-rice">{site.location}</p>
                 </div>
               </div>
             </div>

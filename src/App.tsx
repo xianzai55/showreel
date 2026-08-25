@@ -1,13 +1,16 @@
 import { AnimatePresence, motion } from 'framer-motion'
+import { lazy, Suspense } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
+import { PageLoader } from './components/PageLoader'
 import { useLenis } from './hooks/useLenis'
-import { About } from './pages/About'
-import { Contact } from './pages/Contact'
-import { Home } from './pages/Home'
-import { ProjectDetail } from './pages/ProjectDetail'
-import { Works } from './pages/Works'
+
+const Home = lazy(() => import('./pages/Home').then((m) => ({ default: m.Home })))
+const Works = lazy(() => import('./pages/Works').then((m) => ({ default: m.Works })))
+const ProjectDetail = lazy(() => import('./pages/ProjectDetail').then((m) => ({ default: m.ProjectDetail })))
+const About = lazy(() => import('./pages/About').then((m) => ({ default: m.About })))
+const Contact = lazy(() => import('./pages/Contact').then((m) => ({ default: m.Contact })))
 
 function App() {
   const location = useLocation()
@@ -25,13 +28,15 @@ function App() {
           transition={{ duration: 0.2, ease: 'easeOut' }}
         >
           <main>
-            <Routes location={location}>
-              <Route path="/" element={<Home />} />
-              <Route path="/works" element={<Works />} />
-              <Route path="/works/:projectId" element={<ProjectDetail />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
+            <Suspense fallback={<PageLoader />}>
+              <Routes location={location}>
+                <Route path="/" element={<Home />} />
+                <Route path="/works" element={<Works />} />
+                <Route path="/works/:projectId" element={<ProjectDetail />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+              </Routes>
+            </Suspense>
           </main>
         </motion.div>
       </AnimatePresence>

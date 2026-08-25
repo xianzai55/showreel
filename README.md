@@ -2,6 +2,8 @@
 
 东方数字诗意 × 沉浸式未来美术馆
 
+在线预览：https://xianzai55.github.io/showreel/
+
 ## 技术栈
 
 - Vite 8 + React 19 + TypeScript
@@ -9,7 +11,6 @@
 - Framer Motion
 - React Router v7
 - Lenis（平滑滚动）
-- yet-another-react-lightbox（图片灯箱）
 - lucide-react（图标）
 
 ## 快速开始
@@ -32,8 +33,8 @@ npm run preview
 
 - 路由级代码分割：每个页面按路由懒加载，配合 `PageLoader` 骨架屏
 - 图片懒加载：所有非首屏图片使用 `loading="lazy"` + `decoding="async"`
-- 图片骨架屏：`LazyImage` 组件在加载完成前显示微光占位，加载后淡入
-- 构建分块：vendor / icons / lightbox / 页面 chunk 分离，便于缓存
+- 图片淡入占位：`BoardImage` 组件在加载完成前显示背景占位，加载后淡入
+- 构建分块：vendor / icons / lightbox 分离为独立 chunk，便于缓存
 
 ## 如何替换图片
 
@@ -77,15 +78,13 @@ src/index.css
 - 桌面端以 16:9 视口为画布，按画册页节奏构图
 - 四个项目拥有各自的强调色与版式节奏
 - 默认图片以中、小尺寸呈现，点击后进入全屏灯箱查看细节
-- 首页使用数字山水/数字壁画封面作为编辑式拼贴
-- 联系页使用星尘粒子背景
 - 灯箱支持左右切换、缩略图条、键盘 Esc/方向键、缩放与 caption
 
 ## 项目结构
 
 ```
 src/
-  components/      # 可复用组件（导航、章节、图片、灯箱等）
+  components/      # 可复用组件（导航、展板系统、图片、灯箱等）
   pages/           # 页面组件（Home / Works / ProjectDetail / About / Contact）
   data/            # 项目文案与配置
   hooks/           # Lenis 平滑滚动、滚动进度等自定义 Hook

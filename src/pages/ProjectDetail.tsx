@@ -1,51 +1,36 @@
+import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { EditorialSection } from '../components/EditorialSection'
+import { BoardImage } from '../components/BoardImage'
+import { BoardShell, BoardHeader } from '../components/BoardShell'
+import { Board } from '../components/Board'
 import { Lightbox } from '../components/Lightbox'
-import { ProjectHeader } from '../components/ProjectHeader'
-import { Section } from '../components/Section'
-import type { ProjectId, ProjectImage } from '../data/projects'
-import { getProjectById, getProjectIndex, projects } from '../data/projects'
+import { getAdjacentProjects, getProjectById, type BoardImage as BoardImageType } from '../data/projects'
 
 export function ProjectDetail() {
-  const { projectId } = useParams<{ projectId: ProjectId }>()
-  const project = useMemo(() => getProjectById(projectId as ProjectId), [projectId])
-
+  const { projectId } = useParams<{ projectId: string }>()
+  const project = useMemo(() => getProjectById(projectId as any), [projectId])
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
 
-  const currentIndex = useMemo(
-    () => (projectId ? getProjectIndex(projectId as ProjectId) : -1),
-    [projectId],
+  const allImages = useMemo(() => {
+    if (!project) return []
+    const cover: BoardImageType = { src: project.cover, alt: project.coverAlt }
+    const boardImages = project.boards.flatMap((b) => b.modules.flatMap((m) => m.images || []))
+    return [cover, ...boardImages]
+  }, [project])
+
+  const handleImageClick = (image: BoardImageType) => {
+    const idx = allImages.findIndex((img) => img.src === image.src)
+    setLightboxIndex(idx >= 0 ? idx : 0)
+    setLightboxOpen(true)
+  }
+
+  const { prev, next } = useMemo(
+    () => (project ? getAdjacentProjects(project.id) : { prev: null, next: null }),
+    [project]
   )
-  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null
-  const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null
-
-  const allImages = useMemo<ProjectImage[]>(() => {
-    if (!project) return []
-    const cover: ProjectImage = { src: project.cover, alt: project.coverAlt }
-    return [cover, ...project.sections.flatMap((s) => s.images || [])]
-  }, [project])
-
-  const sectionBaseIndices = useMemo(() => {
-    if (!project) return []
-    return project.sections.map((_, index) =>
-      1 + project.sections
-        .slice(0, index)
-        .reduce((sum, section) => sum + (section.images?.length || 0), 0),
-    )
-  }, [project])
-
-  const openLightbox = (sectionIndex: number, localIndex: number) => {
-    setLightboxIndex(sectionBaseIndices[sectionIndex] + localIndex)
-    setLightboxOpen(true)
-  }
-
-  const openCover = () => {
-    setLightboxIndex(0)
-    setLightboxOpen(true)
-  }
 
   if (!project) {
     return (
@@ -59,66 +44,161 @@ export function ProjectDetail() {
   }
 
   return (
-    <div className="bg-ink">
-      <ProjectHeader project={project} onImageClick={() => openCover()} />
-
-      {/* Project statement */}
-      <Section compact className="border-t border-stone/40">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
-          <div className="md:col-span-4">
-            <span
-              className="text-[10px] uppercase tracking-[0.35em] block mb-4"
-              style={{ color: project.accent }}
-            >
-              00 — Statement
-            </span>
-            <h2 className="font-serif text-2xl md:text-3xl text-rice">项目理念</h2>
-          </div>
-          <div className="md:col-span-8 max-w-2xl">
-            <p className="font-serif text-xl md:text-2xl text-rice/85 leading-relaxed text-balance">
-              {project.statement}
+    <div className="pt-24 md:pt-28">
+      {/* Cover Board */}
+      <BoardShell className="border-b border-stone/40">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5"
+          >
+            <div className="flex flex-wrap gap-2 mb-6">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 border rounded-full"
+                  style={{ borderColor: project.accent, color: project.accent }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-rice leading-tight">
+              {project.title}
+            </h1>
+            <p className="mt-2 text-lg text-rice/50 font-light">{project.titleEn}</p>
+            <p className="mt-8 text-sm md:text-base text-rice/70 leading-relaxed max-w-md">
+              {project.description}
             </p>
-            <p className="mt-5 text-sm text-ash leading-relaxed">{project.statementEn}</p>
+
+            <div className="mt-10 grid grid-cols-2 gap-6 text-xs">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.25em] text-ash mb-1">Year</p>
+                <p className="text-rice">{project.year}</p>
+              </div>
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.25em] text-ash mb-1">Medium</p>
+                <p className="text-rice">{project.medium}</p>
+              </div>
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.25em] text-ash mb-1">Role</p>
+                <p className="text-rice">{project.role}</p>
+              </div>
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.25em] text-ash mb-1">Tech</p>
+                <p className="text-rice">{project.tech.join(' / ')}</p>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7 flex justify-center lg:justify-end"
+          >
+            <BoardImage
+              image={{
+                src: project.cover,
+                alt: project.coverAlt,
+                size: 'lg',
+                aspect: '16/9',
+                caption: `${project.title} · 封面主视觉`,
+              }}
+              onClick={() =>
+                handleImageClick({ src: project.cover, alt: project.coverAlt })
+              }
+            />
+          </motion.div>
+        </div>
+
+        {/* Board mini nav */}
+        <div className="mt-14 pt-8 border-t border-stone/40">
+          <div className="flex flex-wrap items-center gap-3 md:gap-5">
+            <span className="text-[10px] uppercase tracking-[0.25em] text-ash mr-2">
+              Boards
+            </span>
+            {project.boards.map((board) => (
+              <a
+                key={board.id}
+                href={`#board-${board.id}`}
+                className="px-3 py-1.5 text-xs border border-stone/50 text-rice/70 hover:text-rice hover:border-rice/40 transition-colors"
+              >
+                {board.id} · {board.title}
+              </a>
+            ))}
           </div>
         </div>
-      </Section>
+      </BoardShell>
 
-      {/* Editorial sections */}
-      {project.sections.map((section, sectionIndex) => (
-        <div key={`${section.type}-${sectionIndex}`} className="border-t border-stone/30">
-          <EditorialSection
-            section={section}
-            accent={project.accent}
-            onImageClick={(_, idx) => openLightbox(sectionIndex, idx)}
-          />
+      {/* Project statement board */}
+      <BoardShell>
+        <BoardHeader
+          boardId="00"
+          title="项目理念"
+          titleEn="Statement"
+          accent={project.accent}
+        />
+        <div className="max-w-3xl mx-auto text-center py-6">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="font-serif text-xl md:text-2xl text-rice/85 leading-relaxed text-balance mb-6"
+          >
+            {project.statement}
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-sm text-ash leading-relaxed"
+          >
+            {project.statementEn}
+          </motion.p>
         </div>
+      </BoardShell>
+
+      {/* Content boards */}
+      {project.boards.map((board) => (
+        <Board
+          key={board.id}
+          board={board}
+          project={project}
+          onImageClick={handleImageClick}
+        />
       ))}
 
-      {/* Info & nav */}
-      <Section compact className="border-t border-stone/40 bg-ink-light">
+      {/* Info board */}
+      <BoardShell>
+        <BoardHeader
+          boardId="99"
+          title="项目信息"
+          titleEn="Project Info"
+          accent={project.accent}
+        />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
-          <div>
-            <h3 className="font-serif text-xl text-rice mb-6">项目信息</h3>
-            <dl className="space-y-4 text-sm">
-              <div className="grid grid-cols-3 gap-4 border-b border-stone/40 pb-4">
-                <dt className="text-ash uppercase text-[10px] tracking-wider">Year</dt>
-                <dd className="col-span-2 text-rice">{project.year}</dd>
+          <dl className="space-y-5 text-sm">
+            {[
+              ['Year', project.year],
+              ['Medium', project.medium],
+              ['Role', project.role],
+              ['Role (En)', project.roleEn],
+              ['Tech', project.tech.join(' / ')],
+            ].map(([label, value]) => (
+              <div
+                key={label}
+                className="grid grid-cols-3 gap-4 border-b border-stone/40 pb-4"
+              >
+                <dt className="text-ash uppercase text-[10px] tracking-wider">{label}</dt>
+                <dd className="col-span-2 text-rice">{value}</dd>
               </div>
-              <div className="grid grid-cols-3 gap-4 border-b border-stone/40 pb-4">
-                <dt className="text-ash uppercase text-[10px] tracking-wider">Medium</dt>
-                <dd className="col-span-2 text-rice">{project.medium}</dd>
-              </div>
-              <div className="grid grid-cols-3 gap-4 border-b border-stone/40 pb-4">
-                <dt className="text-ash uppercase text-[10px] tracking-wider">Role</dt>
-                <dd className="col-span-2 text-rice">{project.role}</dd>
-              </div>
-              <div className="grid grid-cols-3 gap-4 border-b border-stone/40 pb-4">
-                <dt className="text-ash uppercase text-[10px] tracking-wider">Tech</dt>
-                <dd className="col-span-2 text-rice">{project.tech.join(' / ')}</dd>
-              </div>
-            </dl>
-          </div>
-
+            ))}
+          </dl>
           <div className="flex flex-col justify-end">
             <Link
               to="/works"
@@ -128,37 +208,55 @@ export function ProjectDetail() {
             </Link>
           </div>
         </div>
+      </BoardShell>
 
-        <div className="mt-16 pt-10 border-t border-stone/40 flex flex-col md:flex-row justify-between gap-8">
-          {prevProject ? (
-            <Link to={`/works/${prevProject.id}`} className="group flex items-center gap-4">
-              <ArrowLeft size={18} className="text-ash group-hover:text-rice transition-colors" />
+      {/* Prev / Next */}
+      <section className="border-t border-stone/40 py-12 md:py-16">
+        <div className="max-w-[var(--board-max)] mx-auto px-[var(--board-gutter)] flex flex-col md:flex-row justify-between gap-8">
+          {prev ? (
+            <Link
+              to={`/works/${prev.id}`}
+              className="group flex items-center gap-4"
+            >
+              <ArrowLeft
+                size={18}
+                className="text-ash group-hover:text-rice transition-colors"
+              />
               <div>
-                <p className="text-[10px] uppercase tracking-[0.25em] text-ash mb-1">Previous</p>
+                <p className="text-[10px] uppercase tracking-[0.25em] text-ash mb-1">
+                  Previous
+                </p>
                 <p className="font-serif text-lg text-rice group-hover:text-rice-dim transition-colors">
-                  {prevProject.title}
+                  {prev.title}
                 </p>
               </div>
             </Link>
           ) : (
             <div />
           )}
-
-          {nextProject ? (
-            <Link to={`/works/${nextProject.id}`} className="group flex items-center gap-4 text-right">
+          {next ? (
+            <Link
+              to={`/works/${next.id}`}
+              className="group flex items-center gap-4 text-right"
+            >
               <div>
-                <p className="text-[10px] uppercase tracking-[0.25em] text-ash mb-1">Next</p>
+                <p className="text-[10px] uppercase tracking-[0.25em] text-ash mb-1">
+                  Next
+                </p>
                 <p className="font-serif text-lg text-rice group-hover:text-rice-dim transition-colors">
-                  {nextProject.title}
+                  {next.title}
                 </p>
               </div>
-              <ArrowRight size={18} className="text-ash group-hover:text-rice transition-colors" />
+              <ArrowRight
+                size={18}
+                className="text-ash group-hover:text-rice transition-colors"
+              />
             </Link>
           ) : (
             <div />
           )}
         </div>
-      </Section>
+      </section>
 
       <Lightbox
         images={allImages}
