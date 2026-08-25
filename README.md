@@ -29,6 +29,15 @@ npm run build
 npm run preview
 ```
 
+## 自动部署（GitHub Actions）
+
+本站已接入 GitHub Actions 自动部署到 GitHub Pages：
+
+- 触发条件：任何 **push 到 `main` 分支** 的代码变更
+- 流程：[.github/workflows/deploy.yml](.github/workflows/deploy.yml) 会自动执行 `npm ci` → `npm run build` → 上传 `dist` 产物 → 部署到 GitHub Pages
+- 因此**改动网站后只需 commit 并 push 到 main**，线上站点会自动同步更新，无需手动部署
+- 站点构建在子路径 `/showreel/` 下（见 [vite.config.ts](vite.config.ts) 的 `base` 配置），保持不变即可
+
 ## 性能优化
 
 - 路由级代码分割：每个页面按路由懒加载，配合 `PageLoader` 骨架屏
@@ -38,23 +47,27 @@ npm run preview
 
 ## 项目结构
 
-### 五个展示项目
+### 展示项目
 
-1. **体乐里 / AR Museum** — 展板化详情页
-2. **云林寺壁画 / Digital Mural** — 展板化详情页
-3. **数字山水 / Digital Landscape** — 展板化详情页
-4. **星球召唤 / Planet Summon** — 展板化详情页
-5. **线上博物馆 / The Weingreen Museum Online** — 虚拟展馆体验页
+本站目前收录 7 个项目，数据定义在 `src/data/projects.ts`：
 
-前四个项目使用 `Board` 展板系统：每项目 2–4 块横向展板，图片以中、小尺寸编排，点击放大。
+1. **体乐里 / AR Museum** — AR 博物馆
+2. **云林寺壁画 / Digital Mural** — 数字壁画
+3. **数字山水 / Digital Landscape** — 数字山水
+4. **星球召唤 / Planet Summon** — 星球召唤
+5. **线上博物馆 / The Weingreen Museum Online** — 虚拟展馆体验
+6. **爱尔兰策展 / Irish Curation** — 虚拟展馆体验
+7. **爱尔兰风景 / Irish Landscape** — 虚拟展馆体验
 
-第五个项目「线上博物馆」使用独立的 `Museum` 虚拟展馆系统：
+展馆类项目（线上博物馆、爱尔兰策展等）使用独立的 `Museum` 虚拟展馆系统，由 `OnlineMuseum` 页面根据 URL 中的展览 id 动态解析并渲染（见 [App.tsx](src/App.tsx) 与 [onlineMuseum.ts](src/data/onlineMuseum.ts)）：
 
 - 展览门厅 Lobby
 - 线性导览 Guided Tour（Hall 01 → Hall 02 → ...）
 - 非线性自由观展 Free Explore（展馆总览平面图）
 - 每个展厅有独立空间氛围、展品墙与展签
 - 所有展品可点击放大查看细节
+
+其余项目使用 `Board` 展板系统（`ProjectDetail` 页面）：每项目 2–4 块横向展板，图片以中、小尺寸编排，点击放大。
 
 ## 如何替换图片
 
@@ -67,6 +80,8 @@ npm run preview
 - `online-museum/` — 线上博物馆
   - `atmosphere/` — 展馆氛围/网站截图
   - `exhibits/` — 展品图
+- `irish-curation/` — 爱尔兰策展
+- `irish-landscape/` — 爱尔兰风景
 
 每个项目建议包含：
 
