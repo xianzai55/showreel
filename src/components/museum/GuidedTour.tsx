@@ -3,8 +3,8 @@ import { Media } from '../Media'
 
 interface GuidedTourProps {
   images: { src: string; alt: string }[]
-  /** layout: 'hero-first' → 首图独占最上面一行，其余按序排在下一行 */
-  layout?: 'hero-first'
+  /** layout: 'hero-first' → 首图独占最上面一行，其余按序排在下一行；'two-wide' → 前两张横版独占首行（加大间隔），其余排在第二行 */
+  layout?: 'hero-first' | 'two-wide'
   /** 网格间隙类；省略则用默认间隙 */
   gapClassName?: string
 }
@@ -51,6 +51,35 @@ export function GuidedTour({ images, layout, gapClassName }: GuidedTourProps) {
               </div>
             ))}
           </div>
+        </div>
+      </motion.div>
+    )
+  }
+
+  if (layout === 'two-wide') {
+    const row1 = images.slice(0, 2)
+    const rest = images.slice(2)
+    return (
+      <motion.div
+        key={images.map((i) => i.src).join('|')}
+        {...motionProps}
+        className="w-full"
+      >
+        {/* 首行：两张横版并排，中间间隔加大 */}
+        <div className="grid grid-cols-2 gap-6 md:gap-10 items-start">
+          {row1.map((img) => (
+            <div key={img.src} className="overflow-hidden bg-stone/10">
+              <Media src={img.src} alt={img.alt} className="w-full h-auto block opacity-95" />
+            </div>
+          ))}
+        </div>
+        {/* 第二行：其余图片，第二行为首的张是原第一行第三张 */}
+        <div className={`mt-6 md:mt-8 grid ${gap} items-start grid-cols-2 md:grid-cols-4`}>
+          {rest.map((img) => (
+            <div key={img.src} className="overflow-hidden bg-stone/10">
+              <Media src={img.src} alt={img.alt} className="w-full h-auto block opacity-95" />
+            </div>
+          ))}
         </div>
       </motion.div>
     )

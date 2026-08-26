@@ -49,8 +49,8 @@ export interface Exhibition {
   accentSecondary: string
   /** Start Guided Tour 入口右侧展示的拼贴图片；空数组则保持原 cover 视图 */
   tourImages: { src: string; alt: string }[]
-  /** tour 排版方式：hero-first = 首图独占最上面一行，其余按序排在下一行；省略则用自适应网格 */
-  tourLayout?: 'hero-first'
+  /** tour 排版方式：hero-first = 首图独占最上面一行，其余按序排在下一行；two-wide = 前两张横版独占首行（加大间隔），其余排在第二行；省略则用自适应网格 */
+  tourLayout?: 'hero-first' | 'two-wide'
   /** tour 图片网格的间隙类；省略则用默认间隙（不影响其他展览） */
   tourGapClassName?: string
   halls: Hall[]
@@ -1154,11 +1154,13 @@ const weingreenExhibition: Exhibition = {
   mediumEn: 'Artifact Digitisation / Digital Exhibition',
   cover: '/images/The Weingreen Museum/首图.jpg',
   coverAlt: 'The Long Room HUB 入口',
+  // 按指令：删除第一行第四张（釉陶护身符 4.jpg）；第一行第三张（人物肖像 3.jpg）改为第二行第一张
+  // 首行仅保留两张横版（陶片群 1.jpg / 彩绘人形板 2.jpg），加大中间间隔
+  tourLayout: 'two-wide',
   tourImages: [
     { src: '/images/The Weingreen Museum/1.jpg', alt: 'The Weingreen Museum · 陶片群' },
     { src: '/images/The Weingreen Museum/2.jpg', alt: 'The Weingreen Museum · 彩绘人形板' },
     { src: '/images/The Weingreen Museum/3.jpg', alt: 'The Weingreen Museum · 人物肖像' },
-    { src: '/images/The Weingreen Museum/4.jpg', alt: 'The Weingreen Museum · 釉陶护身符' },
     { src: '/images/The Weingreen Museum/5.jpg', alt: 'The Weingreen Museum · 釉陶圣甲虫' },
     { src: '/images/The Weingreen Museum/6.jpg', alt: 'The Weingreen Museum · 釉陶护身项链' },
     { src: '/images/The Weingreen Museum/7.jpg', alt: 'The Weingreen Museum · 亡灵书草纸' },
