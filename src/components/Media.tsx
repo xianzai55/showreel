@@ -14,6 +14,13 @@ interface MediaProps {
 
 const VIDEO_RE = /\.(mp4|mov|webm|m4v)(?:$|\?)/i
 
+function videoPoster(src: string): string | undefined {
+  // 自动寻找与视频同名的 .jpg 作为首帧封面，避免视频未加载时黑屏
+  const poster = src.replace(/\.(mp4|mov|webm|m4v)(?:$|\?)/i, '.jpg')
+  if (poster !== src) return imageUrl(poster)
+  return undefined
+}
+
 /**
  * 统一媒体渲染：.mp4/.mov/.webm 用 <video>，其它用 <img>。
  * 用于展览封面 / 展厅氛围 / 展品，兼容用户上传的图片与视频文件。
@@ -37,6 +44,7 @@ export function Media({
         preload="metadata"
         autoPlay={animate}
         controls={controls}
+        poster={videoPoster(src)}
         onLoadedData={onLoad}
         className={className}
       />

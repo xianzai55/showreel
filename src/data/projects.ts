@@ -58,7 +58,7 @@ export const exhibitions: Exhibition[] = [
     title: '苏州山水全图卷',
     titleEn: 'The Whole Scroll of Suzhou Landscape',
     subtitle: '以手势为舟的青绿山水漫游',
-    cover: '/images/苏州山水全图卷/毕设1.png',
+    cover: '/images/苏州山水全图卷/毕设1.jpg',
     coverAlt: '苏州山水全图卷 · 青绿山水城镇',
     intro:
       '从宋代青绿山水与江南园林出发，构建一座可手势漫游的数字山水城镇。塔、桥、渔村、远山在薄雾中展开，双手握拳前后移动即可漫游其间。',
@@ -70,7 +70,7 @@ export const exhibitions: Exhibition[] = [
     title: '天龙山石窟',
     titleEn: 'Tianlongshan Grottoes',
     subtitle: '散落在世界里的同一张脸',
-    cover: '/images/天龙山石窟/tls1.png',
+    cover: '/images/天龙山石窟/tls1.jpg',
     coverAlt: '天龙山石窟 · 东峰窟龛与石刻造像',
     intro:
       '以唐代造像与流失海外的高浮雕残件为核心，三间展厅重新安置那些离散于世界的面孔，让石窟在数字空间中复归其整体。',
@@ -82,7 +82,7 @@ export const exhibitions: Exhibition[] = [
     title: '北齐壁画博物馆',
     titleEn: 'Beiqi Mural Museum',
     subtitle: '墓室里的呼吸与色彩',
-    cover: '/images/北齐壁画博物馆/bq1.png',
+    cover: '/images/北齐壁画博物馆/bq1.jpg',
     coverAlt: '北齐壁画博物馆 · 墓室壁画的矿物色彩',
     intro:
       '以墓室壁画的仪仗出行、骏马与宴乐图像为线索，四间展厅将重矿物色与逝去王朝的呼吸重新展开。',
@@ -94,7 +94,7 @@ export const exhibitions: Exhibition[] = [
     title: '体乐里体育博物馆',
     titleEn: 'Tǐ Yuè Lǐ — AR Sports Museum',
     subtitle: '从展柜到身体的中国古代运动',
-    cover: '/images/体乐里体育博物馆/AR1.png',
+    cover: '/images/体乐里体育博物馆/AR1.jpg',
     coverAlt: '体乐里体育博物馆 · AR 虚拟展厅',
     intro:
       '以 AR 与 3D 交互重构中国古代体育文化记忆。观众通过手机扫描即可召唤蹴鞠、马球、射箭等古代运动人物，在虚实叠合中走入一座永不闭馆的数字化体育博物馆。',
@@ -117,7 +117,7 @@ export const exhibitions: Exhibition[] = [
     title: 'The Weingreen Museum',
     titleEn: 'The Weingreen Museum',
     subtitle: '圣经文物数字博物馆',
-    cover: '/images/The Weingreen Museum/首图.png',
+    cover: '/images/The Weingreen Museum/首图.jpg',
     coverAlt: 'The Weingreen Museum · The Long Room HUB 入口',
     intro:
       '围绕圣经考古与近东文物构建的数字展厅。从陶片、彩绘板、护身符、圣甲虫与草纸卷，到 The Long Room HUB 这一汇聚一切的当代策展空间。',
@@ -157,9 +157,9 @@ const photographyImages: GalleryImage[] = [
 ]
 
 const posterImages: GalleryImage[] = [
-  { src: '/images/摄影与设计/hb1.png', alt: '海报作品 01', caption: '海报 · 01' },
-  { src: '/images/摄影与设计/hb2.png', alt: '海报作品 02', caption: '海报 · 02' },
-  { src: '/images/摄影与设计/hb3.png', alt: '海报作品 03', caption: '海报 · 03' },
+  { src: '/images/摄影与设计/hb1.jpg', alt: '海报作品 01', caption: '海报 · 01' },
+  { src: '/images/摄影与设计/hb2.jpg', alt: '海报作品 02', caption: '海报 · 02' },
+  { src: '/images/摄影与设计/hb3.jpg', alt: '海报作品 03', caption: '海报 · 03' },
 ]
 
 const websiteImages: GalleryImage[] = [
