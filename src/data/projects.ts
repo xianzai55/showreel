@@ -1,4 +1,8 @@
-export type ProjectId = 'ar-museum' | 'digital-mural' | 'digital-landscape' | 'online-museum' | 'irish-curation' | 'irish-landscape'
+export type ProjectId = 'ar-museum' | 'digital-landscape' | 'tianlongshan' | 'beiqi-mural'
+
+// 站点板块分类：策展（虚拟展馆）与个人创作（横向滑动画廊）
+export type ProjectCategory = 'curation'
+export type GalleryCategory = 'photography' | 'design'
 
 export type ImageSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
@@ -47,6 +51,7 @@ export interface Board {
 
 export interface Project {
   id: ProjectId
+  category: ProjectCategory
   museumExhibitionId?: string
   title: string
   titleEn: string
@@ -81,8 +86,9 @@ export const site = {
 export const projects: Project[] = [
   {
     id: 'ar-museum',
+    category: 'curation',
     museumExhibitionId: 'ar-museum',
-    title: '体乐里',
+    title: '体乐里体育博物馆',
     titleEn: 'AR Museum of Ancient Sports',
     year: '2024',
     medium: 'AR / 交互应用 / 数字博物馆',
@@ -209,138 +215,10 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 'digital-mural',
-    museumExhibitionId: 'digital-mural',
-    title: '云林寺壁画',
-    titleEn: 'Digital Mural · Yunlin Temple',
-    year: '2024',
-    medium: '数字影像 / 交互装置 / 壁画活化',
-    tags: ['数字壁画', '体感交互', '文化遗产'],
-    cover: '/images/digital-mural/cover.jpg',
-    coverAlt: '云林寺水陆壁画长卷局部',
-    accent: '#b85c50',
-    accentSecondary: '#4a7c8c',
-    description:
-      '基于情境感知的山西阳高云林寺壁画交互展示设计。以体感手势为引，让沉睡的明代水陆壁画在数字光中缓缓苏醒。',
-    descriptionEn:
-      'An interactive display design for the Ming-dynasty Yunlin Temple murals in Yanggao, Shanxi.',
-    statement:
-      '壁画的褪色不是消逝，而是等待一次被重新凝视的仪式。',
-    statementEn:
-      'The fading of a mural is not disappearance, but a ritual waiting to be seen again.',
-    role: '交互设计 / 视觉系统 / 展览策划',
-    roleEn: 'Interaction Design / Visual System / Exhibition Curation',
-    tech: ['TouchDesigner', 'Kinect / MediaPipe', 'Blender', 'After Effects'],
-    boards: [
-      {
-        id: '01',
-        title: '项目扉页',
-        titleEn: 'Project Cover',
-        subtitle: '重彩 · 活化 · 仪式',
-        modules: [
-          {
-            type: 'hero-split',
-            label: 'Board 01',
-            title: '云林寺壁画',
-            text: '山西阳高云林寺明代水陆壁画体量浩大、神祇众多。项目以情境感知与体感交互为方法，让观众用身体动作「翻阅」壁画，使历史图像重新进入当代观者的感知范围。',
-            images: [
-              { src: '/images/digital-mural/cover.jpg', alt: '壁画长卷局部', size: 'lg', aspect: '16/9', caption: 'Fig.01 长卷局部：神祇群像' },
-              { src: '/images/digital-mural/01.jpg', alt: '展览现场', size: 'xs', aspect: '4/3', caption: 'Fig.02 展览现场' },
-              { src: '/images/digital-mural/09.jpg', alt: '壁画人物特写', size: 'xs', aspect: '3/2', caption: 'Fig.03 人物面孔' },
-            ],
-          },
-        ],
-      },
-      {
-        id: '02',
-        title: '长卷叙事',
-        titleEn: 'Scroll Narrative',
-        subtitle: '横向序列 · 矿物色',
-        modules: [
-          {
-            type: 'statement',
-            text: '壁画以横向长卷展开，石青、石绿、朱砂、赭石交织成密集的宗教叙事。数字化的长卷保留了矿物色的厚重，同时允许观众在时空中移动目光。',
-          },
-          {
-            type: 'sequence',
-            label: '长卷片段序列',
-            images: [
-              { src: '/images/digital-mural/05.png', alt: '虚拟展厅长卷', size: 'sm', aspect: '16/9', caption: 'Fig.04 虚拟长卷 A' },
-              { src: '/images/digital-mural/09.jpg', alt: '壁画人物群像', size: 'sm', aspect: '16/9', caption: 'Fig.05 人物群像 B' },
-              { src: '/images/digital-mural/10.png', alt: '壁画局部', size: 'sm', aspect: '16/9', caption: 'Fig.06 局部 C' },
-              { src: '/images/digital-mural/04.jpg', alt: '观众观看屏幕', size: 'sm', aspect: '16/9', caption: 'Fig.07 现场观看 D' },
-            ],
-          },
-          {
-            type: 'compare',
-            title: '壁画 / 活化对照',
-            images: [
-              { src: '/images/digital-mural/09.jpg', alt: '原始壁画人物', size: 'md', aspect: '4/3', caption: 'Fig.08 原始壁画面孔' },
-              { src: '/images/digital-mural/10.png', alt: '数字活化效果', size: 'md', aspect: '4/3', caption: 'Fig.09 数字光中的面孔' },
-            ],
-          },
-        ],
-      },
-      {
-        id: '03',
-        title: '局部与材料',
-        titleEn: 'Details & Materials',
-        subtitle: '塑像 · 线描 · 修复',
-        modules: [
-          {
-            type: 'matrix',
-            label: '局部特写矩阵',
-            images: [
-              { src: '/images/digital-mural/02.png', alt: '设计说明海报', size: 'sm', aspect: '3/2', caption: 'Fig.10 设计推导' },
-              { src: '/images/digital-mural/03.png', alt: '神祇分类海报', size: 'sm', aspect: '3/2', caption: 'Fig.11 神祇分类' },
-              { src: '/images/digital-mural/06.png', alt: '身体动作控制', size: 'sm', aspect: '4/3', caption: 'Fig.12 体感控制' },
-              { src: '/images/digital-mural/07.png', alt: '手势说明', size: 'sm', aspect: '4/3', caption: 'Fig.13 手势映射' },
-            ],
-          },
-          {
-            type: 'callout',
-            title: '人物头部细节',
-            images: [
-              { src: '/images/digital-mural/09.jpg', alt: '壁画人物特写', size: 'lg', aspect: '16/9', caption: 'Fig.14 头部与衣纹' },
-            ],
-            callouts: [
-              { number: '1', text: '矿物朱砂晕染的面部' },
-              { number: '2', text: '石青与石绿叠压的衣袍' },
-              { number: '3', text: '铁线描勾勒的须发' },
-            ],
-          },
-        ],
-      },
-      {
-        id: '04',
-        title: '展呈与体验',
-        titleEn: 'Exhibition & Experience',
-        subtitle: '沉浸 · 体感 · 在场',
-        modules: [
-          {
-            type: 'image-text',
-            title: '步入式圣殿',
-            text: '壁画长卷在虚拟空间中环绕展开，观众不再是壁画前的静止凝视者，而是走入图像内部的漫游者。',
-            images: [
-              { src: '/images/digital-mural/05.png', alt: '3D沉浸式壁画展厅', size: 'md', aspect: '16/9', caption: 'Fig.15 沉浸展厅' },
-            ],
-          },
-          {
-            type: 'text-image',
-            title: '体感语言',
-            text: '手掌开合、合十、握拳等手势被映射为翻阅、放大、聚焦等动作，身体成为阅读壁画的媒介。',
-            images: [
-              { src: '/images/digital-mural/06.png', alt: '身体动作控制', size: 'md', aspect: '4/3', caption: 'Fig.16 身体驱动漫游' },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
     id: 'digital-landscape',
+    category: 'curation',
     museumExhibitionId: 'digital-landscape',
-    title: '数字山水',
+    title: '苏州山水全图卷',
     titleEn: 'Digital Landscape',
     year: '2024',
     medium: '体感交互 / 数字影像 / 空间叙事',
@@ -468,255 +346,147 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 'online-museum',
-    museumExhibitionId: 'online-museum',
-    title: '线上博物馆',
-    titleEn: 'The Weingreen Museum Online',
+    id: 'tianlongshan',
+    category: 'curation',
+    museumExhibitionId: 'tianlongshan',
+    title: '天龙山石窟',
+    titleEn: 'Tianlongshan Grottoes',
     year: '2024',
-    medium: '网站设计 / 虚拟展厅 / 数字叙事',
-    tags: ['虚拟展馆', '数字叙事', '文化遗产'],
-    cover: '/images/online-museum/atmosphere/virtual-visit-screenshot.jpg',
-    coverAlt: 'Weingreen Museum 虚拟展厅入口，展柜中陈列古代文物',
-    accent: '#a85d5d',
-    accentSecondary: '#4a7c8c',
+    medium: '石窟数字化 / 虚拟展馆 / 数字遗产',
+    tags: ['石窟', '数字遗产', '虚拟展馆'],
+    cover: '/images/tianlongshan/cover.jpg',
+    coverAlt: '天龙山石窟东峰窟龛与天际轮廓',
+    accent: '#a8896a',
+    accentSecondary: '#5e7d8c',
     description:
-      '为一座收藏古代近东与埃及文物的博物馆设计的线上展厅。以虚拟展馆方式呈现护身符、圣甲虫与沙布提俑，支持线性导览与非线性自由观展。',
+      '天龙山石窟的数字化重构展馆。以唐代造像与流失海外的高浮雕残件为核心，四间展厅重新安置那些离散于世界的面孔，让石窟在数字空间中复归其整体。',
     descriptionEn:
-      'An online gallery for a museum of ancient Near Eastern and Egyptian artefacts, presenting amulets, scarabs and shabtis through a virtual exhibition hall with guided and free-explore modes.',
+      'A digital reconstruction of the Tianlongshan Grottoes. Four halls gather Tang-dynasty sculpture and dispersed relief fragments, restoring the grotto to a whole in digital space.',
     statement:
-      '文物的沉默需要空间来承托。数字展馆为每一件器物提供一个被缓慢观看的房间。',
+      '散佚不是终局，而是另一种等待被重新陈列的开始。',
     statementEn:
-      'The silence of artefacts needs space to hold it. The digital gallery gives each object a room in which to be seen slowly.',
-    role: '网站设计 / 虚拟展馆 / 数字叙事',
-    roleEn: 'Web Design / Virtual Gallery / Digital Narrative',
-    tech: ['React', 'Figma', 'Sketchfab Embed', 'WordPress'],
-    boards: [
-      {
-        id: '01',
-        title: '展览门厅',
-        titleEn: 'Exhibition Lobby',
-        subtitle: '走进数字展馆',
-        modules: [
-          {
-            type: 'hero-split',
-            label: 'Exhibition 05',
-            title: '线上博物馆',
-            text: '一座收藏古代近东与埃及文物的博物馆，被重新构筑为可漫游的数字展厅。展品从展柜走入光中，等待被逐一凝视。',
-            images: [
-              {
-                src: '/images/online-museum/atmosphere/virtual-visit-screenshot.jpg',
-                alt: '虚拟展厅入口',
-                size: 'lg',
-                aspect: '16/9',
-                caption: 'Fig.01 虚拟展厅入口',
-              },
-              {
-                src: '/images/online-museum/exhibits/scarab-beetle.jpg',
-                alt: '圣甲虫展品',
-                size: 'xs',
-                aspect: '4/3',
-                caption: 'Fig.02 圣甲虫',
-              },
-              {
-                src: '/images/online-museum/exhibits/shabti-of-nesikhons.jpg',
-                alt: '沙布提俑',
-                size: 'xs',
-                aspect: '3/2',
-                caption: 'Fig.03 沙布提俑',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: '02',
-        title: '展馆空间',
-        titleEn: 'Gallery Space',
-        subtitle: '从网页到展厅',
-        modules: [
-          {
-            type: 'statement',
-            text: '原项目以网站形式呈现博物馆收藏、故事与虚拟参观。本次升级将其转化为一座具有展馆氛围、导览动线与展签系统的数字展览馆。',
-          },
-          {
-            type: 'sequence',
-            label: '界面与氛围',
-            images: [
-              {
-                src: '/images/online-museum/atmosphere/home-screenshot.jpg',
-                alt: '网站首页',
-                size: 'sm',
-                aspect: '4/3',
-                caption: 'Fig.04 网站首页',
-              },
-              {
-                src: '/images/online-museum/atmosphere/collection-screenshot.jpg',
-                alt: '收藏页',
-                size: 'sm',
-                aspect: '4/3',
-                caption: 'Fig.05 收藏页',
-              },
-              {
-                src: '/images/online-museum/atmosphere/stories-screenshot.jpg',
-                alt: '故事页',
-                size: 'sm',
-                aspect: '4/3',
-                caption: 'Fig.06 故事与影像',
-              },
-            ],
-          },
-        ],
-      },
-    ],
+      'Dispersion is not an end, but a beginning waiting to be re-exhibited.',
+    role: '3D 重建 / 展陈设计 / 数字遗产',
+    roleEn: '3D Reconstruction / Exhibition Design / Digital Heritage',
+    tech: ['Agisoft Metashape', 'Blender', 'WebGL', 'Vite + React'],
+    boards: [],
   },
   {
-    id: 'irish-curation',
-    museumExhibitionId: 'irish-curation',
-    title: '爱尔兰策展',
-    titleEn: 'Curaidh — Photographs from Ireland',
+    id: 'beiqi-mural',
+    category: 'curation',
+    museumExhibitionId: 'beiqi-mural',
+    title: '北齐壁画博物馆',
+    titleEn: 'Beiqi (Northern Qi) Mural Museum',
     year: '2024',
-    medium: '摄影 / 虚拟策展 / 数字展陈',
-    tags: ['摄影', '虚拟展馆', '爱尔兰'],
-    cover: '/images/irish-curation/cover.jpg',
-    coverAlt: '爱尔兰西海岸清晨的薄雾与岸线',
-    accent: '#6f8a76',
-    accentSecondary: '#b58a52',
+    medium: '壁画数字化 / 虚拟展馆 / 数字遗产',
+    tags: ['壁画', '北齐', '虚拟展馆'],
+    cover: '/images/beiqi-mural/cover.jpg',
+    coverAlt: '北齐壁画墓室壁画的矿物色彩特写',
+    accent: '#9a6b52',
+    accentSecondary: '#3f6d6a',
     description:
-      '十四张爱尔兰影像，四个展厅，像一次被放慢的行走。启程厅记录抵达、田野厅丈量地形、居所厅进入人造的房间、余光厅收集一天结束时眼睛里仍带着体温的画面。',
+      '北齐壁画博物馆的数字化展馆。以墓室壁画的仪仗出行、骏马与宴乐图像为线索，四间展厅将重矿物色与逝去王朝的呼吸重新展开。',
     descriptionEn:
-      'Fourteen photographs across four halls, paced like a slowed-down walk. Departures · Open Land · Inhabited Places · Afterlight — click into the virtual gallery to enter.',
+      'A digital museum of Northern Qi murals. Four halls unfold the mineral colors and the breath of a lost dynasty through processions, horses and banquet scenes.',
     statement:
-      '策展是为风景留出停顿的方式。每一张影像都是一个被刻意放慢的瞬间。',
+      '壁画的呼吸在色彩里，色彩的血管是时间。',
     statementEn:
-      'Curation is a way of making pauses for landscape. Each image is a deliberately slowed-down moment.',
-    role: '摄影 / 策展 / 数字展陈设计',
-    roleEn: 'Photography / Curation / Digital Exhibition Design',
-    tech: ['Photography', 'Vite + React', 'Virtual Gallery System'],
-    boards: [
-      {
-        id: '01',
-        title: '策展前言',
-        titleEn: 'Preface',
-        subtitle: '进入虚拟展厅之前',
-        modules: [
-          {
-            type: 'hero-split',
-            label: 'Exhibition 06',
-            title: '爱尔兰策展',
-            text: '海岸、田野、居所、余光 —— 四个展厅、十四张影像。从虚拟展厅的门厅进入，可以按导览顺序逐厅观看（Guided Tour），也可以从总览平面图自由挑选起点（Free Explore），点击任意作品可放大查看细节。',
-            images: [
-              {
-                src: '/images/irish-curation/cover.jpg',
-                alt: '爱尔兰西海岸清晨',
-                size: 'lg',
-                aspect: '16/9',
-                caption: 'Fig.01 启程厅主视觉',
-              },
-              {
-                src: '/images/irish-curation/05.jpg',
-                alt: '石墙',
-                size: 'xs',
-                aspect: '4/3',
-                caption: 'Fig.02 田野厅',
-              },
-              {
-                src: '/images/irish-curation/09.jpg',
-                alt: '屋檐阴影',
-                size: 'xs',
-                aspect: '3/2',
-                caption: 'Fig.03 居所厅',
-              },
-            ],
-          },
-          {
-            type: 'statement',
-            text: '在虚拟展馆里行走，目光就是脚步。每一张影像都被挂在某一面墙上、某一束顶光下，等待被缓慢地、单独地观看。',
-          },
-        ],
-      },
-    ],
+      'A mural breathes through its colour, and the vessel of that colour is time.',
+    role: '壁画复原 / 展陈设计 / 视觉系统',
+    roleEn: 'Mural Restoration / Exhibition Design / Visual System',
+    tech: ['即身修复', 'Blender', 'TouchDesigner', 'Vite + React'],
+    boards: [],
   },
-  {
-    id: 'irish-landscape',
-    museumExhibitionId: 'irish-landscape',
-    title: '爱尔兰风景摄影',
-    titleEn: 'In Ireland — 14 Glimpses',
-    year: '2024',
-    medium: '摄影 / 虚拟策展',
-    tags: ['摄影', '爱尔兰', '虚拟展馆'],
-    cover: '/images/irish-landscape/cover.jpg',
-    coverAlt: '爱尔兰湖面与红帆船',
-    accent: '#4a6b7a',
-    accentSecondary: '#c8a366',
-    description:
-      '十四张爱尔兰的瞬间，五个展厅 —— 水畔厅、海岸厅、林荫厅、街巷厅、日常厅。虚拟展馆允许你按自己的速度走完一段被放慢的旅程。',
-    descriptionEn:
-      'Fourteen glimpses of Ireland, five halls — the Water, the Coast, the Trees, the Streets, the Everyday. The virtual gallery lets you walk through a slowed-down journey at your own pace.',
-    statement:
-      '风景不是被看见的，而是被走过的。',
-    statementEn:
-      'A landscape is not seen — it is walked through.',
-    role: '摄影 / 策展 / 数字展陈设计',
-    roleEn: 'Photography / Curation / Digital Exhibition Design',
-    tech: ['Photography', 'Vite + React', 'Virtual Gallery System'],
-    boards: [
-      {
-        id: '01',
-        title: '策展前言',
-        titleEn: 'Preface',
-        subtitle: '进入虚拟展厅之前',
-        modules: [
-          {
-            type: 'hero-split',
-            label: 'Exhibition 07',
-            title: '爱尔兰风景摄影',
-            text: '五间展厅，十四张影像。在虚拟展馆里，沿着水畔、海岸、林荫、街巷与日常，按自己的速度走完一段被放慢的爱尔兰。',
-            images: [
-              {
-                src: '/images/irish-landscape/cover.jpg',
-                alt: '爱尔兰湖面',
-                size: 'lg',
-                aspect: '16/9',
-                caption: 'Fig.01 水畔厅主视觉',
-              },
-              {
-                src: '/images/irish-landscape/07.jpg',
-                alt: '悬崖孤影',
-                size: 'xs',
-                aspect: '4/3',
-                caption: 'Fig.02 海岸厅',
-              },
-              {
-                src: '/images/irish-landscape/13.jpg',
-                alt: '通勤者',
-                size: 'xs',
-                aspect: '3/2',
-                caption: 'Fig.03 日常厅',
-              },
-            ],
-          },
-          {
-            type: 'statement',
-            text: '风景不是被看见的，而是被走过的。',
-          },
-        ],
-      },
-    ],
-  },
+]
+
+// 策展部分按导览顺序呈现（苏州山水全图卷 → 天龙山石窟 → 北齐壁画 → 体乐里）
+const curationOrder: ProjectId[] = [
+  'digital-landscape',
+  'tianlongshan',
+  'beiqi-mural',
+  'ar-museum',
 ]
 
 export function getProjectById(id: ProjectId): Project | undefined {
   return projects.find((p) => p.id === id)
 }
 
+export function getCuratedProjects(): Project[] {
+  return curationOrder
+    .map((id) => getProjectById(id))
+    .filter((p): p is Project => Boolean(p))
+}
+
 export function getProjectIndex(id: ProjectId): number {
-  return projects.findIndex((p) => p.id === id)
+  return curationOrder.indexOf(id)
 }
 
 export function getAdjacentProjects(id: ProjectId): { prev: Project | null; next: Project | null } {
-  const idx = getProjectIndex(id)
+  const list = getCuratedProjects()
+  const idx = list.findIndex((p) => p.id === id)
   return {
-    prev: idx > 0 ? projects[idx - 1] : null,
-    next: idx < projects.length - 1 ? projects[idx + 1] : null,
+    prev: idx > 0 ? list[idx - 1] : null,
+    next: idx < list.length - 1 ? list[idx + 1] : null,
   }
 }
+
+/* ------------------------------------------------------------------ */
+/*  个人创作 —— 横向滑动画廊                                           */
+/* ------------------------------------------------------------------ */
+
+export interface PersonalGallery {
+  id: GalleryCategory
+  title: string
+  titleEn: string
+  description: string
+  accent: string
+  images: BoardImage[]
+}
+
+const photographyImages: BoardImage[] = [
+  { src: '/images/irish-landscape/cover.jpg', alt: '爱尔兰湖面与红帆船', size: 'lg', aspect: '16/9', caption: '水畔 · 清晨' },
+  { src: '/images/irish-landscape/01.jpg', alt: '海岸线', size: 'md', aspect: '4/3', caption: '海岸 · 雾' },
+  { src: '/images/irish-landscape/02.jpg', alt: '草地与云影', size: 'md', aspect: '4/3', caption: '原野 · 云影' },
+  { src: '/images/irish-landscape/03.jpg', alt: '林间小径', size: 'md', aspect: '4/3', caption: '林荫 · 光隙' },
+  { src: '/images/irish-landscape/04.jpg', alt: '街巷一角', size: 'md', aspect: '4/3', caption: '街巷 · 日常' },
+  { src: '/images/irish-landscape/05.jpg', alt: '海面波光', size: 'md', aspect: '4/3', caption: '海岸 · 波光' },
+  { src: '/images/irish-landscape/06.jpg', alt: '石墙与天光', size: 'md', aspect: '4/3', caption: '田野 · 石墙' },
+  { src: '/images/irish-landscape/07.jpg', alt: '悬崖孤影', size: 'lg', aspect: '16/9', caption: '悬崖 · 孤影' },
+  { src: '/images/irish-landscape/08.jpg', alt: '傍晚湖面', size: 'md', aspect: '4/3', caption: '水畔 · 暮色' },
+  { src: '/images/irish-landscape/09.jpg', alt: '远山与云', size: 'md', aspect: '4/3', caption: '远山 · 云' },
+  { src: '/images/irish-landscape/10.jpg', alt: '海滨小镇', size: 'md', aspect: '4/3', caption: '镇 · 屋顶' },
+  { src: '/images/irish-landscape/11.jpg', alt: '雪后的路', size: 'md', aspect: '4/3', caption: '雪 · 足迹' },
+  { src: '/images/irish-landscape/12.jpg', alt: '午后光线', size: 'md', aspect: '4/3', caption: '午后 · 静光' },
+  { src: '/images/irish-landscape/13.jpg', alt: '归途的人', size: 'lg', aspect: '16/9', caption: '归途 · 黄昏' },
+  { src: '/images/irish-landscape/14.jpg', alt: '夜灯初上', size: 'md', aspect: '4/3', caption: '夜 · 灯' },
+]
+
+const designImages: BoardImage[] = [
+  { src: '/images/online-museum/atmosphere/home-screenshot.jpg', alt: '数字展厅网站首页', size: 'lg', aspect: '4/3', caption: '虚拟展厅 · 门厅' },
+  { src: '/images/online-museum/atmosphere/virtual-visit-screenshot.jpg', alt: '虚拟参观界面', size: 'md', aspect: '4/3', caption: '虚拟参观 · 界面' },
+  { src: '/images/online-museum/atmosphere/collection-screenshot.jpg', alt: '收藏目录页', size: 'md', aspect: '4/3', caption: '收藏 · 目录' },
+  { src: '/images/online-museum/atmosphere/stories-screenshot.jpg', alt: '故事线页面', size: 'md', aspect: '4/3', caption: '叙事 · 故事' },
+  { src: '/images/online-museum/atmosphere/about-screenshot.jpg', alt: '关于页', size: 'md', aspect: '4/3', caption: '关于 · 介绍' },
+  { src: '/images/online-museum/atmosphere/contact-screenshot.jpg', alt: '联系页', size: 'md', aspect: '4/3', caption: '联系 · 页面' },
+  { src: '/images/online-museum/atmosphere/expect-screenshot.jpg', alt: '参观须知页', size: 'md', aspect: '4/3', caption: '导览 · 须知' },
+  { src: '/images/ar-museum/AR1.png', alt: '体乐里 AR 应用界面', size: 'lg', aspect: '4/3', caption: 'AR 应用 · 界面' },
+]
+
+export const personalGalleries: PersonalGallery[] = [
+  {
+    id: 'photography',
+    title: '摄影',
+    titleEn: 'Photography',
+    description: '海岸、田野、林荫与街巷 —— 一些被放慢的瞬间。横向滑动浏览。',
+    accent: '#4a6b7a',
+    images: photographyImages,
+  },
+  {
+    id: 'design',
+    title: '设计',
+    titleEn: 'Design',
+    description: '虚拟展厅、网站界面与交互应用的视觉系统。横向滑动浏览。',
+    accent: '#c9a86c',
+    images: designImages,
+  },
+]
