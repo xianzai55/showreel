@@ -1,7 +1,7 @@
 import { ZoomIn } from 'lucide-react'
 import { useState } from 'react'
 import type { Exhibit } from '../../data/onlineMuseum'
-import { imageUrl } from '../../utils/imageUrl'
+import { Media } from '../Media'
 
 interface ExhibitFrameProps {
   exhibit: Exhibit
@@ -36,15 +36,13 @@ export function ExhibitFrame({
         {!loaded && (
           <div className="absolute inset-0 animate-pulse bg-charcoal" />
         )}
-        <img
-          src={imageUrl(exhibit.image)}
+        <Media
+          src={exhibit.image}
           alt={exhibit.alt}
-          loading="lazy"
-          decoding="async"
-          onLoad={() => setLoaded(true)}
           className={`w-full h-full object-cover transition-all duration-700 ease-out ${
             loaded ? 'opacity-100' : 'opacity-0'
           } group-hover:scale-[1.05]`}
+          onLoad={() => setLoaded(true)}
         />
         <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/25 transition-colors duration-500 flex items-center justify-center">
           <ZoomIn

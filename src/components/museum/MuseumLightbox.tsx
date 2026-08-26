@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { Exhibit } from '../../data/onlineMuseum'
-import { imageUrl } from '../../utils/imageUrl'
+import { Media } from '../Media'
 
 interface MuseumLightboxProps {
   exhibits: Exhibit[]
@@ -114,22 +114,26 @@ export function MuseumLightbox({
             </button>
 
             <AnimatePresence mode="wait">
-              <motion.img
+              <motion.div
                 key={exhibit.id}
-                src={imageUrl(exhibit.image)}
-                alt={exhibit.alt}
                 initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
+                animate={{ opacity: 1, scale: zoom ? 1.5 : 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.3 }}
-                className={`max-h-[65vh] md:max-h-[70vh] max-w-full object-contain transition-all duration-300 ${
-                  zoom ? 'scale-150 cursor-zoom-out' : 'cursor-zoom-in'
+                className={`relative ${
+                  zoom ? 'cursor-zoom-out' : 'cursor-zoom-in'
                 }`}
                 onClick={(e) => {
                   e.stopPropagation()
                   setZoom((z) => !z)
                 }}
-              />
+              >
+                <Media
+                  src={exhibit.image}
+                  alt={exhibit.alt}
+                  className="max-h-[65vh] md:max-h-[70vh] max-w-full object-contain"
+                />
+              </motion.div>
             </AnimatePresence>
 
             <button

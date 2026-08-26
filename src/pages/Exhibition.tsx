@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { Media } from '../components/Media'
 import { exhibitions } from '../data/projects'
-import { imageUrl } from '../utils/imageUrl'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -49,11 +49,11 @@ export function Exhibition() {
 
                 {/* 封面 */}
                 <div className="col-span-12 md:col-span-4 overflow-hidden bg-charcoal border border-stone/40 group-hover:border-rice/30 aspect-[16/10]">
-                  <img
-                    src={imageUrl(ex.cover)}
+                  <Media
+                    src={ex.cover}
                     alt={ex.coverAlt}
-                    loading="lazy"
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-transform duration-700 group-hover:scale-[1.04]"
+                    animate
                   />
                 </div>
 

@@ -1,4 +1,5 @@
 // 站点板块：首页 + 展览 + 设计集（摄影与设计）
+// 图片均引用自 /public/images/ 下你上传的本地文件
 
 export interface BoardImage {
   src: string
@@ -55,7 +56,7 @@ export const exhibitions: Exhibition[] = [
     title: '苏州山水全图卷',
     titleEn: 'The Whole Scroll of Suzhou Landscape',
     subtitle: '以手势为舟的青绿山水漫游',
-    cover: '/images/苏州山水全图卷/cover.jpg',
+    cover: '/images/苏州山水全图卷/毕设1.png',
     coverAlt: '苏州山水全图卷 · 青绿山水城镇',
     intro:
       '从宋代青绿山水与江南园林出发，构建一座可手势漫游的数字山水城镇。塔、桥、渔村、远山在薄雾中展开，双手握拳前后移动即可漫游其间。',
@@ -67,7 +68,7 @@ export const exhibitions: Exhibition[] = [
     title: '天龙山石窟',
     titleEn: 'Tianlongshan Grottoes',
     subtitle: '散落在世界里的同一张脸',
-    cover: '/images/天龙山石窟/cover.jpg',
+    cover: '/images/天龙山石窟/tls1.png',
     coverAlt: '天龙山石窟 · 东峰窟龛与石刻造像',
     intro:
       '以唐代造像与流失海外的高浮雕残件为核心，三间展厅重新安置那些离散于世界的面孔，让石窟在数字空间中复归其整体。',
@@ -79,7 +80,7 @@ export const exhibitions: Exhibition[] = [
     title: '北齐壁画博物馆',
     titleEn: 'Beiqi Mural Museum',
     subtitle: '墓室里的呼吸与色彩',
-    cover: '/images/北齐壁画博物馆/cover.jpg',
+    cover: '/images/北齐壁画博物馆/bq1.png',
     coverAlt: '北齐壁画博物馆 · 墓室壁画的矿物色彩',
     intro:
       '以墓室壁画的仪仗出行、骏马与宴乐图像为线索，四间展厅将重矿物色与逝去王朝的呼吸重新展开。',
@@ -91,7 +92,7 @@ export const exhibitions: Exhibition[] = [
     title: '体乐里体育博物馆',
     titleEn: 'Tǐ Yuè Lǐ — AR Sports Museum',
     subtitle: '从展柜到身体的中国古代运动',
-    cover: '/images/体乐里体育博物馆/cover.jpg',
+    cover: '/images/体乐里体育博物馆/AR1.png',
     coverAlt: '体乐里体育博物馆 · AR 虚拟展厅',
     intro:
       '以 AR 与 3D 交互重构中国古代体育文化记忆。观众通过手机扫描即可召唤蹴鞠、马球、射箭等古代运动人物，在虚实叠合中走入一座永不闭馆的数字化体育博物馆。',
@@ -103,8 +104,8 @@ export const exhibitions: Exhibition[] = [
     title: 'Green Shoots of arts',
     titleEn: 'Green Shoots of Arts',
     subtitle: '艺术的新芽',
-    cover: '/images/Green Shoots of arts/cover.jpg',
-    coverAlt: 'Green Shoots of arts · 展览封面',
+    cover: '/images/Green Shoots of arts/IMG_8637.MP4',
+    coverAlt: 'Green Shoots of arts · 展览视频封面',
     intro: '以「新芽」为主题的策展项目，呈现艺术如何在土壤中萌发、生长与绽放。',
     year: '2024',
     medium: '跨媒介 / 策展 / 数字展陈',
@@ -124,23 +125,27 @@ export function getProjectById(id: string): Exhibition | undefined {
 /* ------------------------------------------------------------------ */
 
 const photographyImages: GalleryImage[] = [
-  { src: '/images/摄影与设计/摄影-01.jpg', alt: '摄影作品 01', caption: '摄影 · 01' },
-  { src: '/images/摄影与设计/摄影-02.jpg', alt: '摄影作品 02', caption: '摄影 · 02' },
-  { src: '/images/摄影与设计/摄影-03.jpg', alt: '摄影作品 03', caption: '摄影 · 03' },
-  { src: '/images/摄影与设计/摄影-04.jpg', alt: '摄影作品 04', caption: '摄影 · 04' },
-  { src: '/images/摄影与设计/摄影-05.jpg', alt: '摄影作品 05', caption: '摄影 · 05' },
-  { src: '/images/摄影与设计/摄影-06.jpg', alt: '摄影作品 06', caption: '摄影 · 06' },
-  { src: '/images/摄影与设计/摄影-07.jpg', alt: '摄影作品 07', caption: '摄影 · 07' },
-  { src: '/images/摄影与设计/摄影-08.jpg', alt: '摄影作品 08', caption: '摄影 · 08' },
+  { src: '/images/摄影与设计/0b887a736e7a0370b3f5dfb410f961.JPG', alt: '摄影作品 01', caption: '摄影 · 01' },
+  { src: '/images/摄影与设计/2af3d060eb11849bf5b0f71ab92589.JPG', alt: '摄影作品 02', caption: '摄影 · 02' },
+  { src: '/images/摄影与设计/5a631b036026cb3a1118cb441f70c7.JPG', alt: '摄影作品 03', caption: '摄影 · 03' },
+  { src: '/images/摄影与设计/65842eb9bd9a68e1ed607880e9313f.JPG', alt: '摄影作品 04', caption: '摄影 · 04' },
+  { src: '/images/摄影与设计/7497e43ff51f09121a388bf8ae0327.JPG', alt: '摄影作品 05', caption: '摄影 · 05' },
+  { src: '/images/摄影与设计/7bbc59106c9344e284d5b24453d6aa.JPG', alt: '摄影作品 06', caption: '摄影 · 06' },
+  { src: '/images/摄影与设计/ab18a7e77c7cf1d76b4fab4de754d0.JPG', alt: '摄影作品 07', caption: '摄影 · 07' },
+  { src: '/images/摄影与设计/b228fad91c67500695eeebfd5abc3d.JPG', alt: '摄影作品 08', caption: '摄影 · 08' },
+  { src: '/images/摄影与设计/b8e62f580b5e3f81677161888baa58.JPG', alt: '摄影作品 09', caption: '摄影 · 09' },
+  { src: '/images/摄影与设计/d5ff1aa7da1c5febd3ce8a8ec4e21c.JPG', alt: '摄影作品 10', caption: '摄影 · 10' },
+  { src: '/images/摄影与设计/dcee649c7e667347e4d10b561cb5fb.JPG', alt: '摄影作品 11', caption: '摄影 · 11' },
+  { src: '/images/摄影与设计/dea595befe671c7ff33c0a2d182d16.JPG', alt: '摄影作品 12', caption: '摄影 · 12' },
+  { src: '/images/摄影与设计/e92730d7f1f03131e3051492961beb.JPG', alt: '摄影作品 13', caption: '摄影 · 13' },
+  { src: '/images/摄影与设计/ea753651b502a988221a9a749fe614.JPG', alt: '摄影作品 14', caption: '摄影 · 14' },
+  { src: '/images/摄影与设计/eaccf713225607b0139351f62995f7.JPG', alt: '摄影作品 15', caption: '摄影 · 15' },
 ]
 
 const posterImages: GalleryImage[] = [
-  { src: '/images/摄影与设计/海报-01.png', alt: '海报作品 01', caption: '海报 · 01' },
-  { src: '/images/摄影与设计/海报-02.png', alt: '海报作品 02', caption: '海报 · 02' },
-  { src: '/images/摄影与设计/海报-03.png', alt: '海报作品 03', caption: '海报 · 03' },
-  { src: '/images/摄影与设计/海报-04.png', alt: '海报作品 04', caption: '海报 · 04' },
-  { src: '/images/摄影与设计/海报-05.png', alt: '海报作品 05', caption: '海报 · 05' },
-  { src: '/images/摄影与设计/海报-06.png', alt: '海报作品 06', caption: '海报 · 06' },
+  { src: '/images/摄影与设计/hb1.png', alt: '海报作品 01', caption: '海报 · 01' },
+  { src: '/images/摄影与设计/hb2.png', alt: '海报作品 02', caption: '海报 · 02' },
+  { src: '/images/摄影与设计/hb3.png', alt: '海报作品 03', caption: '海报 · 03' },
 ]
 
 export const designCollections: DesignCollection[] = [

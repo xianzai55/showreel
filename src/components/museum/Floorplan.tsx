@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Compass } from 'lucide-react'
 import type { Hall } from '../../data/onlineMuseum'
-import { imageUrl } from '../../utils/imageUrl'
+import { Media } from '../Media'
 
 interface FloorplanProps {
   halls: Hall[]
@@ -133,10 +133,9 @@ export function Floorplan({ halls, currentHallId, onSelectHall, onStartGuided }:
                     ?.exhibits.slice(0, 3)
                     .map((exhibit) => (
                       <div key={exhibit.id} className="aspect-square overflow-hidden border border-stone/30">
-                        <img
-                          src={imageUrl(exhibit.image)}
+                        <Media
+                          src={exhibit.image}
                           alt={exhibit.alt}
-                          loading="lazy"
                           className="w-full h-full object-cover opacity-80"
                         />
                       </div>

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Compass, Map } from 'lucide-react'
 import type { Exhibition, Hall } from '../../data/onlineMuseum'
-import { imageUrl } from '../../utils/imageUrl'
+import { Media } from '../Media'
 
 interface MuseumLobbyProps {
   exhibition: Exhibition
@@ -98,11 +98,11 @@ export function MuseumLobby({
                     'radial-gradient(ellipse 60% 70% at 50% 50%, rgba(245,240,230,0.12) 0%, transparent 65%)',
                 }}
               />
-              <img
-                src={imageUrl(exhibition.cover)}
+              <Media
+                src={exhibition.cover}
                 alt={exhibition.coverAlt}
-                loading="eager"
                 className="w-full h-full object-cover opacity-90"
+                animate
               />
             </div>
 

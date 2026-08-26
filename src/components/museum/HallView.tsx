@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Grid3X3 } from 'lucide-react'
 import type { Exhibit, Hall } from '../../data/onlineMuseum'
-import { imageUrl } from '../../utils/imageUrl'
 import { ExhibitFrame } from './ExhibitFrame'
+import { Media } from '../Media'
 
 interface HallViewProps {
   hall: Hall
@@ -91,11 +91,11 @@ export function HallView({
                     'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(245,240,230,0.10) 0%, transparent 70%)',
                 }}
               />
-              <img
-                src={imageUrl(hall.atmosphereImage)}
+              <Media
+                src={hall.atmosphereImage}
                 alt={hall.atmosphereAlt}
-                loading="lazy"
                 className="w-full h-full object-cover opacity-90"
+                animate
               />
             </div>
           </motion.div>

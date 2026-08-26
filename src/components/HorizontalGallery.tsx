@@ -5,8 +5,8 @@ import {
   type WheelEvent as ReactWheelEvent,
 } from 'react'
 import { Lightbox } from './Lightbox'
+import { Media } from './Media'
 import type { BoardImage } from '../data/projects'
-import { imageUrl } from '../utils/imageUrl'
 
 interface HorizontalGalleryProps {
   images: BoardImage[]
@@ -87,14 +87,11 @@ export function HorizontalGallery({ images, title }: HorizontalGalleryProps) {
               }}
               className="relative overflow-hidden border border-stone/50 bg-charcoal group-hover:border-rice/40 transition-colors duration-500 align-top"
             >
-              {/* 以原始比例自适应：高恒定，宽随比例变化，完整显示不裁切 */}
-              <img
-                src={imageUrl(image.src)}
+              {/* 以原始比例自适应：在给定的高/宽范围内完整显示，不裁切 */}
+              <Media
+                src={image.src}
                 alt={image.alt}
-                loading="lazy"
-                decoding="async"
-                draggable={false}
-                className="h-[52vh] md:h-[60vh] w-auto max-w-none object-contain grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-[1.015]"
+                className="max-h-[58vh] md:max-h-[66vh] max-w-[84vw] md:max-w-[60vw] w-auto h-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-[1.015]"
               />
               <span className="pointer-events-none absolute inset-x-0 bottom-0 px-4 py-3 text-left text-[11px] text-rice/90 bg-gradient-to-t from-ink/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400">
                 {image.caption || `作品 ${String(i + 1).padStart(2, '0')}`}
