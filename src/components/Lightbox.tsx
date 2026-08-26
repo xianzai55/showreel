@@ -1,8 +1,11 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { ChevronLeft, ChevronRight, X, ZoomIn, ZoomOut } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Play, X, ZoomIn, ZoomOut } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { BoardImage } from '../data/projects'
+import { Media } from './Media'
 import { imageUrl } from '../utils/imageUrl'
+
+const isVideo = (src: string) => /\.(mp4|mov|webm|m4v)(?:$|\?)/i.test(src)
 
 interface LightboxProps {
   images: BoardImage[]
@@ -121,22 +124,41 @@ export function Lightbox({
             </button>
 
             <AnimatePresence mode="wait">
-              <motion.img
-                key={currentImage.src}
-                src={imageUrl(currentImage.src)}
-                alt={currentImage.alt}
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.3 }}
-                className={`max-h-full max-w-full object-contain transition-all duration-300 ${
-                  zoom ? 'scale-150 cursor-zoom-out' : 'cursor-zoom-in'
-                }`}
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setZoom((z) => !z)
-                }}
-              />
+              {isVideo(currentImage.src) ? (
+                <motion.div
+                  key={currentImage.src}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.3 }}
+                  className="max-h-full max-w-full"
+                >
+                  <Media
+                    src={currentImage.src}
+                    alt={currentImage.alt}
+                    animate
+                    controls
+                    className="max-h-[78vh] max-w-full w-auto h-auto object-contain"
+                  />
+                </motion.div>
+              ) : (
+                <motion.img
+                  key={currentImage.src}
+                  src={imageUrl(currentImage.src)}
+                  alt={currentImage.alt}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.3 }}
+                  className={`max-h-full max-w-full object-contain transition-all duration-300 ${
+                    zoom ? 'scale-150 cursor-zoom-out' : 'cursor-zoom-in'
+                  }`}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setZoom((z) => !z)
+                  }}
+                />
+              )}
             </AnimatePresence>
 
             <button
@@ -176,11 +198,17 @@ export function Lightbox({
                   }`}
                   aria-label={`切换到第 ${i + 1} 张`}
                 >
-                  <img
-                    src={imageUrl(img.src)}
-                    alt={img.alt}
-                    className="w-full h-full object-cover"
-                  />
+                  {isVideo(img.src) ? (
+                    <div className="w-full h-full bg-charcoal flex items-center justify-center">
+                      <Play size={14} className="text-rice/70" />
+                    </div>
+                  ) : (
+                    <img
+                      src={imageUrl(img.src)}
+                      alt={img.alt}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                 </button>
               ))}
             </div>

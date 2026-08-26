@@ -6,6 +6,8 @@ interface MediaProps {
   className?: string
   /** 是否让视频自动循环播放（用作封面/氛围图时开启） */
   animate?: boolean
+  /** 是否显示视频控制条（大图/灯箱查看时开启） */
+  controls?: boolean
   /** 媒体加载完成时回调（图片 onLoad，视频 onLoadedData） */
   onLoad?: () => void
 }
@@ -21,6 +23,7 @@ export function Media({
   alt = '',
   className = '',
   animate = false,
+  controls = false,
   onLoad,
 }: MediaProps) {
   const url = imageUrl(src)
@@ -33,6 +36,7 @@ export function Media({
         playsInline
         preload="metadata"
         autoPlay={animate}
+        controls={controls}
         onLoadedData={onLoad}
         className={className}
       />
