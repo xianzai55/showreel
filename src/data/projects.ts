@@ -117,12 +117,12 @@ export const exhibitions: Exhibition[] = [
     title: 'The Weingreen Museum',
     titleEn: 'The Weingreen Museum',
     subtitle: '圣经文物数字博物馆',
-    cover: '/images/The Weingreen Museum/cover.png',
-    coverAlt: 'The Weingreen Museum 封面',
-    intro: '圣经文物数字博物馆。内容与图片待补充。',
+    cover: '/images/The Weingreen Museum/首图.png',
+    coverAlt: 'The Weingreen Museum · The Long Room HUB 入口',
+    intro:
+      '围绕圣经考古与近东文物构建的数字展厅。从陶片、彩绘板、护身符、圣甲虫与草纸卷，到 The Long Room HUB 这一汇聚一切的当代策展空间。',
     year: '2024',
     medium: '文物数字化 / 数字展陈',
-    pending: true,
   },
 ]
 

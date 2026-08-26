@@ -923,6 +923,207 @@ const greenShootsExhibition: Exhibition = {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Exhibition 06 — The Weingreen Museum of Biblical Antiquities         */
+/* ------------------------------------------------------------------ */
+
+const weingreenHalls: Hall[] = [
+  {
+    id: 'wg-hall-01',
+    order: 1,
+    name: '长屋厅',
+    nameEn: 'The Long Room Hall',
+    subtitle: 'The Long Room HUB · 入口',
+    subtitleEn: 'The Long Room HUB · Entrance',
+    description:
+      'The Long Room HUB 是一处由大学海事档案部门延伸出来的策展空间 —— 木质展架、可移动玻璃门与「The Long Room HUB」字样的墙绘。它是 Weingreen 数字博物馆的入口，把陶片、埃及文物、人物档案汇聚进一个当代展厅。',
+    descriptionEn:
+      'The Long Room HUB is a curatorial space extended from the Merseyside Maritime Department Archive — wooden shelving, sliding glass doors and a wall-mounted "The Long Room HUB" sign. It is the entrance to the Weingreen digital museum, gathering pottery shards, Egyptian antiquities and human archives into one contemporary room.',
+    atmosphereImage: '/images/The Weingreen Museum/首图.png',
+    atmosphereAlt: 'The Long Room HUB 入口',
+    exhibits: [
+      {
+        id: 'WG-01',
+        title: '长屋 HUB · 入口',
+        titleEn: 'The Long Room HUB · Entrance',
+        caption: '海事档案部门延伸出的策展空间',
+        captionEn: 'A curatorial space extended from the maritime archive',
+        image: '/images/The Weingreen Museum/首图.png',
+        alt: 'The Long Room HUB 入口',
+        material: 'Installation',
+        period: '2024',
+        order: 1,
+        hallId: 'wg-hall-01',
+      },
+    ],
+  },
+  {
+    id: 'wg-hall-02',
+    order: 2,
+    name: '陶片厅',
+    nameEn: 'Hall of Pottery Shards',
+    subtitle: '陶片 · 标签 · 残件',
+    subtitleEn: 'Sherds · Labels · Fragments',
+    description:
+      '陶片厅陈列一组在绿绒布上整齐排开的考古陶片。每一片都附有手写标签，记录出土地、年代与编号 —— 它们来自近东不同时期，共同讲述圣经地区陶器工艺的演变。',
+    descriptionEn:
+      'The Hall of Pottery Shards displays a group of archaeological sherds arranged on a green cloth. Each piece carries a handwritten label — provenance, date and catalogue number — telling, together, the story of ceramic craft across the biblical lands.',
+    atmosphereImage: '/images/The Weingreen Museum/1.jpg',
+    atmosphereAlt: '绿绒布上的陶片群',
+    exhibits: [
+      {
+        id: 'WG-02',
+        title: '陶片群',
+        titleEn: 'Pottery Shards',
+        caption: '出土地与年代标签一一对应',
+        captionEn: 'Provenance and date labelled on each shard',
+        image: '/images/The Weingreen Museum/1.jpg',
+        alt: '近东考古陶片',
+        material: 'Ceramic',
+        period: 'Bronze / Iron Age',
+        order: 1,
+        hallId: 'wg-hall-02',
+      },
+    ],
+  },
+  {
+    id: 'wg-hall-03',
+    order: 3,
+    name: '埃及厅',
+    nameEn: 'Hall of Egypt',
+    subtitle: '彩绘板 · 护身符 · 圣甲虫 · 草纸',
+    subtitleEn: 'Painted Panel · Amulets · Scarab · Papyrus',
+    description:
+      '埃及厅围绕一组来自尼罗河流域的文物展开。彩绘木板上的人形与象形文字、釉陶护身符与圣甲虫坠饰、以及一份 18 王朝早期的亡灵书草纸局部 —— 它们被并置在深紫与暗红的展布上，呈现信仰、工艺与死后世界之间的连续线索。',
+    descriptionEn:
+      'The Hall of Egypt gathers objects from the Nile valley: a painted wooden panel with a figure and hieroglyphs, faience amulets and a scarab, and a fragment of an early 18th-Dynasty Book of the Dead papyrus — laid on deep purple and red mounts, tracing a continuous line between faith, craft and the afterlife.',
+    atmosphereImage: '/images/The Weingreen Museum/2.jpg',
+    atmosphereAlt: '彩绘木板上的人形与象形文字',
+    exhibits: [
+      {
+        id: 'WG-03',
+        title: '彩绘人形板',
+        titleEn: 'Painted Figural Panel',
+        caption: '彩绘木板：人形与象形文字',
+        captionEn: 'Painted wooden panel: figure and hieroglyphs',
+        image: '/images/The Weingreen Museum/2.jpg',
+        alt: '彩绘人形板',
+        material: 'Painted Wood',
+        period: 'Late Period',
+        order: 1,
+        hallId: 'wg-hall-03',
+      },
+      {
+        id: 'WG-04',
+        title: '釉陶护身符',
+        titleEn: 'Faience Amulet',
+        caption: '蹲姿神祇小像（贝斯/塔沃瑞特风格）',
+        captionEn: 'A squatting deity (Bes / Taweret style)',
+        image: '/images/The Weingreen Museum/4.jpg',
+        alt: '釉陶护身符',
+        material: 'Faience',
+        period: 'Late Period',
+        order: 2,
+        hallId: 'wg-hall-03',
+      },
+      {
+        id: 'WG-05',
+        title: '釉陶圣甲虫',
+        titleEn: 'Faience Scarab',
+        caption: '圣甲虫形印章',
+        captionEn: 'Scarab-shaped seal',
+        image: '/images/The Weingreen Museum/5.jpg',
+        alt: '釉陶圣甲虫',
+        material: 'Faience',
+        period: 'New Kingdom',
+        order: 3,
+        hallId: 'wg-hall-03',
+      },
+      {
+        id: 'WG-06',
+        title: '釉陶护身项链',
+        titleEn: 'Amulet Necklace',
+        caption: '蓝釉坠饰与串珠组合',
+        captionEn: 'A strung set of blue-glazed pendants and beads',
+        image: '/images/The Weingreen Museum/6.jpg',
+        alt: '釉陶护身项链',
+        material: 'Faience · Beads',
+        period: 'Late Period',
+        order: 4,
+        hallId: 'wg-hall-03',
+      },
+      {
+        id: 'WG-07',
+        title: '亡灵书草纸',
+        titleEn: 'Book of the Dead Papyrus',
+        caption: 'Nebqedl 向冥神奥西里斯献祭 · c.1400 BC',
+        captionEn: 'Nebqedl offering to Osiris · c.1400 BC',
+        image: '/images/The Weingreen Museum/7.jpg',
+        alt: '亡灵书草纸',
+        material: 'Papyrus · Pigment',
+        period: 'Early 18th Dynasty, c.1400 BC',
+        order: 5,
+        hallId: 'wg-hall-03',
+      },
+    ],
+  },
+  {
+    id: 'wg-hall-04',
+    order: 4,
+    name: '人物档案厅',
+    nameEn: 'Hall of Archives',
+    subtitle: '肖像照 · 学者',
+    subtitleEn: 'Portrait · Scholar',
+    description:
+      '人物档案厅是 Weingreen 数字博物馆的「档案角落」—— 一张由 J. Chas. Trusler 于都柏林拍摄的历史人物肖像被置入展厅。它提示我们：这些文物之所以能在今天被观看、保存与讲述，也因为有像镜头后面的这一类人把它们纳入策展。',
+    descriptionEn:
+      'The Hall of Archives is the "archive corner" of the Weingreen digital museum — a historical portrait taken by J. Chas. Trusler in Dublin. It reminds us that the reason these objects can be seen, preserved and narrated today is also because people like the one behind the camera brought them into a curatorial frame.',
+    atmosphereImage: '/images/The Weingreen Museum/3.jpg',
+    atmosphereAlt: '历史人物肖像照',
+    exhibits: [
+      {
+        id: 'WG-08',
+        title: '人物肖像',
+        titleEn: 'Scholar Portrait',
+        caption: '历史人物肖像 · J. Chas. Trusler 摄于都柏林',
+        captionEn: 'Historical portrait · photographed by J. Chas. Trusler, Dublin',
+        image: '/images/The Weingreen Museum/3.jpg',
+        alt: '人物肖像',
+        material: 'Photograph',
+        period: '19th c.',
+        order: 1,
+        hallId: 'wg-hall-04',
+      },
+    ],
+  },
+]
+
+const weingreenExhibition: Exhibition = {
+  id: 'weingreen',
+  title: 'The Weingreen Museum',
+  titleEn: 'The Weingreen Museum',
+  subtitle: '圣经文物数字博物馆',
+  subtitleEn: 'A Digital Museum of Biblical Antiquities',
+  preface:
+    '四间展厅 —— 长屋厅、陶片厅、埃及厅、人物档案厅 —— 把 The Weingreen Museum of Biblical Antiquities 的一组馆藏与策展空间搬到屏幕里。',
+  prefaceEn:
+    'Four halls — The Long Room, Pottery Shards, Egypt, and Archives — bring a slice of the Weingreen Museum of Biblical Antiquities onto the screen.',
+  statement:
+    '文物不止是被保存的对象，它们身后总是站着把它们重新讲出来的人。',
+  statementEn:
+    'Objects are not only preserved — there are always people behind them, retelling their stories.',
+  year: '2024',
+  location: 'The Weingreen Museum · Digital Branch',
+  locationEn: 'The Weingreen Museum · Digital Branch',
+  medium: '文物数字化 / 数字展陈',
+  mediumEn: 'Artifact Digitisation / Digital Exhibition',
+  cover: '/images/The Weingreen Museum/首图.png',
+  coverAlt: 'The Long Room HUB 入口',
+  accent: '#d6d3cc',
+  accentSecondary: '#70706c',
+  halls: weingreenHalls,
+}
+
+/* ------------------------------------------------------------------ */
 /*  Registry                                                            */
 /* ------------------------------------------------------------------ */
 
@@ -932,6 +1133,7 @@ export const exhibitions: Exhibition[] = [
   beiqiMuralExhibition,
   arMuseumExhibition,
   greenShootsExhibition,
+  weingreenExhibition,
 ]
 
 export function getExhibition(id: string | undefined): Exhibition | undefined {
