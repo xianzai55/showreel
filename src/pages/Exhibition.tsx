@@ -24,24 +24,16 @@ export function Exhibition() {
             展览目录
           </h1>
           <p className="mt-5 text-base md:text-lg text-rice/60 font-light max-w-2xl leading-relaxed">
-            五座数字展馆，各自由若干可漫游的展厅构成。点击任一展览，随导览顺序或自由平面图进入，点开作品可放大端详。
+            六座数字展馆，各自由若干可漫游的展厅构成。点击任一展览，随导览顺序进入，点开作品可放大端详。
           </p>
         </motion.header>
 
         {/* 展览列表 */}
         <div className="flex flex-col divide-y divide-stone/40 border-y border-stone/40">
-          {exhibitions.map((ex, index) => (
-            <motion.div
-              key={ex.id}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.7, delay: Math.min(index * 0.06, 0.3), ease }}
-            >
-              <Link
-                to={`/exhibition/${ex.id}`}
-                className="group grid grid-cols-12 items-center gap-x-6 gap-y-6 py-8 md:py-12"
-              >
+          {exhibitions.map((ex, index) => {
+            const pending = !!ex.pending
+            const content = (
+              <>
                 {/* 序号 */}
                 <span className="col-span-12 md:col-span-1 font-serif text-2xl md:text-4xl text-ash group-hover:text-rice transition-colors">
                   {String(index + 1).padStart(2, '0')}
@@ -49,12 +41,20 @@ export function Exhibition() {
 
                 {/* 封面 */}
                 <div className="col-span-12 md:col-span-4 overflow-hidden bg-charcoal border border-stone/40 group-hover:border-rice/30 aspect-[16/10]">
-                  <Media
-                    src={ex.cover}
-                    alt={ex.coverAlt}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-transform duration-700 group-hover:scale-[1.04]"
-                    animate
-                  />
+                  {pending ? (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <span className="text-[11px] tracking-[0.25em] uppercase text-ash">
+                        图片待补充
+                      </span>
+                    </div>
+                  ) : (
+                    <Media
+                      src={ex.cover}
+                      alt={ex.coverAlt}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-transform duration-700 group-hover:scale-[1.04]"
+                      animate
+                    />
+                  )}
                 </div>
 
                 {/* 文字 */}
@@ -75,13 +75,31 @@ export function Exhibition() {
 
                 {/* 进入 */}
                 <div className="col-span-12 md:col-span-1 flex items-center">
-                  <span className="inline-flex items-center justify-center w-12 h-12 border border-stone rounded-full text-rice/70 group-hover:border-rice group-hover:bg-rice group-hover:text-ink transition-colors duration-500">
+                  <span
+                    className={`inline-flex items-center justify-center w-12 h-12 border border-stone rounded-full transition-colors duration-500 ${
+                      pending
+                        ? 'text-ash'
+                        : 'text-rice/70 group-hover:border-rice group-hover:bg-rice group-hover:text-ink'
+                    }`}
+                  >
                     <ArrowUpRight size={18} />
                   </span>
                 </div>
+              </>
+            )
+            return pending ? (
+              <div className="group grid grid-cols-12 items-center gap-x-6 gap-y-6 py-8 md:py-12 opacity-70 cursor-default">
+                {content}
+              </div>
+            ) : (
+              <Link
+                to={`/exhibition/${ex.id}`}
+                className="group grid grid-cols-12 items-center gap-x-6 gap-y-6 py-8 md:py-12"
+              >
+                {content}
               </Link>
-            </motion.div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </div>

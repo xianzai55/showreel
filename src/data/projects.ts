@@ -18,6 +18,8 @@ export interface Exhibition {
   intro: string
   year: string
   medium: string
+  /** 为 true 时为占位条目录（暂无图片与内容，暂不可点击进入） */
+  pending?: boolean
 }
 
 /** 设计集：摄影 / 海报 各自是一组横向滑动画廊 */
@@ -110,6 +112,18 @@ export const exhibitions: Exhibition[] = [
     year: '2024',
     medium: '跨媒介 / 策展 / 数字展陈',
   },
+  {
+    id: 'weingreen',
+    title: 'The Weingreen Museum',
+    titleEn: 'The Weingreen Museum',
+    subtitle: '圣经文物数字博物馆',
+    cover: '/images/The Weingreen Museum/cover.png',
+    coverAlt: 'The Weingreen Museum 封面',
+    intro: '圣经文物数字博物馆。内容与图片待补充。',
+    year: '2024',
+    medium: '文物数字化 / 数字展陈',
+    pending: true,
+  },
 ]
 
 export function getExhibitionList(): Exhibition[] {
@@ -148,7 +162,13 @@ const posterImages: GalleryImage[] = [
   { src: '/images/摄影与设计/hb3.png', alt: '海报作品 03', caption: '海报 · 03' },
 ]
 
-const websiteImages: GalleryImage[] = []
+const websiteImages: GalleryImage[] = [
+  {
+    src: '/images/网站/bandicam 2024-04-10 10-48-10-521.mp4',
+    alt: 'The Weingreen Museum 网站展示视频',
+    caption: 'The Weingreen Museum',
+  },
+]
 
 export const designCollections: DesignCollection[] = [
   {
@@ -162,7 +182,7 @@ export const designCollections: DesignCollection[] = [
     id: 'website',
     title: '网站',
     titleEn: 'Website',
-    description: '网站设计作品。待补充图片后横向滑动浏览。',
+    description: '网站设计作品。横向滑动浏览，点击视频观看展示。',
     images: websiteImages,
   },
   {
