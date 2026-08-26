@@ -6,19 +6,18 @@ interface GuidedTourProps {
 }
 
 /**
- * Start Guided Tour 入口的右侧拼贴视图。
- * 根据图片数量自适应布局：
- *   1 张 → 全宽
- *   2 张 → 上下两行
- *   3 张 → 一主二副
- *   4 张 → 2x2
- *   5 张 → 一大四小
- *   6 张 → 2x3
- *   7+ 张 → 2 列瀑布拼贴
- * 仅排版美化，不裁不伪造图片。
+ * Start Guided Tour 的图片陈列视图。
+ * 仅做简单等宽等高的网格排版，不裁不伪造图片。
+ *   1 张 → 单列单行
+ *   2 张 → 单行 2 列
+ *   3+ 张 → 自适应列数（1 列、2 列、3 列…），统一等宽等高
  */
 export function GuidedTour({ images }: GuidedTourProps) {
   if (images.length === 0) return null
+
+  // 列数策略：1 / 2 / 3 / 4 / 5 / 6 / 7+ → 1, 2, 3, 2, 3, 3, 4 列
+  const cols = pickColumns(images.length)
+  const cellClass = `overflow-hidden bg-stone/10 ${cellAspect(images.length)}`
 
   return (
     <motion.div
@@ -26,89 +25,46 @@ export function GuidedTour({ images }: GuidedTourProps) {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="relative aspect-[4/5] lg:aspect-[5/4] w-full overflow-hidden border border-stone/30 bg-[var(--color-museum-wall)]/30"
+      className="w-full"
     >
-      {/* 顶部微光蒙版，呼应大厅的中央射灯 */}
       <div
-        className="absolute inset-0 z-10 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 60% 70% at 50% 50%, rgba(245,240,230,0.10) 0%, transparent 65%)',
-        }}
-      />
-      {renderLayout(images)}
+        className={`grid gap-2 md:gap-3 w-full`}
+        style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
+      >
+        {images.map((img) => (
+          <div key={img.src} className={cellClass}>
+            <Media
+              src={img.src}
+              alt={img.alt}
+              className="w-full h-full object-cover opacity-95"
+            />
+          </div>
+        ))}
+      </div>
     </motion.div>
   )
 }
 
-function renderLayout(images: { src: string; alt: string }[]) {
-  const cell = (src: string, alt: string, extra = '') => (
-    <div className={`relative overflow-hidden bg-stone/10 ${extra}`}>
-      <Media src={src} alt={alt} className="w-full h-full object-cover opacity-90" />
-    </div>
-  )
+function pickColumns(n: number): number {
+  if (n <= 1) return 1
+  if (n === 2) return 2
+  if (n === 3) return 3
+  if (n === 4) return 2
+  if (n === 5) return 3
+  if (n === 6) return 3
+  return 4
+}
 
-  switch (images.length) {
-    case 1:
-      return (
-        <div className="grid grid-cols-1 h-full">
-          {cell(images[0].src, images[0].alt)}
-        </div>
-      )
-    case 2:
-      return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 h-full">
-          {cell(images[0].src, images[0].alt)}
-          {cell(images[1].src, images[1].alt)}
-        </div>
-      )
-    case 3:
-      return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 h-full">
-          {cell(images[0].src, images[0].alt, 'sm:row-span-2')}
-          {cell(images[1].src, images[1].alt)}
-          {cell(images[2].src, images[2].alt)}
-        </div>
-      )
-    case 4:
-      return (
-        <div className="grid grid-cols-2 grid-rows-2 gap-1 h-full">
-          {cell(images[0].src, images[0].alt)}
-          {cell(images[1].src, images[1].alt)}
-          {cell(images[2].src, images[2].alt)}
-          {cell(images[3].src, images[3].alt)}
-        </div>
-      )
-    case 5:
-      return (
-        <div className="grid grid-cols-2 grid-rows-3 gap-1 h-full">
-          {cell(images[0].src, images[0].alt, 'row-span-2')}
-          {cell(images[1].src, images[1].alt)}
-          {cell(images[2].src, images[2].alt)}
-          {cell(images[3].src, images[3].alt)}
-          {cell(images[4].src, images[4].alt)}
-        </div>
-      )
-    case 6:
-      return (
-        <div className="grid grid-cols-2 sm:grid-cols-3 grid-rows-3 gap-1 h-full">
-          {cell(images[0].src, images[0].alt)}
-          {cell(images[1].src, images[1].alt)}
-          {cell(images[2].src, images[2].alt)}
-          {cell(images[3].src, images[3].alt)}
-          {cell(images[4].src, images[4].alt)}
-          {cell(images[5].src, images[5].alt)}
-        </div>
-      )
-    default: {
-      // 7+ 张：左一主大图 + 右侧 2 列
-      const [first, ...rest] = images
-      return (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-1 h-full">
-          {cell(first.src, first.alt, 'sm:row-span-2')}
-          {rest.map((img) => cell(img.src, img.alt))}
-        </div>
-      )
-    }
-  }
+/**
+ * 根据图片总数决定每个格子的高宽比：
+ *  - 1 张：4:5（竖版陈列）
+ *  - 2-3 张：3:4
+ *  - 4-5 张：1:1
+ *  - 6 张以上：4:3
+ */
+function cellAspect(n: number): string {
+  if (n === 1) return 'aspect-[4/5]'
+  if (n <= 3) return 'aspect-[3/4]'
+  if (n <= 5) return 'aspect-square'
+  return 'aspect-[4/3]'
 }
