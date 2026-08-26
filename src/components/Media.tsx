@@ -54,9 +54,10 @@ export function Media({
     <img
       src={url}
       alt={alt}
-      // 不使用 loading=lazy：站点图片总量可控，立即加载能避免初次进入展厅/设计集时大量占位空白
-      // 同时防止在某些浏览器/视口下懒加载未触发、长时间停留在"加载中"
-      decoding="sync"
+      // 懒加载 + 异步解码：初始仅加载视口内图片，显著降低展厅/设计集首屏加载量
+      // 视口外的图片在滚动到附近时再加载，避免一次性拉取全部媒体导致的卡顿
+      loading="lazy"
+      decoding="async"
       onLoad={onLoad}
       onError={onLoad}
       className={className}
