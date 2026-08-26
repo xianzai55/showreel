@@ -43,9 +43,9 @@ export const site = {
   email: 'k811138129@126.com',
   location: '中国 · 武汉',
   statement:
-    '以数字媒介重新想象东方文化与空间叙事。作品游走于虚拟博物馆、活化壁画、数字山水与科幻场景之间，试图在屏幕与身体之间，为“观看”开辟一种新的、近乎呼吸的路径。',
+    '以像素为笔，在虚拟与真实的缝隙中重构东方美学。我们的实践游走于博物馆学、文化记忆与空间诗学之间，试图在屏幕的冷光与身体的温度之间，开辟一种新的感知维度。',
   statementEn:
-    'Reimagining Eastern culture and spatial narratives through digital media. The works move between virtual museums, awakened murals, digital landscapes, and sci-fi scenes — opening a new, almost breath-like way of seeing between screen and body.',
+    'Painting with pixels, we reconstruct Eastern aesthetics in the interstice between the virtual and the real. Our practice moves between museology, cultural memory, and spatial poetics — seeking a new dimension of perception between the cold light of the screen and the warmth of the body.',
 }
 
 /* ------------------------------------------------------------------ */

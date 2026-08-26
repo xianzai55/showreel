@@ -111,6 +111,16 @@ export function Home() {
           >
             {site.statement}
           </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease }}
+            className="mt-4 max-w-xl text-base md:text-lg text-rice/50 font-light leading-relaxed"
+          >
+            六座数字展馆，各自生长为可漫游的叙事迷宫。
+            <br />
+            点击即是开启，滑动即是抵达。
+          </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

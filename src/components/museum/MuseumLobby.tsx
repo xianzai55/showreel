@@ -69,7 +69,7 @@ export function MuseumLobby({
               <p className="text-lg md:text-xl text-rice/50 font-light mb-8">
                 {exhibition.titleEn}
               </p>
-              <p className="text-sm md:text-base text-rice/70 leading-relaxed max-w-md mb-8">
+              <p className="text-sm md:text-base text-rice/70 leading-relaxed max-w-md mb-8 whitespace-pre-line">
                 {exhibition.preface}
               </p>
 

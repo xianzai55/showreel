@@ -220,7 +220,7 @@ const digitalLandscapeExhibition: Exhibition = {
   subtitle: '以手势为舟的青绿山水漫游',
   subtitleEn: 'A Blue-Green Landscape Roamed by Gesture',
   preface:
-    '三间展厅 —— 山径厅、城镇厅、余境厅 —— 邀你漫游一座以宋代青绿山水与江南园林为底本的数字山水城镇。塔、桥、渔村、远山在薄雾中铺开，握拳前后轻移便可漫步其间；画面角落的小字题跋，教你如何以身体走入山水。',
+    '山径 · 城镇 · 余境\n一座以明人眼界构筑的数字山水城邦。青绿为骨，薄雾为衣，塔影、板桥、渔火、远岫层层铺陈。双拳握紧，前后推移，你便成为画中人——那些隐于画面一隅的题跋小字，正是进入山水的秘密入口。',
   prefaceEn:
     'Three halls — Mountain Paths, the Town, After-Realm — invite you to walk through a digital landscape based on Song-dynasty blue-green painting and Jiangnan gardens. Pagodas, bridges, a fishing village and distant hills open up in the mist; a soft press of the fist moves you forward, and tiny colophon-style hints teach you how to enter the landscape with your body.',
   statement:
@@ -400,7 +400,7 @@ const tianlongshanExhibition: Exhibition = {
   subtitle: '散落在世界里的同一张脸',
   subtitleEn: 'One Face, Scattered Across the World',
   preface:
-    '三间展厅 —— 凝视厅、离散厅、重构厅 —— 围绕唐代造像与流失海外的高浮雕残像展开。在凝视厅与仍带温度的面孔对望，在离散厅直面被凿离原位的残躯，在重构厅看残片于数据中重新合拢；让石窟在数字空间里归于完璧。',
+    '凝视 · 离散 · 重构\n天龙山石窟造像的数字归乡。\n在凝视厅，与唐人雕凿的面孔四目相对，感受石头里尚存的体温；\n在离散厅，目睹被凿离故土的残件如何漂泊异乡；\n在重构厅，见证数据如何让破碎重归完整，让石窟在0与1之间复得其魂。',
   prefaceEn:
     'Three halls — the Gaze, the Dispersion, the Reassembly — unfold around the Tang sculpture of the Tianlongshan Grottoes and their dispersed relief fragments. Meet faces that still hold warmth, face the fragments cut from their origin, and watch them close again in data as the grotto returns to a whole in digital space.',
   statement:
@@ -562,7 +562,7 @@ const beiqiMuralExhibition: Exhibition = {
   subtitle: '墓室里的呼吸与色彩',
   subtitleEn: 'Colour and Breath Inside the Tomb',
   preface:
-    '三间展厅 —— 仪仗厅、骏马厅、矿物厅 —— 围绕北齐墓室壁画展开。随浩浩荡荡的仪仗出行，看神骏仍带着墓室的呼吸，再俯首凝视色彩与时间共同留下的裂纹。',
+    '仪仗 · 骏马 · 矿物\n北齐墓室壁画的三重凝视。\n仪仗厅里，你随浩荡的出行队伍穿越千年；\n骏马厅中，神骏的鼻息仍携带着墓室的幽暗气息；\n矿物厅内，色彩与时间共谋的裂纹成为最动人的叙事。',
   prefaceEn:
     'Three halls — the Procession, the Horse, the Pigment — unfold around the Northern Qi tomb murals. Walk with the great procession, see the steeds still holding the breath of the tomb, and gaze at the cracks that colour and time have left together.',
   statement:
@@ -752,7 +752,7 @@ const arMuseumExhibition: Exhibition = {
   subtitle: '从展柜到身体的中国古代运动',
   subtitleEn: 'From Vitrine to Body — Chinese Ancient Sports',
   preface:
-    '从中国古代体育史出发，将文献、器物与运动图像转译为可交互的数字对象。三间展厅 —— 书画厅、器物厅、体验厅 —— 邀请你从应用入口进入，让 AR 把博物馆展柜里的静止文物放回它们原本被使用的历史情境中。',
+    '书画 · 器物 · 体验\n中国古代体育史的AR重启。\n从文献到器物，从图像到动作，我们将静止的展柜打开，用增强现实让文物回到它们被使用、被凝视、被赋予生命的那个瞬间。应用入口即是时空之门。',
   prefaceEn:
     'Starting from the history of Chinese ancient sport, this project translates documents, artefacts and motion images into interactive digital objects. Three halls — Calligraphy & Painting, Artifacts, Experience — invite you to step in from the app entry and let AR return these still artefacts to the historical moments they were once used in.',
   statement:
@@ -928,7 +928,7 @@ const greenShootsExhibition: Exhibition = {
   subtitle: '艺术的新芽',
   subtitleEn: 'New Shoots of Art',
   preface:
-    '在种子与土壤之间，在萌发与绽放之间，艺术以它自己的方式生长。Green Shoots of arts 以「新芽」为题，把生长重新放上展墙，静候破土。',
+    '在种子与土壤之间，在萌发与绽放之间。\n艺术以自身的方式生长。Green Shoots of arts 以「新芽」为题，将生长的过程本身作为展品，等待它们破土、向光、成林。',
   prefaceEn:
     'Between seed and soil, between sprouting and blooming, art grows in its own way. Green Shoots of arts takes the sprout as its theme, returning the act of growth to the wall and waiting for it to break ground.',
   statement: '艺术的新芽，总在无人注目的土壤里破土。',
@@ -1138,7 +1138,7 @@ const weingreenExhibition: Exhibition = {
   subtitle: '圣经文物数字博物馆',
   subtitleEn: 'A Digital Museum of Biblical Antiquities',
   preface:
-    '四间展厅 —— 长屋厅、陶片厅、埃及厅、人物档案厅 —— 把 The Weingreen Museum of Biblical Antiquities 的一组馆藏与策展空间，搬进屏幕。',
+    'The Weingreen Museum of Biblical Antiquities 的数字迁移。\n我们将一组馆藏连同其策展逻辑一同搬入屏幕，让古老的叙事在新的介质中获得第二次生命。',
   prefaceEn:
     'Four halls — The Long Room, Pottery Shards, Egypt, and Archives — bring a slice of the Weingreen Museum of Biblical Antiquities into the screen.',
   statement:

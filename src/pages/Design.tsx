@@ -20,7 +20,9 @@ export function Design() {
             摄影与设计
           </h1>
           <p className="mt-5 text-base md:text-lg text-rice/60 font-light max-w-2xl leading-relaxed">
-            个人的目光与练习。横向推移浏览，图片依自身比例展开，完整不裁切；点击即可放大细看。
+            「目光的切片与秩序的练习」
+            <br />
+            记录光线、空间与日常裂隙中的偶然诗意。横向推移以阅览全貌。
           </p>
         </motion.header>
       </div>
