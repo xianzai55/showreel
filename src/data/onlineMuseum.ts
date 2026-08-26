@@ -67,9 +67,9 @@ const digitalLandscapeHalls: Hall[] = [
     subtitle: '全景 / 远山 / 大境',
     subtitleEn: 'Panorama · Distant Hills · Great Realm',
     description:
-      '从宋代青绿山水与江南园林出发，山径厅把观众带进一座可漫游的数字山水城镇的开阔全景。塔、桥、山径、远山在薄雾中铺开，留白比填满更重。',
+      '从明代青绿山水与江南园林出发，山径厅把观众带进一座可漫游的数字山水城镇的开阔全景。塔、桥、山径、远山在薄雾中铺开，留白比填满更重。',
     descriptionEn:
-      'Starting from Song-dynasty blue-green landscape and Jiangnan gardens, this hall opens onto a walkable digital landscape town. Pagodas, bridges, paths and distant hills unfold in mist — where emptiness outweighs fill.',
+      'Starting from Ming-dynasty blue-green landscape and Jiangnan gardens, this hall opens onto a walkable digital landscape town. Pagodas, bridges, paths and distant hills unfold in mist — where emptiness outweighs fill.',
     atmosphereImage: '/images/苏州山水全图卷/01首图.jpg',
     atmosphereAlt: '数字山水全景：苏州青绿山水城镇',
     exhibits: [
@@ -222,12 +222,12 @@ const digitalLandscapeExhibition: Exhibition = {
   preface:
     '山径 · 城镇 · 余境\n一座以明人眼界构筑的数字山水城邦。青绿为骨，薄雾为衣，塔影、板桥、渔火、远岫层层铺陈。双拳握紧，前后推移，你便成为画中人——那些隐于画面一隅的题跋小字，正是进入山水的秘密入口。',
   prefaceEn:
-    'Three halls — Mountain Paths, the Town, After-Realm — invite you to walk through a digital landscape based on Song-dynasty blue-green painting and Jiangnan gardens. Pagodas, bridges, a fishing village and distant hills open up in the mist; a soft press of the fist moves you forward, and tiny colophon-style hints teach you how to enter the landscape with your body.',
+    'Three halls — Mountain Paths, the Town, After-Realm — invite you to walk through a digital landscape based on Ming-dynasty blue-green painting and Jiangnan gardens. Pagodas, bridges, a fishing village and distant hills open up in the mist; a soft press of the fist moves you forward, and tiny colophon-style hints teach you how to enter the landscape with your body.',
   statement:
     '山水不是被观看的风景，而是可以被身体进入的境界。',
   statementEn:
     'Landscape is not a scene to be viewed, but a realm to be entered by the body.',
-  year: '2024',
+  year: '2022',
   location: '江南 · 数字山水展厅',
   locationEn: 'Jiangnan · Digital Landscape Gallery',
   medium: '体感交互 / 数字影像 / 空间叙事',
@@ -407,7 +407,7 @@ const tianlongshanExhibition: Exhibition = {
     '散佚不是终局，而是另一种等待被重新陈列的开始。',
   statementEn:
     'Dispersion is not an end, but a beginning waiting to be re-exhibited.',
-  year: '2024',
+  year: '2019',
   location: '山西太原 · 数字石窟',
   locationEn: 'Taiyuan, Shanxi · Digital Grotto',
   medium: '石窟数字化 / 3D 重建 / 数字展陈',
