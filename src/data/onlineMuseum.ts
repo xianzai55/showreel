@@ -66,7 +66,7 @@ const digitalLandscapeHalls: Hall[] = [
       '从宋代青绿山水与江南园林出发，山径厅把观众带进一座可漫游的数字山水城镇的开阔全景。塔、桥、山径、远山在薄雾中铺开，留白比填满更重。',
     descriptionEn:
       'Starting from Song-dynasty blue-green landscape and Jiangnan gardens, this hall opens onto a walkable digital landscape town. Pagodas, bridges, paths and distant hills unfold in mist — where emptiness outweighs fill.',
-    atmosphereImage: '/images/digital-landscape/cover.jpg',
+    atmosphereImage: '/images/苏州山水全图卷/cover.jpg',
     atmosphereAlt: '数字山水全景：苏州青绿山水城镇',
     exhibits: [
       {
@@ -75,7 +75,7 @@ const digitalLandscapeHalls: Hall[] = [
         titleEn: 'Landscape Panorama',
         caption: '可漫游的数字山水全景',
         captionEn: 'The walkable digital landscape in full view',
-        image: '/images/digital-landscape/cover.jpg',
+        image: '/images/苏州山水全图卷/cover.jpg',
         alt: '数字山水全景',
         material: 'Digital Painting',
         period: '2024',
@@ -88,7 +88,7 @@ const digitalLandscapeHalls: Hall[] = [
         titleEn: 'Suzhou Landscape',
         caption: '以苏州园林为底本的水墨长卷',
         captionEn: 'An ink scroll based on Suzhou gardens',
-        image: '/images/digital-landscape/01.jpg',
+        image: '/images/苏州山水全图卷/01.jpg',
         alt: '苏州山水全景',
         material: 'Digital Painting',
         period: '2024',
@@ -101,7 +101,7 @@ const digitalLandscapeHalls: Hall[] = [
         titleEn: 'Mountain Path',
         caption: '拾级而上的山间小道',
         captionEn: 'A small mountain path rising step by step',
-        image: '/images/digital-landscape/04.jpg',
+        image: '/images/苏州山水全图卷/04.jpg',
         alt: '山径拾级',
         material: 'Digital Painting',
         period: '2024',
@@ -121,7 +121,7 @@ const digitalLandscapeHalls: Hall[] = [
       '城镇厅把全景拉近，呈现山水城镇中的几处日常 —— 塔院晨雾、桥下渔樵、渔村泊舟、街市叫卖。每一个小图都是进入山水的一个入口。',
     descriptionEn:
       'This hall zooms into the landscape town, presenting its daily corners: the pagoda in morning mist, the life under the bridge, the fishing village at rest, the market in motion. Each small image is an entrance into the whole landscape.',
-    atmosphereImage: '/images/digital-landscape/02.jpg',
+    atmosphereImage: '/images/苏州山水全图卷/02.jpg',
     atmosphereAlt: '塔院与山林',
     exhibits: [
       {
@@ -130,7 +130,7 @@ const digitalLandscapeHalls: Hall[] = [
         titleEn: 'Pagoda Court',
         caption: '塔院在晨雾中显影',
         captionEn: 'The pagoda court appears in the morning mist',
-        image: '/images/digital-landscape/02.jpg',
+        image: '/images/苏州山水全图卷/02.jpg',
         alt: '塔与山林',
         material: 'Digital Painting',
         period: '2024',
@@ -143,7 +143,7 @@ const digitalLandscapeHalls: Hall[] = [
         titleEn: 'Under the Bridge',
         caption: '桥下停泊的小船与渔樵身影',
         captionEn: 'Small boats and the silhouette of a fisherman under the bridge',
-        image: '/images/digital-landscape/03.jpg',
+        image: '/images/苏州山水全图卷/03.jpg',
         alt: '桥下渔樵',
         material: 'Digital Painting',
         period: '2024',
@@ -156,7 +156,7 @@ const digitalLandscapeHalls: Hall[] = [
         titleEn: 'Fishing Village',
         caption: '泊舟与炊烟',
         captionEn: 'Moored boats and rising smoke',
-        image: '/images/digital-landscape/05.jpg',
+        image: '/images/苏州山水全图卷/05.jpg',
         alt: '渔村日常',
         material: 'Digital Painting',
         period: '2024',
@@ -169,7 +169,7 @@ const digitalLandscapeHalls: Hall[] = [
         titleEn: 'Market Street',
         caption: '山水之间的小小街市',
         captionEn: 'A small market tucked between hills and water',
-        image: '/images/digital-landscape/06.jpg',
+        image: '/images/苏州山水全图卷/06.jpg',
         alt: '街市',
         material: 'Digital Painting',
         period: '2024',
@@ -189,7 +189,7 @@ const digitalLandscapeHalls: Hall[] = [
       '余境厅是全景与近景之间最后一段留白。远山在画面边缘淡化为几笔墨色，漫游提示以极小字号出现在画面角落 —— 如古画题跋，不破坏山水本身的空灵感。',
     descriptionEn:
       'The final hall is a stretch of emptiness between the panorama and the close-ups. Distant hills fade into a few strokes of ink at the edges, and the roaming hint appears in tiny type at a corner — like a colophon on an old painting, never breaking the emptiness of the landscape itself.',
-    atmosphereImage: '/images/digital-landscape/07.jpg',
+    atmosphereImage: '/images/苏州山水全图卷/07.jpg',
     atmosphereAlt: '远山淡影',
     exhibits: [
       {
@@ -198,7 +198,7 @@ const digitalLandscapeHalls: Hall[] = [
         titleEn: 'Distant Hills',
         caption: '远山以几笔墨色淡入留白',
         captionEn: 'Distant hills dissolving into emptiness with a few strokes',
-        image: '/images/digital-landscape/07.jpg',
+        image: '/images/苏州山水全图卷/07.jpg',
         alt: '远景',
         material: 'Digital Painting',
         period: '2024',
@@ -228,10 +228,10 @@ const digitalLandscapeExhibition: Exhibition = {
   locationEn: 'Jiangnan · Digital Landscape Gallery',
   medium: '体感交互 / 数字影像 / 空间叙事',
   mediumEn: 'Body Interaction / Digital Image / Spatial Narrative',
-  cover: '/images/digital-landscape/cover.jpg',
+  cover: '/images/苏州山水全图卷/cover.jpg',
   coverAlt: '数字山水全景：苏州青绿山水城镇',
-  accent: '#5e7d6b',
-  accentSecondary: '#a85d4d',
+  accent: '#d6d3cc',
+  accentSecondary: '#70706c',
   halls: digitalLandscapeHalls,
 }
 
@@ -251,7 +251,7 @@ const tianlongshanHalls: Hall[] = [
       '天龙山石窟开凿于东魏至唐。凝视厅从一张张仍保有温度的面孔出发 —— 低垂的眉眼、衣纹的起伏 —— 让唐代造像在数字化光里重新与你对视。',
     descriptionEn:
       'The Tianlongshan Grottoes were carved from the Eastern Wei to Tang dynasties. This hall begins with faces that still hold warmth — lowered eyes, the fold of robes — letting Tang sculpture meet your gaze again in digital light.',
-    atmosphereImage: '/images/tianlongshan/02.jpg',
+    atmosphereImage: '/images/天龙山石窟/02.jpg',
     atmosphereAlt: '唐代石造菩萨头部的温和神态与残存金彩',
     exhibits: [
       {
@@ -260,7 +260,7 @@ const tianlongshanHalls: Hall[] = [
         titleEn: 'Bodhisattva Head',
         caption: '低垂眉眼里的温和与虔敬',
         captionEn: 'Mildness and devotion in a lowered gaze',
-        image: '/images/tianlongshan/02.jpg',
+        image: '/images/天龙山石窟/02.jpg',
         alt: '唐代石造菩萨头部',
         material: 'Freestone Sculpture',
         period: 'Tang Dynasty',
@@ -273,7 +273,7 @@ const tianlongshanHalls: Hall[] = [
         titleEn: 'Flying Apsara',
         caption: '衣带飘举的凌空之姿',
         captionEn: 'A figure floating on flowing ribbons',
-        image: '/images/tianlongshan/03.jpg',
+        image: '/images/天龙山石窟/03.jpg',
         alt: '岩石高浮雕的飞天',
         material: 'Stone High Relief',
         period: 'Tang Dynasty',
@@ -286,7 +286,7 @@ const tianlongshanHalls: Hall[] = [
         titleEn: 'Grotto Panorama',
         caption: '山崖之中层层叠叠的窟龛',
         captionEn: 'Rows of cave niches layered into the cliff',
-        image: '/images/tianlongshan/cover.jpg',
+        image: '/images/天龙山石窟/cover.jpg',
         alt: '天龙山石窟山崖全景',
         material: 'Cave Temple',
         period: 'Eastern Wei — Tang',
@@ -306,7 +306,7 @@ const tianlongshanHalls: Hall[] = [
       '二十世纪初，许多天龙山造像被凿下、流散至世界各地博物馆。离散厅呈现这些残件的现状 —— 被编号、被陈列，却在空间上远离其山崖的原位。',
     descriptionEn:
       'In the early 20th century many Tianlongshan sculptures were cut from the cliff and scattered across the world. This hall shows them as they are now — numbered, exhibited, yet spatially far from the cliff where they once stood.',
-    atmosphereImage: '/images/tianlongshan/04.jpg',
+    atmosphereImage: '/images/天龙山石窟/04.jpg',
     atmosphereAlt: '流失残件陈列在展柜中，缺失的轮廓被标注',
     exhibits: [
       {
@@ -315,7 +315,7 @@ const tianlongshanHalls: Hall[] = [
         titleEn: 'Silhouette of Loss',
         caption: '被凿走后留下的一处空缺',
         captionEn: 'A void left where stone was once cut away',
-        image: '/images/tianlongshan/04.jpg',
+        image: '/images/天龙山石窟/04.jpg',
         alt: '展柜中的流失残件与缺失轮廓',
         material: 'Fragment / Exhibit',
         period: 'Tang Dynasty',
@@ -328,7 +328,7 @@ const tianlongshanHalls: Hall[] = [
         titleEn: 'High-Relief Scan',
         caption: '以三维扫描重新记录流散的造像',
         captionEn: 'Re-recording the dispersed sculpture through 3D scanning',
-        image: '/images/tianlongshan/01.jpg',
+        image: '/images/天龙山石窟/01.jpg',
         alt: '石造高浮雕的三维扫描可视化',
         material: '3D Scan',
         period: 'Contemporary Digitisation',
@@ -348,7 +348,7 @@ const tianlongshanHalls: Hall[] = [
       '离散不是终局。借由数字扫描与重建，分处世界各地的残件可以在虚拟空间里重新回到同一面山崖。重构厅让石窟在数字中复归其整体，把散佚重新陈列为一种开始。',
     descriptionEn:
       'Dispersion is not the end. Through digital scanning and reconstruction, fragments held in different corners of the world can be returned to the same cliff in virtual space. This hall restores the grotto to a whole in the digital, re-exhibiting what was scattered as a beginning.',
-    atmosphereImage: '/images/tianlongshan/01.jpg',
+    atmosphereImage: '/images/天龙山石窟/01.jpg',
     atmosphereAlt: '三维重建的唐代造像',
     exhibits: [
       {
@@ -357,7 +357,7 @@ const tianlongshanHalls: Hall[] = [
         titleEn: 'Digital Reconstruction',
         caption: '残件在数据中重新合拢',
         captionEn: 'Fragments closed again within the data',
-        image: '/images/tianlongshan/01.jpg',
+        image: '/images/天龙山石窟/01.jpg',
         alt: '三维重建的造像数据',
         material: 'Digital Reconstruction',
         period: '2024',
@@ -370,7 +370,7 @@ const tianlongshanHalls: Hall[] = [
         titleEn: 'Return',
         caption: '飞天重新回到山崖之上',
         captionEn: 'The apsara returned to the cliff',
-        image: '/images/tianlongshan/03.jpg',
+        image: '/images/天龙山石窟/03.jpg',
         alt: '高浮雕飞天复归',
         material: 'Digital Reconstruction',
         period: '2024',
@@ -400,10 +400,10 @@ const tianlongshanExhibition: Exhibition = {
   locationEn: 'Taiyuan, Shanxi · Digital Grotto',
   medium: '石窟数字化 / 3D 重建 / 数字展陈',
   mediumEn: 'Grotto Digitisation / 3D Reconstruction / Digital Exhibition',
-  cover: '/images/tianlongshan/cover.jpg',
+  cover: '/images/天龙山石窟/cover.jpg',
   coverAlt: '天龙山石窟东峰窟龛与天际轮廓',
-  accent: '#a8896a',
-  accentSecondary: '#5e7d8c',
+  accent: '#d6d3cc',
+  accentSecondary: '#70706c',
   halls: tianlongshanHalls,
 }
 
@@ -423,7 +423,7 @@ const beiqiMuralHalls: Hall[] = [
       '北齐壁画以墓室长卷最为恢弘。仪仗厅让浩浩荡荡的出行队伍在数字展墙上重新展开 —— 车马随行、仪仗铺排，矿物色的厚重沿着墙面一路延伸。',
     descriptionEn:
       'Northern Qi murals are best known for their grand tomb-scroll processions. This hall unfolds the long retinue again on the digital wall — carriages and attendants in step, the weight of mineral pigment running along the surface.',
-    atmosphereImage: '/images/beiqi-mural/02.jpg',
+    atmosphereImage: '/images/北齐壁画博物馆/02.jpg',
     atmosphereAlt: '横向展开的北齐仪仗出行壁画',
     exhibits: [
       {
@@ -432,7 +432,7 @@ const beiqiMuralHalls: Hall[] = [
         titleEn: 'Scroll Procession',
         caption: '沿墙展开的出殡仪仗与侍从',
         captionEn: 'A funeral retinue spelled out along the wall',
-        image: '/images/beiqi-mural/02.jpg',
+        image: '/images/北齐壁画博物馆/02.jpg',
         alt: '横向的仪仗出行壁画',
         material: 'Earthen-Wall Mural',
         period: 'Northern Qi',
@@ -445,7 +445,7 @@ const beiqiMuralHalls: Hall[] = [
         titleEn: 'The Great Outing',
         caption: '车马人物构成的完整出行场景',
         captionEn: 'A full outing scene of carriages and figures',
-        image: '/images/beiqi-mural/cover.jpg',
+        image: '/images/北齐壁画博物馆/cover.jpg',
         alt: '北齐出行壁画主景',
         material: 'Mural',
         period: 'Northern Qi',
@@ -465,7 +465,7 @@ const beiqiMuralHalls: Hall[] = [
       '北齐壁画中的马常常比人物更动人 —— 通使牵马、鞍辔齐整，神骏之姿仿佛还带着墓室里的呼吸。骏马厅把这份静态的奔放单独挂上展墙。',
     descriptionEn:
       'The horses of Northern Qi murals are often more moving than the figures — couriers leading steeds, harnesses in order, the bearing of the horse still holding the breath of the tomb. This hall hangs that still gallop alone on the wall.',
-    atmosphereImage: '/images/beiqi-mural/01.jpg',
+    atmosphereImage: '/images/北齐壁画博物馆/01.jpg',
     atmosphereAlt: '牵马通使与骏马的壁画特写',
     exhibits: [
       {
@@ -474,7 +474,7 @@ const beiqiMuralHalls: Hall[] = [
         titleEn: 'Courier & Horse',
         caption: '牵马而行的人物与神骏',
         captionEn: 'A figure leading a fine steed',
-        image: '/images/beiqi-mural/01.jpg',
+        image: '/images/北齐壁画博物馆/01.jpg',
         alt: '牵马人物与骏马',
         material: 'Mural Detail',
         period: 'Northern Qi',
@@ -487,7 +487,7 @@ const beiqiMuralHalls: Hall[] = [
         titleEn: 'The Steed',
         caption: '鞍辔齐整的墓室骏马',
         captionEn: 'A tomb horse with harness intact',
-        image: '/images/beiqi-mural/01.jpg',
+        image: '/images/北齐壁画博物馆/01.jpg',
         alt: '骏马壁画特写',
         material: 'Mural Detail',
         period: 'Northern Qi',
@@ -507,7 +507,7 @@ const beiqiMuralHalls: Hall[] = [
       '矿物厅凝视壁画的皮肤 —— 石青、朱砂、赭石与时间共同留下的裂纹。色彩不是静止的，它随光线与年岁呼吸；壁画的血管，就藏在这些矿物颗粒里。',
     descriptionEn:
       'This hall gazes at the skin of the mural — azurite, cinnabar, ochre and the cracks left by time together. Colour is not still; it breathes with light and age. The vessels of a mural lie inside these mineral grains.',
-    atmosphereImage: '/images/beiqi-mural/04.jpg',
+    atmosphereImage: '/images/北齐壁画博物馆/04.jpg',
     atmosphereAlt: '矿物色层的裂纹与笔法显微',
     exhibits: [
       {
@@ -516,7 +516,7 @@ const beiqiMuralHalls: Hall[] = [
         titleEn: 'Feast & Music',
         caption: '墓室中宴会与乐舞的场景',
         captionEn: 'A feast and music scene within the tomb',
-        image: '/images/beiqi-mural/03.jpg',
+        image: '/images/北齐壁画博物馆/03.jpg',
         alt: '北齐宴乐壁画',
         material: 'Mural',
         period: 'Northern Qi',
@@ -529,7 +529,7 @@ const beiqiMuralHalls: Hall[] = [
         titleEn: 'Pigment Texture',
         caption: '矿物层在时间里的裂纹与剥落',
         captionEn: 'Cracks and flaking of the mineral layers over time',
-        image: '/images/beiqi-mural/04.jpg',
+        image: '/images/北齐壁画博物馆/04.jpg',
         alt: '矿物色肌理显微',
         material: 'Pigment Study',
         period: 'Northern Qi',
@@ -559,10 +559,10 @@ const beiqiMuralExhibition: Exhibition = {
   locationEn: 'Taiyuan, Shanxi · Digital Mural Hall',
   medium: '壁画数字化 / 色彩复原 / 数字展陈',
   mediumEn: 'Mural Digitisation / Colour Restoration / Digital Exhibition',
-  cover: '/images/beiqi-mural/cover.jpg',
+  cover: '/images/北齐壁画博物馆/cover.jpg',
   coverAlt: '北齐壁画墓室壁画的矿物色彩特写',
-  accent: '#9a6b52',
-  accentSecondary: '#3f6d6a',
+  accent: '#d6d3cc',
+  accentSecondary: '#70706c',
   halls: beiqiMuralHalls,
 }
 
@@ -582,7 +582,7 @@ const arMuseumHalls: Hall[] = [
       '当摄像头扫过身份证或桌面，被锁在博物馆展柜里的运动人物，被重新放回身体曾经站立过的位置。召唤厅记录 AR 召唤发生的第一秒：从平面图像到立体身体的瞬间跃迁。',
     descriptionEn:
       'When the camera passes over an ID card or a tabletop, the sports figure once locked in a museum vitrine is placed back where the body once stood. This hall records the first second of AR summoning.',
-    atmosphereImage: '/images/ar-museum/05.jpg',
+    atmosphereImage: '/images/体乐里体育博物馆/05.jpg',
     atmosphereAlt: 'AR 召唤场景：人物在身份证锚点上被立体召唤',
     exhibits: [
       {
@@ -591,7 +591,7 @@ const arMuseumHalls: Hall[] = [
         titleEn: 'App Entry',
         caption: 'AR 应用的首页与召唤入口',
         captionEn: 'Home screen and the entry point for AR summoning',
-        image: '/images/ar-museum/01.jpg',
+        image: '/images/体乐里体育博物馆/01.jpg',
         alt: 'AR 应用首页',
         material: 'Application Interface',
         period: '2024',
@@ -604,7 +604,7 @@ const arMuseumHalls: Hall[] = [
         titleEn: 'AR Summon Moment',
         caption: '3D 人物被锚定在身份证上',
         captionEn: '3D figure anchored on the ID card',
-        image: '/images/ar-museum/05.jpg',
+        image: '/images/体乐里体育博物馆/05.jpg',
         alt: 'AR 角色与身份证锚点',
         material: 'AR Experience',
         period: '2024',
@@ -617,7 +617,7 @@ const arMuseumHalls: Hall[] = [
         titleEn: 'Exhibition Title Wall',
         caption: '「体乐里」三字题写的入口门',
         captionEn: 'The entrance wall inscribed with the project title',
-        image: '/images/ar-museum/08.jpg',
+        image: '/images/体乐里体育博物馆/08.jpg',
         alt: '博物馆入口题字',
         material: 'Spatial Type',
         period: '2024',
@@ -637,7 +637,7 @@ const arMuseumHalls: Hall[] = [
       '古代运动不是抽象的数字，而是被青铜戈、箭镞与棋具这些真实器物所托起。器物厅是博物馆展柜的延伸，把每一件器物转译为可被旋转、放大、阅读铭文的数字对象。',
     descriptionEn:
       'Ancient sport was never abstract — it was supported by real artefacts such as bronze ge, arrowheads and gaming tools. This hall extends the museum vitrine, translating each object into a digital one that can be rotated, enlarged and read.',
-    atmosphereImage: '/images/ar-museum/02.jpg',
+    atmosphereImage: '/images/体乐里体育博物馆/02.jpg',
     atmosphereAlt: '青铜戈的数字展示界面',
     exhibits: [
       {
@@ -646,7 +646,7 @@ const arMuseumHalls: Hall[] = [
         titleEn: 'Bronze Ge',
         caption: '长柄冷兵器，礼制与武力兼具',
         captionEn: 'A long-shafted cold weapon combining ritual and force',
-        image: '/images/ar-museum/02.jpg',
+        image: '/images/体乐里体育博物馆/02.jpg',
         alt: '青铜戈展示',
         material: 'Bronze',
         period: 'Spring & Autumn Period',
@@ -660,7 +660,7 @@ const arMuseumHalls: Hall[] = [
         titleEn: 'Wall of Motion',
         caption: '冰上运动历史影像在展墙上循环播放',
         captionEn: 'Historical ice-sport imagery loops on the gallery wall',
-        image: '/images/ar-museum/04.jpg',
+        image: '/images/体乐里体育博物馆/04.jpg',
         alt: '冰上运动影像墙',
         material: 'Moving Image',
         period: '2024',
@@ -680,7 +680,7 @@ const arMuseumHalls: Hall[] = [
       '身体厅聚焦于被转译为 3D 数字对象的运动人物。每一个角色都代表一种被放回身体的运动 —— 马球的奔马、蹴鞠的脚法、棋艺的沉思。',
     descriptionEn:
       'This hall focuses on the sports figures translated into 3D digital objects. Each character represents a sport returned to the body: the gallop of polo, the footwork of cuju, the contemplation of weiqi.',
-    atmosphereImage: '/images/ar-museum/03.jpg',
+    atmosphereImage: '/images/体乐里体育博物馆/03.jpg',
     atmosphereAlt: '马球人物 3D 数字模型',
     exhibits: [
       {
@@ -689,7 +689,7 @@ const arMuseumHalls: Hall[] = [
         titleEn: 'Polo',
         caption: '唐代马球人物，挥杖击球的瞬间',
         captionEn: 'Tang-dynasty polo player, the moment of striking the ball',
-        image: '/images/ar-museum/03.jpg',
+        image: '/images/体乐里体育博物馆/03.jpg',
         alt: '马球人物 3D 角色',
         material: '3D Character',
         period: 'Tang Dynasty',
@@ -702,7 +702,7 @@ const arMuseumHalls: Hall[] = [
         titleEn: 'Cuju',
         caption: '古代足球动作的数字化还原',
         captionEn: 'Digital restoration of an ancient football motion',
-        image: '/images/ar-museum/06.jpg',
+        image: '/images/体乐里体育博物馆/06.jpg',
         alt: '蹴鞠人物 3D 角色',
         material: '3D Character',
         period: 'Han — Tang',
@@ -715,7 +715,7 @@ const arMuseumHalls: Hall[] = [
         titleEn: 'Weiqi',
         caption: '围棋对弈时的静坐姿态',
         captionEn: 'The seated posture of a weiqi player',
-        image: '/images/ar-museum/07.jpg',
+        image: '/images/体乐里体育博物馆/07.jpg',
         alt: '棋艺人物 3D 角色',
         material: '3D Character',
         period: 'Han — Tang',
@@ -745,11 +745,71 @@ const arMuseumExhibition: Exhibition = {
   locationEn: 'China · Digital Museum',
   medium: 'AR / 3D 美术 / 交互原型',
   mediumEn: 'AR / 3D Art / Interaction Prototype',
-  cover: '/images/ar-museum/cover.jpg',
+  cover: '/images/体乐里体育博物馆/cover.jpg',
   coverAlt: 'AR 虚拟展厅内部视角',
-  accent: '#7a5a3f',
-  accentSecondary: '#3a5a6a',
+  accent: '#d6d3cc',
+  accentSecondary: '#70706c',
   halls: arMuseumHalls,
+}
+
+/* ------------------------------------------------------------------ */
+/*  Exhibition 05 — Green Shoots of arts                               */
+/* ------------------------------------------------------------------ */
+
+const greenShootsHalls: Hall[] = [
+  {
+    id: 'gs-hall-01',
+    order: 1,
+    name: '萌发厅',
+    nameEn: 'Hall of Sprouting',
+    subtitle: '种子 · 土壤 · 新芽',
+    subtitleEn: 'Seed · Soil · New Shoot',
+    description:
+      '以「新芽」为主题的策展项目。从种子与土壤出发，观看艺术在萌发之前的第一缕光，以及破土而出的那一刻。',
+    descriptionEn:
+      'A curation themed around sprouts. Starting from seed and soil, this hall watches the first glimmer before a piece of art germinates, and the moment it breaks through.',
+    atmosphereImage: '/images/Green Shoots of arts/cover.jpg',
+    atmosphereAlt: 'Green Shoots of arts · 展览封面',
+    exhibits: [
+      {
+        id: 'GS-01',
+        title: '新芽',
+        titleEn: 'New Shoot',
+        caption: '展览主视觉',
+        captionEn: 'Exhibition key visual',
+        image: '/images/Green Shoots of arts/cover.jpg',
+        alt: 'Green Shoots of arts 主视觉',
+        material: 'Curatorial Visual',
+        period: '2024',
+        order: 1,
+        hallId: 'gs-hall-01',
+      },
+    ],
+  },
+]
+
+const greenShootsExhibition: Exhibition = {
+  id: 'green-shoots',
+  title: 'Green Shoots of arts',
+  titleEn: 'Green Shoots of Arts',
+  subtitle: '艺术的新芽',
+  subtitleEn: 'New Shoots of Art',
+  preface:
+    '在种子与土壤之间，在萌发与绽放之间，艺术以自身的方式生长。Green Shoots of arts 以「新芽」为题，将生长的过程重新放上展墙，等待它们破土。',
+  prefaceEn:
+    'Between seed and soil, between sprouting and blooming, art grows in its own way. Green Shoots of arts unfolds the act of growth back onto the wall, waiting for it to break ground.',
+  statement: '艺术的新芽，总在无人注目的土壤里破土。',
+  statementEn: 'New shoots of art always break ground where no one is looking.',
+  year: '2024',
+  location: '数字展馆 · Green Shoots',
+  locationEn: 'Digital Gallery · Green Shoots',
+  medium: '跨媒介 / 策展 / 数字展陈',
+  mediumEn: 'Cross-media / Curation / Digital Exhibition',
+  cover: '/images/Green Shoots of arts/cover.jpg',
+  coverAlt: 'Green Shoots of arts · 展览封面',
+  accent: '#d6d3cc',
+  accentSecondary: '#70706c',
+  halls: greenShootsHalls,
 }
 
 /* ------------------------------------------------------------------ */
@@ -761,6 +821,7 @@ export const exhibitions: Exhibition[] = [
   tianlongshanExhibition,
   beiqiMuralExhibition,
   arMuseumExhibition,
+  greenShootsExhibition,
 ]
 
 export function getExhibition(id: string | undefined): Exhibition | undefined {

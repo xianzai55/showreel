@@ -1,5 +1,4 @@
 import {
-  useMemo,
   useRef,
   useState,
   type PointerEvent as ReactPointerEvent,
@@ -11,12 +10,12 @@ import { imageUrl } from '../utils/imageUrl'
 
 interface HorizontalGalleryProps {
   images: BoardImage[]
-  accent: string
   title: string
 }
 
-// 横向滑动浏览画廊：支持鼠标拖拽、滚轮（水平）、触屏滑动，点击可放大查看。
-export function HorizontalGallery({ images, accent, title }: HorizontalGalleryProps) {
+// 横向滑动画廊：图片依自身原始比例自适应高度与宽度，完整呈现、不裁切。
+// 支持鼠标拖拽、滚轮(水平)、触屏滑动；点击图片放大查看。
+export function HorizontalGallery({ images, title }: HorizontalGalleryProps) {
   const trackRef = useRef<HTMLDivElement>(null)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
@@ -53,26 +52,11 @@ export function HorizontalGallery({ images, accent, title }: HorizontalGalleryPr
     setLightboxOpen(true)
   }
 
-  const sizeByIndex = (i: number) => {
-    const cycle = i % 5
-    if (cycle === 0) return 'aspect-[16/9] w-[72vw] md:w-[560px]'
-    if (cycle === 1) return 'aspect-[4/3] w-[64vw] md:w-[400px]'
-    if (cycle === 2) return 'aspect-[3/2] w-[58vw] md:w-[360px]'
-    if (cycle === 3) return 'aspect-video w-[70vw] md:w-[520px]'
-    return 'aspect-[4/3] w-[58vw] md:w-[360px]'
-  }
-
-  const shuffled = useMemo(() => images, [images])
-
   return (
     <div className="relative">
-      {/* Drag affordance hint */}
-      <div className="flex items-center justify-between mb-5 md:mb-6">
-        <span
-          className="font-mono text-[10px] uppercase tracking-[0.25em]"
-          style={{ color: accent }}
-        >
-          Drag 拖移 · Scroll 滚动
+      <div className="flex items-center justify-between mb-6">
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-ash">
+          Drag 拖移 · Scroll 滚动 · Click 放大
         </span>
         <span className="text-[10px] uppercase tracking-[0.25em] text-ash">
           {String(images.length).padStart(2, '0')} 幅
@@ -87,44 +71,46 @@ export function HorizontalGallery({ images, accent, title }: HorizontalGalleryPr
         onPointerLeave={endDrag}
         onWheel={onWheel}
         onDragStart={(e) => e.preventDefault()}
-        className="relative flex gap-5 md:gap-8 overflow-x-auto cursor-grab active:cursor-grabbing pb-4 select-none snap-x"
+        className="relative flex items-center gap-6 md:gap-10 overflow-x-auto cursor-grab active:cursor-grabbing pb-6 select-none px-2"
         data-lenis-prevent
-        style={{ scrollSnapType: 'x proximity' }}
       >
-        {shuffled.map((image, i) => (
-          <button
-            type="button"
+        {images.map((image, i) => (
+          <figure
             key={`${image.src}-${i}`}
-            onClick={() => {
-              // 仅当几乎未发生拖拽时才触发放大（区分滑动与点击）
-              if (drag.current.moved < 6) openAt(i)
-            }}
-            className={`group relative shrink-0 overflow-hidden bg-charcoal border border-stone/40 snap-start ${sizeByIndex(
-              i
-            )} transition-colors hover:border-rice/40`}
+            className="group relative shrink-0 flex flex-col items-start"
           >
-            <img
-              src={imageUrl(image.src)}
-              alt={image.alt}
-              loading="lazy"
-              decoding="async"
-              draggable={false}
-              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-            />
-            {image.caption && (
-              <span className="absolute left-0 bottom-0 right-0 px-4 py-3 text-left text-[11px] text-rice/90 bg-gradient-to-t from-ink/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-                {image.caption}
+            <button
+              type="button"
+              onClick={() => {
+                // 仅当几乎未发生拖拽时才触发放大（区分滑动与点击）
+                if (drag.current.moved < 6) openAt(i)
+              }}
+              className="relative overflow-hidden border border-stone/50 bg-charcoal group-hover:border-rice/40 transition-colors duration-500 align-top"
+            >
+              {/* 以原始比例自适应：高恒定，宽随比例变化，完整显示不裁切 */}
+              <img
+                src={imageUrl(image.src)}
+                alt={image.alt}
+                loading="lazy"
+                decoding="async"
+                draggable={false}
+                className="h-[52vh] md:h-[60vh] w-auto max-w-none object-contain grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-[1.015]"
+              />
+              <span className="pointer-events-none absolute inset-x-0 bottom-0 px-4 py-3 text-left text-[11px] text-rice/90 bg-gradient-to-t from-ink/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+                {image.caption || `作品 ${String(i + 1).padStart(2, '0')}`}
               </span>
-            )}
-          </button>
+            </button>
+            <span className="mt-3 text-[10px] tracking-[0.3em] uppercase text-ash opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+          </figure>
         ))}
 
-        {/* End spacer announces the edge */}
         <div className="shrink-0 w-2" />
       </div>
 
       <Lightbox
-        images={shuffled}
+        images={images}
         open={lightboxOpen}
         index={lightboxIndex}
         onClose={() => setLightboxOpen(false)}

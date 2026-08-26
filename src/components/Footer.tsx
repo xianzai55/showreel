@@ -23,14 +23,11 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-8">
-            <Link to="/works" className="text-xs text-ash hover:text-rice transition-colors uppercase tracking-wider">
-              Works
+            <Link to="/exhibition" className="text-xs text-ash hover:text-rice transition-colors uppercase tracking-wider">
+              Exhibition
             </Link>
-            <Link to="/about" className="text-xs text-ash hover:text-rice transition-colors uppercase tracking-wider">
-              About
-            </Link>
-            <Link to="/contact" className="text-xs text-ash hover:text-rice transition-colors uppercase tracking-wider">
-              Contact
+            <Link to="/design" className="text-xs text-ash hover:text-rice transition-colors uppercase tracking-wider">
+              Design
             </Link>
             <button
               onClick={scrollToTop}

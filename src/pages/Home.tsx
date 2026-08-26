@@ -1,284 +1,162 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
-import { useRef } from 'react'
+import { motion } from 'framer-motion'
+import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { BoardImage } from '../components/BoardImage'
 import { InteractiveBackdrop } from '../components/InteractiveBackdrop'
-import { getCuratedProjects, personalGalleries, site } from '../data/projects'
+import { designCollections, exhibitions, site } from '../data/projects'
 import { imageUrl } from '../utils/imageUrl'
 
+const ease = [0.22, 1, 0.36, 1] as const
+
+function EntryPanel({
+  index,
+  kicker,
+  title,
+  titleEn,
+  blurb,
+  cover,
+  coverAlt,
+  to,
+}: {
+  index: string
+  kicker: string
+  title: string
+  titleEn: string
+  blurb: string
+  cover: string
+  coverAlt: string
+  to: string
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.9, delay: 0.35, ease }}
+      whileHover="hover"
+      className="group w-full"
+    >
+      <Link
+        to={to}
+        className="relative block border border-stone/50 bg-charcoal/40 overflow-hidden hover:border-rice/40 transition-colors duration-500"
+      >
+        {/* Cover */}
+        <div className="relative aspect-[16/11] md:aspect-[16/9] overflow-hidden">
+          <motion.img
+            variants={{ hover: { scale: 1.06 } }}
+            transition={{ duration: 1.2, ease }}
+            src={imageUrl(cover)}
+            alt={coverAlt}
+            loading="lazy"
+            className="w-full h-full object-cover grayscale contrast-[1.02]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
+        </div>
+
+        {/* Meta */}
+        <div className="relative px-7 md:px-10 py-8 md:py-10">
+          <div className="flex items-start justify-between gap-6">
+            <div>
+              <p className="font-mono text-[10px] tracking-[0.3em] text-ash uppercase mb-3">
+                {index} — {kicker}
+              </p>
+              <h2 className="font-serif text-3xl md:text-5xl text-rice leading-tight">
+                {title}
+                <span className="hidden md:inline text-rice/40"> ·</span>
+              </h2>
+              <p className="mt-1 text-sm text-ash tracking-wide uppercase">{titleEn}</p>
+              <p className="mt-4 text-sm text-rice/60 leading-relaxed max-w-md">{blurb}</p>
+            </div>
+            <span className="shrink-0 flex items-center justify-center w-11 h-11 md:w-12 md:h-12 border border-stone rounded-full text-rice/80 group-hover:border-rice group-hover:bg-rice group-hover:text-ink transition-colors duration-500 mt-1">
+              <ArrowUpRight size={18} />
+            </span>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  )
+}
+
 export function Home() {
-  const heroRef = useRef<HTMLDivElement>(null)
-  const curated = getCuratedProjects()
-
-  // 指针驱动的视差：鼠标在 Hero 区内移动时，图片以不同强度轻微错位
-  const mx = useMotionValue(0)
-  const my = useMotionValue(0)
-  const sx = useSpring(mx, { stiffness: 60, damping: 20 })
-  const sy = useSpring(my, { stiffness: 60, damping: 20 })
-  const t1x = useTransform(sx, [-1, 1], [-14, 14])
-  const t1y = useTransform(sy, [-1, 1], [-10, 10])
-  const t2x = useTransform(sx, [-1, 1], [10, -10])
-  const t2y = useTransform(sy, [-1, 1], [8, -8])
-  const t3x = useTransform(sx, [-1, 1], [-6, 6])
-  const t3y = useTransform(sy, [-1, 1], [-12, 12])
-
-  const handleHeroMove = (e: React.MouseEvent) => {
-    const rect = heroRef.current?.getBoundingClientRect()
-    if (!rect) return
-    mx.set(((e.clientX - rect.left) / rect.width) * 2 - 1)
-    my.set(((e.clientY - rect.top) / rect.height) * 2 - 1)
-  }
+  const curationCount = exhibitions.length
+  const designCount = designCollections.reduce((n, c) => n + c.images.length, 0)
 
   return (
-    <div className="pt-24 md:pt-28">
-      {/* 交互性弱介入的艺术背景：保持色调，墨点在指针下轻微散开 */}
+    <div className="relative min-h-screen">
+      {/* 交互式艺术背景：墨点随指针呼吸 */}
       <InteractiveBackdrop />
 
-      {/* Hero Board */}
-      <section
-        ref={heroRef}
-        onMouseMove={handleHeroMove}
-        className="relative z-10 w-full min-h-[var(--board-height)] flex flex-col justify-center py-16 md:py-20 border-b border-stone/30"
-      >
-        <div className="w-full max-w-[var(--board-max)] mx-auto px-[var(--board-gutter)]">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-6"
-            >
-              <span className="font-mono text-xs tracking-[0.25em] text-ash block mb-6">
-                Exhibition of Digital Spatial Narratives
-              </span>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-rice leading-[1.1] mb-6">
-                {site.artist}
-              </h1>
-              <p className="text-lg md:text-xl text-rice/70 font-light leading-relaxed max-w-md mb-8">
-                数字艺术 / 新媒体艺术 / AR / 沉浸式体验
-                <br />
-                <span className="text-ash text-base">
-                  Digital Art · New Media · AR · Immersive
-                </span>
-              </p>
-              <div className="flex flex-wrap gap-6">
-                <Link
-                  to="/works"
-                  className="inline-flex items-center gap-3 text-sm uppercase tracking-[0.2em] text-rice border-b border-rice/30 pb-1 hover:border-rice transition-colors"
-                >
-                  View Works <ArrowRight size={16} />
-                </Link>
-                <span className="hidden md:inline-flex items-center text-xs text-ash">
-                  · 移动鼠标，山水随之呼吸（move to drift the ink）
-                </span>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-6 flex items-end gap-5 justify-center lg:justify-end"
-            >
-              <motion.div style={{ x: t1x, y: t1y }}>
-                <BoardImage
-                  image={{
-                    src: curated[0].cover,
-                    alt: curated[0].coverAlt,
-                    size: 'md',
-                    aspect: '4/3',
-                    caption: '',
-                  }}
-                  showCaption={false}
-                />
-              </motion.div>
-              <div className="hidden md:flex flex-col gap-5 pb-8">
-                <motion.div style={{ x: t3x, y: t2y }}>
-                  <BoardImage
-                    image={{
-                      src: curated[2].cover,
-                      alt: curated[2].coverAlt,
-                      size: 'xs',
-                      aspect: '3/2',
-                      caption: '',
-                    }}
-                    showCaption={false}
-                  />
-                </motion.div>
-                <motion.div style={{ x: t2x, y: t3y }}>
-                  <BoardImage
-                    image={{
-                      src: curated[3].cover,
-                      alt: curated[3].coverAlt,
-                      size: 'xs',
-                      aspect: '3/2',
-                      caption: '',
-                    }}
-                    showCaption={false}
-                  />
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Curation Index Board */}
-      <section className="relative z-10 w-full min-h-[var(--board-height)] flex flex-col justify-center py-16 md:py-20 border-b border-stone/30">
-        <div className="w-full max-w-[var(--board-max)] mx-auto px-[var(--board-gutter)]">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="mb-12 md:mb-16"
+      {/* 序章：艺术家名 + 宣言 */}
+      <section className="relative z-10 min-h-screen flex flex-col justify-center px-6 md:px-[var(--board-gutter)]">
+        <div className="w-full max-w-[var(--board-max)] mx-auto">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease }}
+            className="font-mono text-[11px] tracking-[0.35em] uppercase text-ash block mb-6"
           >
-            <span className="font-mono text-xs tracking-[0.25em] text-ash block mb-4">
-              Curation — 策展
-            </span>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-rice">
-              展策目录
-            </h2>
-            <p className="mt-4 text-sm text-rice/55 max-w-xl">
-              四座虚拟展馆，每座由若干间可漫游的展厅构成。点击项目进入策展空间，按导览顺序或自由平面图选起点，点开作品可放大查看细节。
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-            {curated.map((project, index) => {
-              const isLarge = index === 0 || index === 2
-              return (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 0.7, delay: index * 0.1 }}
-                  className={`group ${isLarge ? '' : ''}`}
-                >
-                  <Link
-                    to={
-                      project.museumExhibitionId
-                        ? `/works/${project.museumExhibitionId}`
-                        : `/works/${project.id}`
-                    }
-                    className="block"
-                  >
-                    <div className="flex items-start gap-5">
-                      <span
-                        className="font-serif text-3xl md:text-4xl text-ash group-hover:text-rice transition-colors"
-                        style={{ color: index === 0 ? project.accent : undefined }}
-                      >
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <div className="flex-1">
-                        <div className="relative overflow-hidden bg-charcoal border border-stone/40 aspect-video mb-5 group-hover:border-rice/30 transition-colors">
-                          <img
-                            src={imageUrl(project.cover)}
-                            alt={project.coverAlt}
-                            loading="lazy"
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          />
-                        </div>
-                        <h3 className="font-serif text-xl md:text-2xl text-rice group-hover:text-rice-dim transition-colors">
-                          {project.title}
-                        </h3>
-                        <p className="text-xs text-ash mt-1">{project.titleEn}</p>
-                        <p className="text-sm text-rice/60 mt-3 line-clamp-2 max-w-sm">
-                          {project.description}
-                        </p>
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          {project.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="text-[10px] uppercase tracking-wider px-2 py-1 border rounded-full"
-                              style={{
-                                borderColor: `${project.accent}50`,
-                                color: project.accent,
-                              }}
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Personal Creation Teaser */}
-      <section className="relative z-10 w-full py-20 md:py-28 border-b border-stone/30">
-        <div className="w-full max-w-[var(--board-max)] mx-auto px-[var(--board-gutter)]">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="mb-10"
-          >
-            <span className="font-mono text-xs tracking-[0.25em] text-ash block mb-4">
-              Personal Practice — 个人创作
-            </span>
-            <h2 className="font-serif text-3xl md:text-4xl text-rice">
-              摄影与设计
-            </h2>
-            <p className="mt-4 text-sm text-rice/55 max-w-xl">
-              个人的目光与练习。在作品页以横向滑动的方式浏览，鼠标拖移或滚动滚动条即可穿行其中。
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-            {personalGalleries.map((g) => (
-              <Link
-                key={g.id}
-                to="/works"
-                className="group block border border-stone/40 p-6 hover:border-rice/30 transition-colors"
-              >
-                <span
-                  className="font-serif text-2xl md:text-3xl text-rice group-hover:text-rice-dim transition-colors"
-                  style={{ color: g.accent }}
-                >
-                  {g.title}
-                </span>
-                <p className="text-xs text-ash mt-1">{g.titleEn}</p>
-                <p className="text-sm text-rice/60 mt-4 leading-relaxed">{g.description}</p>
-                <div className="mt-6 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-ash group-hover:text-rice transition-colors">
-                  横向滑动浏览 <ArrowRight size={14} />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Statement Board */}
-      <section className="relative z-10 w-full min-h-[60vh] flex flex-col justify-center py-20 md:py-28">
-        <div className="w-full max-w-[var(--board-max)] mx-auto px-[var(--board-gutter)]">
-          <motion.div
+            Digital Spatial Narrative Portfolio
+          </motion.p>
+          <motion.h1
             initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto text-center"
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.12, ease }}
+            className="font-serif text-5xl md:text-7xl lg:text-8xl text-rice leading-[1.05] tracking-tight"
           >
-            <span className="font-mono text-xs tracking-[0.3em] text-ash block mb-8">
-              00 — Statement
-            </span>
-            <p className="font-serif text-xl md:text-2xl lg:text-3xl text-rice/85 leading-relaxed text-balance mb-8">
-              {site.statement}
-            </p>
-            <p className="text-sm text-ash leading-relaxed max-w-xl mx-auto">
-              {site.statementEn}
-            </p>
+            {site.artist}
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.24, ease }}
+            className="mt-6 max-w-xl text-base md:text-lg text-rice/70 font-light leading-relaxed"
+          >
+            {site.statement}
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="mt-10 flex flex-wrap gap-x-10 gap-y-3 text-[11px] tracking-[0.25em] uppercase text-ash"
+          >
+            <span>{String(curationCount).padStart(2, '0')} 展览 Exhibitions</span>
+            <span>{String(designCount).padStart(2, '0')} 作品 Design Works</span>
+            <span>{site.location}</span>
           </motion.div>
         </div>
       </section>
+
+      {/* 两个入口：展览 / 设计集 */}
+      <section className="relative z-10 px-6 md:px-[var(--board-gutter)] pb-24 md:pb-32">
+        <div className="w-full max-w-[var(--board-max)] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
+          <EntryPanel
+            index="01"
+            kicker="Curated Spaces"
+            title="展览"
+            titleEn="Exhibitions"
+            blurb="五座可漫游的数字展馆 —— 苏州山水、天龙山石窟、北齐壁画、体乐里体育博物馆，与 Green Shoots of arts。点击进入，随导览或自由穿行其间。"
+            cover={exhibitions[0].cover}
+            coverAlt={exhibitions[0].coverAlt}
+            to="/exhibition"
+          />
+          <EntryPanel
+            index="02"
+            kicker="Personal Practice"
+            title="设计集"
+            titleEn="Design Works"
+            blurb="摄影与海报。横向推移浏览，图片依其自身比例展开，完整无裁切。"
+            cover={designCollections[0].images[0].src}
+            coverAlt="设计集 · 摄影作品"
+            to="/design"
+          />
+        </div>
+      </section>
+
+      {/* 落款 */}
+      <footer className="relative z-10 px-6 md:px-[var(--board-gutter)] pb-16">
+        <div className="w-full max-w-[var(--board-max)] mx-auto border-t border-stone/40 pt-8 flex flex-col md:flex-row justify-between gap-3 text-[11px] tracking-[0.2em] uppercase text-ash">
+          <span>© {site.artist} · Digital Spatial Narratives</span>
+          <span className="text-rice/50">移动指针，墨点随呼吸散开</span>
+        </div>
+      </footer>
     </div>
   )
 }

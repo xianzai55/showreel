@@ -9,9 +9,9 @@ type MuseumMode = 'lobby' | 'guided' | 'free'
 
 export function OnlineMuseum() {
   const location = useLocation()
-  // 从 URL 路径里解析展览 id：/works/irish-curation → irish-curation
+  // 从 URL 路径里解析展览 id：/exhibition/green-shoots → green-shoots
   const exhibitionId = useMemo(() => {
-    const match = location.pathname.match(/^\/works\/([^/]+)/)
+    const match = location.pathname.match(/^\/exhibition\/([^/]+)/)
     return match ? match[1] : undefined
   }, [location.pathname])
   const exhibition = useMemo(() => getExhibition(exhibitionId), [exhibitionId])
@@ -69,7 +69,7 @@ export function OnlineMuseum() {
     return (
       <div className="pt-40 text-center text-ash">
         <p>展览未找到</p>
-        <Link to="/works" className="text-rice underline mt-4 inline-block">
+        <Link to="/exhibition" className="text-rice underline mt-4 inline-block">
           返回展览
         </Link>
       </div>
@@ -81,10 +81,10 @@ export function OnlineMuseum() {
       {/* Subtle top bar inside museum experience */}
       <div className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 md:px-[var(--board-gutter)] py-4 pt-20 md:pt-24 pointer-events-none">
         <Link
-          to="/works"
+          to="/exhibition"
           className="pointer-events-auto inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-ash hover:text-rice transition-colors"
         >
-          <ArrowLeft size={14} /> Back to Works
+          <ArrowLeft size={14} /> Back to Exhibitions
         </Link>
         {mode !== 'lobby' && (
           <button

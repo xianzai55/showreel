@@ -5,10 +5,9 @@ import { Link, useLocation } from 'react-router-dom'
 import { site } from '../data/projects'
 
 const links = [
-  { label: '序厅', href: '/' },
-  { label: '展览', href: '/works' },
-  { label: '关于', href: '/about' },
-  { label: '联系', href: '/contact' },
+  { label: '主页', href: '/' },
+  { label: '展览', href: '/exhibition' },
+  { label: '设计集', href: '/design' },
 ]
 
 export function Navbar() {

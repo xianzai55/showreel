@@ -26,8 +26,8 @@
   --color-museum-wall: #141211;
   --color-museum-floor: #0e0d0c;
   --color-museum-light: #f5f0e6;
-  --color-museum-warm: #c9a97a;
-  --color-museum-cool: #6a8fa3;
+  --color-museum-warm: #d6d3ca;
+  --color-museum-cool: #8f8f8b;
   --color-museum-spot: rgba(245, 240, 230, 0.14);
 
   /* Typography */
@@ -95,7 +95,7 @@ body {
 .text-balance { text-wrap: balance; }
 
 ::selection {
-  background-color: rgba(201, 168, 108, 0.22);
+  background-color: rgba(243, 240, 232, 0.18);
   color: var(--color-rice);
 }
 

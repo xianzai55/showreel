@@ -8,11 +8,9 @@ import { ScrollToTop } from './components/ScrollToTop'
 import { useLenis } from './hooks/useLenis'
 
 const Home = lazy(() => import('./pages/Home').then((m) => ({ default: m.Home })))
-const Works = lazy(() => import('./pages/Works').then((m) => ({ default: m.Works })))
-const ProjectDetail = lazy(() => import('./pages/ProjectDetail').then((m) => ({ default: m.ProjectDetail })))
+const Exhibition = lazy(() => import('./pages/Exhibition').then((m) => ({ default: m.Exhibition })))
 const OnlineMuseum = lazy(() => import('./pages/OnlineMuseum').then((m) => ({ default: m.OnlineMuseum })))
-const About = lazy(() => import('./pages/About').then((m) => ({ default: m.About })))
-const Contact = lazy(() => import('./pages/Contact').then((m) => ({ default: m.Contact })))
+const Design = lazy(() => import('./pages/Design').then((m) => ({ default: m.Design })))
 
 function App() {
   const location = useLocation()
@@ -34,14 +32,10 @@ function App() {
             <Suspense fallback={<PageLoader />}>
               <Routes location={location}>
                 <Route path="/" element={<Home />} />
-                <Route path="/works" element={<Works />} />
-                <Route path="/works/digital-landscape" element={<OnlineMuseum />} />
-                <Route path="/works/tianlongshan" element={<OnlineMuseum />} />
-                <Route path="/works/beiqi-mural" element={<OnlineMuseum />} />
-                <Route path="/works/ar-museum" element={<OnlineMuseum />} />
-                <Route path="/works/:projectId" element={<ProjectDetail />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
+                <Route path="/exhibition" element={<Exhibition />} />
+                <Route path="/exhibition/:projectId" element={<OnlineMuseum />} />
+                <Route path="/design" element={<Design />} />
+                <Route path="*" element={<Home />} />
               </Routes>
             </Suspense>
           </main>
