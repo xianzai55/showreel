@@ -14,7 +14,8 @@ interface HorizontalGalleryProps {
 }
 
 // 横向滑动画廊：图片依自身原始比例自适应高度与宽度，完整呈现、不裁切。
-// 支持鼠标拖拽、滚轮(水平)、触屏滑动；点击图片放大查看。
+// 支持鼠标拖拽、滚轮(水平)、触屏滑动；点图片放大查看；视频直接内联播放。
+const isVideo = (src: string) => /\.(mp4|mov|webm|m4v)(?:$|\?)/i.test(src)
 export function HorizontalGallery({ images, title }: HorizontalGalleryProps) {
   const trackRef = useRef<HTMLDivElement>(null)
   const [lightboxOpen, setLightboxOpen] = useState(false)
@@ -25,6 +26,8 @@ export function HorizontalGallery({ images, title }: HorizontalGalleryProps) {
   const onPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
     const el = trackRef.current
     if (!el) return
+    // 从视频元素上按下时不启动拖拽，避免抢占原生控制条的点击/进度调节
+    if ((e.target as HTMLElement).closest?.('video')) return
     drag.current = { down: true, startX: e.clientX, scrollLeft: el.scrollLeft, moved: 0 }
     el.setPointerCapture(e.pointerId)
   }
@@ -56,7 +59,7 @@ export function HorizontalGallery({ images, title }: HorizontalGalleryProps) {
     <div className="relative">
       <div className="flex items-center justify-between mb-6">
         <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-ash">
-          Drag 拖移 · Scroll 滚动 · Click 放大
+          Drag 拖移 · Scroll 滚动 · 点图片放大 / 点视频播放
         </span>
         <span className="text-[10px] uppercase tracking-[0.25em] text-ash">
           {String(images.length).padStart(2, '0')} 幅
@@ -74,34 +77,57 @@ export function HorizontalGallery({ images, title }: HorizontalGalleryProps) {
         className="relative flex items-center gap-6 md:gap-10 overflow-x-auto cursor-grab active:cursor-grabbing pb-6 select-none px-2"
         data-lenis-prevent
       >
-        {images.map((image, i) => (
-          <figure
-            key={`${image.src}-${i}`}
-            className="group relative shrink-0 flex flex-col items-start"
-          >
-            <button
-              type="button"
-              onClick={() => {
-                // 仅当几乎未发生拖拽时才触发放大（区分滑动与点击）
-                if (drag.current.moved < 6) openAt(i)
-              }}
-              className="relative overflow-hidden border border-stone/50 bg-charcoal group-hover:border-rice/40 transition-colors duration-500 align-top"
-            >
-              {/* 以原始比例自适应：在给定的高/宽范围内完整显示，不裁切 */}
-              <Media
-                src={image.src}
-                alt={image.alt}
-                className="max-h-[58vh] md:max-h-[66vh] max-w-[84vw] md:max-w-[60vw] w-auto h-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-[1.015]"
-              />
-              <span className="pointer-events-none absolute inset-x-0 bottom-0 px-4 py-3 text-left text-[11px] text-rice/90 bg-gradient-to-t from-ink/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-                {image.caption || `作品 ${String(i + 1).padStart(2, '0')}`}
-              </span>
-            </button>
-            <span className="mt-3 text-[10px] tracking-[0.3em] uppercase text-ash opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-              {String(i + 1).padStart(2, '0')}
-            </span>
-          </figure>
-        ))}
+        {images.map((image, i) =>
+            isVideo(image.src) ? (
+              <figure
+                key={`${image.src}-${i}`}
+                className="group relative shrink-0 flex flex-col items-start"
+              >
+                <div className="relative overflow-hidden border border-stone/50 bg-charcoal group-hover:border-rice/40 transition-colors duration-500 align-top">
+                  <Media
+                    src={image.src}
+                    alt={image.alt}
+                    animate
+                    controls
+                    className="max-h-[58vh] md:max-h-[66vh] max-w-[84vw] md:max-w-[60vw] w-auto h-auto object-contain"
+                  />
+                  <span className="pointer-events-none absolute inset-x-0 bottom-0 px-4 py-3 text-left text-[11px] text-rice/90 bg-gradient-to-t from-ink/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+                    {image.caption || `作品 ${String(i + 1).padStart(2, '0')}`}
+                  </span>
+                </div>
+                <span className="mt-3 text-[10px] tracking-[0.3em] uppercase text-ash opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+              </figure>
+            ) : (
+              <figure
+                key={`${image.src}-${i}`}
+                className="group relative shrink-0 flex flex-col items-start"
+              >
+                <button
+                  type="button"
+                  onClick={() => {
+                    // 仅当几乎未发生拖拽时才触发放大（区分滑动与点击）
+                    if (drag.current.moved < 6) openAt(i)
+                  }}
+                  className="relative overflow-hidden border border-stone/50 bg-charcoal group-hover:border-rice/40 transition-colors duration-500 align-top"
+                >
+                  {/* 以原始比例自适应：在给定的高/宽范围内完整显示，不裁切 */}
+                  <Media
+                    src={image.src}
+                    alt={image.alt}
+                    className="max-h-[58vh] md:max-h-[66vh] max-w-[84vw] md:max-w-[60vw] w-auto h-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-[1.015]"
+                  />
+                  <span className="pointer-events-none absolute inset-x-0 bottom-0 px-4 py-3 text-left text-[11px] text-rice/90 bg-gradient-to-t from-ink/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+                    {image.caption || `作品 ${String(i + 1).padStart(2, '0')}`}
+                  </span>
+                </button>
+                <span className="mt-3 text-[10px] tracking-[0.3em] uppercase text-ash opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+              </figure>
+            )
+          )}
 
         <div className="shrink-0 w-2" />
       </div>
