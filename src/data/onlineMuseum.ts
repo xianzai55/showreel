@@ -47,6 +47,8 @@ export interface Exhibition {
   coverAlt: string
   accent: string
   accentSecondary: string
+  /** Start Guided Tour 入口右侧展示的拼贴图片；空数组则保持原 cover 视图 */
+  tourImages: { src: string; alt: string }[]
   halls: Hall[]
 }
 
@@ -230,6 +232,13 @@ const digitalLandscapeExhibition: Exhibition = {
   mediumEn: 'Body Interaction / Digital Image / Spatial Narrative',
   cover: '/images/苏州山水全图卷/01首图.jpg',
   coverAlt: '数字山水全景：苏州青绿山水城镇',
+  tourImages: [
+    { src: '/images/苏州山水全图卷/01首图.jpg', alt: '苏州山水全图卷 · 全景' },
+    { src: '/images/苏州山水全图卷/fang_01.jpg', alt: '苏州山水全图卷 · 塔院' },
+    { src: '/images/苏州山水全图卷/fang_02.jpg', alt: '苏州山水全图卷 · 山水长卷' },
+    { src: '/images/苏州山水全图卷/ren_02.jpg', alt: '苏州山水全图卷 · 山径' },
+    { src: '/images/苏州山水全图卷/ren_06.jpg', alt: '苏州山水全图卷 · 街市' },
+  ],
   accent: '#d6d3cc',
   accentSecondary: '#70706c',
   halls: digitalLandscapeHalls,
@@ -402,6 +411,9 @@ const tianlongshanExhibition: Exhibition = {
   mediumEn: 'Grotto Digitisation / 3D Reconstruction / Digital Exhibition',
   cover: '/images/天龙山石窟/tls1.jpg',
   coverAlt: '天龙山石窟东峰窟龛与天际轮廓',
+  tourImages: [
+    { src: '/images/天龙山石窟/tls2.jpg', alt: '天龙山石窟 · 高浮雕飞天' },
+  ],
   accent: '#d6d3cc',
   accentSecondary: '#70706c',
   halls: tianlongshanHalls,
@@ -561,6 +573,10 @@ const beiqiMuralExhibition: Exhibition = {
   mediumEn: 'Mural Digitisation / Colour Restoration / Digital Exhibition',
   cover: '/images/北齐壁画博物馆/bq1.jpg',
   coverAlt: '北齐壁画墓室壁画的矿物色彩特写',
+  tourImages: [
+    { src: '/images/北齐壁画博物馆/bq2.jpg', alt: '北齐壁画 · 牵马通使与骏马' },
+    { src: '/images/北齐壁画博物馆/bq3.jpg', alt: '北齐壁画 · 仪仗出行长卷' },
+  ],
   accent: '#d6d3cc',
   accentSecondary: '#70706c',
   halls: beiqiMuralHalls,
@@ -747,6 +763,10 @@ const arMuseumExhibition: Exhibition = {
   mediumEn: 'AR / 3D Art / Interaction Prototype',
   cover: '/images/体乐里体育博物馆/图片.jpg',
   coverAlt: '体乐里 · 入口主题墙',
+  tourImages: [
+    { src: '/images/体乐里体育博物馆/图片 (1).jpg', alt: '体乐里 · 青铜戈数字展示' },
+    { src: '/images/体乐里体育博物馆/图片 (2).jpg', alt: '体乐里 · AR 召唤时刻' },
+  ],
   accent: '#d6d3cc',
   accentSecondary: '#70706c',
   halls: arMuseumHalls,
@@ -917,6 +937,7 @@ const greenShootsExhibition: Exhibition = {
   mediumEn: 'Cross-media / Curation / Digital Exhibition',
   cover: '/images/Green Shoots of arts/IMG_8637.MP4',
   coverAlt: 'Green Shoots of arts · 展览封面',
+  tourImages: [],
   accent: '#d6d3cc',
   accentSecondary: '#70706c',
   halls: greenShootsHalls,
@@ -1118,6 +1139,15 @@ const weingreenExhibition: Exhibition = {
   mediumEn: 'Artifact Digitisation / Digital Exhibition',
   cover: '/images/The Weingreen Museum/首图.jpg',
   coverAlt: 'The Long Room HUB 入口',
+  tourImages: [
+    { src: '/images/The Weingreen Museum/1.jpg', alt: 'The Weingreen Museum · 陶片群' },
+    { src: '/images/The Weingreen Museum/2.jpg', alt: 'The Weingreen Museum · 彩绘人形板' },
+    { src: '/images/The Weingreen Museum/3.jpg', alt: 'The Weingreen Museum · 人物肖像' },
+    { src: '/images/The Weingreen Museum/4.jpg', alt: 'The Weingreen Museum · 釉陶护身符' },
+    { src: '/images/The Weingreen Museum/5.jpg', alt: 'The Weingreen Museum · 釉陶圣甲虫' },
+    { src: '/images/The Weingreen Museum/6.jpg', alt: 'The Weingreen Museum · 釉陶护身项链' },
+    { src: '/images/The Weingreen Museum/7.jpg', alt: 'The Weingreen Museum · 亡灵书草纸' },
+  ],
   accent: '#d6d3cc',
   accentSecondary: '#70706c',
   halls: weingreenHalls,

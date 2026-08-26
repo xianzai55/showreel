@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Compass } from 'lucide-react'
 import type { Exhibition, Hall } from '../../data/onlineMuseum'
+import { GuidedTour } from './GuidedTour'
 import { Media } from '../Media'
 
 interface MuseumLobbyProps {
@@ -8,7 +9,10 @@ interface MuseumLobbyProps {
   halls: Hall[]
   exhibitionNumber: number
   exhibitionCount: number
+  /** 是否已进入 Start Guided Tour 的拼贴视图 */
+  tourActive: boolean
   onStartGuided: () => void
+  onLeaveTour: () => void
 }
 
 export function MuseumLobby({
@@ -16,8 +20,11 @@ export function MuseumLobby({
   halls,
   exhibitionNumber,
   exhibitionCount,
+  tourActive,
   onStartGuided,
+  onLeaveTour,
 }: MuseumLobbyProps) {
+  const hasTour = exhibition.tourImages.length > 0
   return (
     <div className="min-h-screen flex flex-col justify-center pt-24 md:pt-28 pb-16 px-6 md:px-[var(--board-gutter)]">
       <div className="max-w-[var(--board-max)] mx-auto w-full">
@@ -62,13 +69,33 @@ export function MuseumLobby({
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <button
-                type="button"
-                onClick={onStartGuided}
-                className="inline-flex items-center gap-3 px-6 py-3 border border-rice/60 text-rice text-xs uppercase tracking-[0.2em] hover:bg-rice/5 transition-colors"
-              >
-                <Compass size={16} /> Start Guided Tour
-              </button>
+              {hasTour && !tourActive && (
+                <button
+                  type="button"
+                  onClick={onStartGuided}
+                  className="inline-flex items-center gap-3 px-6 py-3 border border-rice/60 text-rice text-xs uppercase tracking-[0.2em] hover:bg-rice/5 transition-colors"
+                >
+                  <Compass size={16} /> Start Guided Tour
+                </button>
+              )}
+              {hasTour && tourActive && (
+                <button
+                  type="button"
+                  onClick={onLeaveTour}
+                  className="inline-flex items-center gap-3 px-6 py-3 border border-rice/60 text-rice text-xs uppercase tracking-[0.2em] hover:bg-rice/5 transition-colors"
+                >
+                  Back to Cover
+                </button>
+              )}
+              {!hasTour && (
+                <button
+                  type="button"
+                  onClick={onStartGuided}
+                  className="inline-flex items-center gap-3 px-6 py-3 border border-rice/60 text-rice text-xs uppercase tracking-[0.2em] hover:bg-rice/5 transition-colors"
+                >
+                  <Compass size={16} /> Start Guided Tour
+                </button>
+              )}
             </div>
           </motion.div>
 
@@ -79,21 +106,25 @@ export function MuseumLobby({
             transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-7"
           >
-            <div className="relative aspect-video overflow-hidden border border-stone/30">
-              <div
-                className="absolute inset-0 z-10"
-                style={{
-                  background:
-                    'radial-gradient(ellipse 60% 70% at 50% 50%, rgba(245,240,230,0.12) 0%, transparent 65%)',
-                }}
-              />
-              <Media
-                src={exhibition.cover}
-                alt={exhibition.coverAlt}
-                className="w-full h-full object-cover opacity-90"
-                animate
-              />
-            </div>
+            {hasTour && tourActive ? (
+              <GuidedTour images={exhibition.tourImages} />
+            ) : (
+              <div className="relative aspect-video overflow-hidden border border-stone/30">
+                <div
+                  className="absolute inset-0 z-10"
+                  style={{
+                    background:
+                      'radial-gradient(ellipse 60% 70% at 50% 50%, rgba(245,240,230,0.12) 0%, transparent 65%)',
+                  }}
+                />
+                <Media
+                  src={exhibition.cover}
+                  alt={exhibition.coverAlt}
+                  className="w-full h-full object-cover opacity-90"
+                  animate
+                />
+              </div>
+            )}
 
             {/* Hall quick links（不可点击，仅陈列） */}
             <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">

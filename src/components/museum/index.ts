@@ -1,4 +1,5 @@
 export { ExhibitFrame } from './ExhibitFrame'
+export { GuidedTour } from './GuidedTour'
 export { HallView } from './HallView'
 export { MuseumLightbox } from './MuseumLightbox'
 export { MuseumLobby } from './MuseumLobby'

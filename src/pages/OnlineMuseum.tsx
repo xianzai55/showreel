@@ -19,6 +19,7 @@ export function OnlineMuseum() {
   const allExhibits = useMemo(() => getExhibitionExhibits(exhibitionId), [exhibitionId])
 
   const [mode, setMode] = useState<MuseumMode>('lobby')
+  const [tourActive, setTourActive] = useState(false)
   const [currentHallId, setCurrentHallId] = useState<string | undefined>(halls[0]?.id)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [currentExhibitId, setCurrentExhibitId] = useState<string | null>(null)
@@ -40,8 +41,17 @@ export function OnlineMuseum() {
   }
 
   const handleStartGuided = () => {
+    if (exhibition && exhibition.tourImages.length > 0) {
+      // 进入 Start Guided Tour：在 Lobby 内切换为拼贴视图
+      setTourActive(true)
+      return
+    }
     if (halls[0]) setCurrentHallId(halls[0].id)
     setMode('guided')
+  }
+
+  const handleLeaveTour = () => {
+    setTourActive(false)
   }
 
   const handlePrevHall = () => {
@@ -94,7 +104,9 @@ export function OnlineMuseum() {
           halls={halls}
           exhibitionNumber={exhibitionIndex >= 0 ? exhibitionIndex + 1 : 1}
           exhibitionCount={exhibitions.length}
+          tourActive={tourActive}
           onStartGuided={handleStartGuided}
+          onLeaveTour={handleLeaveTour}
         />
       )}
 
