@@ -1,11 +1,11 @@
 import { ArrowLeft, Home } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Floorplan, HallView, MuseumLightbox, MuseumLobby, MuseumShell } from '../components/museum'
+import { HallView, MuseumLightbox, MuseumLobby, MuseumShell } from '../components/museum'
 import type { Exhibit } from '../data/onlineMuseum'
 import { exhibitions, getExhibition, getExhibitionExhibits, getExhibitionHalls } from '../data/onlineMuseum'
 
-type MuseumMode = 'lobby' | 'guided' | 'free'
+type MuseumMode = 'lobby' | 'guided'
 
 export function OnlineMuseum() {
   const location = useLocation()
@@ -39,18 +39,9 @@ export function OnlineMuseum() {
     setCurrentExhibitId(exhibitId)
   }
 
-  const handleSelectHall = (hallId: string) => {
-    setCurrentHallId(hallId)
-    setMode('free')
-  }
-
   const handleStartGuided = () => {
     if (halls[0]) setCurrentHallId(halls[0].id)
     setMode('guided')
-  }
-
-  const handleStartFree = () => {
-    setMode('free')
   }
 
   const handlePrevHall = () => {
@@ -104,26 +95,13 @@ export function OnlineMuseum() {
           exhibitionNumber={exhibitionIndex >= 0 ? exhibitionIndex + 1 : 1}
           exhibitionCount={exhibitions.length}
           onStartGuided={handleStartGuided}
-          onStartFree={handleStartFree}
-          onSelectHall={handleSelectHall}
         />
       )}
 
-      {mode === 'free' && currentHall && (
-        <Floorplan
-          halls={halls}
-          currentHallId={currentHall.id}
-          onSelectHall={handleSelectHall}
-          onStartGuided={handleStartGuided}
-        />
-      )}
-
-      {(mode === 'guided' || mode === 'free') && currentHall && (
+      {mode === 'guided' && currentHall && (
         <HallView
           hall={currentHall}
-          mode={mode}
           onOpenExhibit={handleOpenExhibit}
-          onSwitchMode={() => setMode(mode === 'guided' ? 'free' : 'guided')}
           onPrevHall={handlePrevHall}
           onNextHall={handleNextHall}
           hasPrev={currentHallIndex > 0}

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Compass, Map } from 'lucide-react'
+import { Compass } from 'lucide-react'
 import type { Exhibition, Hall } from '../../data/onlineMuseum'
 import { Media } from '../Media'
 
@@ -9,8 +9,6 @@ interface MuseumLobbyProps {
   exhibitionNumber: number
   exhibitionCount: number
   onStartGuided: () => void
-  onStartFree: () => void
-  onSelectHall: (hallId: string) => void
 }
 
 export function MuseumLobby({
@@ -19,8 +17,6 @@ export function MuseumLobby({
   exhibitionNumber,
   exhibitionCount,
   onStartGuided,
-  onStartFree,
-  onSelectHall,
 }: MuseumLobbyProps) {
   return (
     <div className="min-h-screen flex flex-col justify-center pt-24 md:pt-28 pb-16 px-6 md:px-[var(--board-gutter)]">
@@ -73,13 +69,6 @@ export function MuseumLobby({
               >
                 <Compass size={16} /> Start Guided Tour
               </button>
-              <button
-                type="button"
-                onClick={onStartFree}
-                className="inline-flex items-center gap-3 px-6 py-3 border border-[var(--color-museum-warm)] text-[var(--color-museum-warm)] text-xs uppercase tracking-[0.2em] hover:bg-[var(--color-museum-warm)]/10 transition-colors"
-              >
-                <Map size={16} /> Free Explore
-              </button>
             </div>
           </motion.div>
 
@@ -106,26 +95,20 @@ export function MuseumLobby({
               />
             </div>
 
-            {/* Hall quick links */}
+            {/* Hall quick links（不可点击，仅陈列） */}
             <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
               {halls.map((hall) => (
-                <button
+                <div
                   key={hall.id}
-                  type="button"
-                  onClick={() => onSelectHall(hall.id)}
-                  className="group text-left p-3 border border-stone/30 hover:border-rice/40 transition-colors"
+                  className="text-left p-3 border border-stone/30"
                 >
                   <span className="font-mono text-[10px] text-[var(--color-museum-warm)] block mb-1">
                     Hall {String(hall.order).padStart(2, '0')}
                   </span>
-                  <span className="font-serif text-sm text-rice group-hover:text-rice-dim transition-colors line-clamp-1">
+                  <span className="font-serif text-sm text-rice line-clamp-1">
                     {hall.name}
                   </span>
-                  <ArrowRight
-                    size={12}
-                    className="mt-2 text-ash group-hover:text-rice transition-colors"
-                  />
-                </button>
+                </div>
               ))}
             </div>
           </motion.div>

@@ -46,7 +46,7 @@ function EntryPanel({
             src={imageUrl(cover)}
             alt={coverAlt}
             loading="lazy"
-            className="w-full h-full object-cover grayscale contrast-[1.02]"
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-[filter] duration-700 contrast-[1.02]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
         </div>

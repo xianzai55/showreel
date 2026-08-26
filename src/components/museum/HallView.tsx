@@ -1,14 +1,12 @@
 import { motion } from 'framer-motion'
-import { ArrowLeft, ArrowRight, Grid3X3 } from 'lucide-react'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import type { Exhibit, Hall } from '../../data/onlineMuseum'
 import { ExhibitFrame } from './ExhibitFrame'
 import { Media } from '../Media'
 
 interface HallViewProps {
   hall: Hall
-  mode: 'guided' | 'free'
   onOpenExhibit: (exhibit: Exhibit) => void
-  onSwitchMode: () => void
   onPrevHall: () => void
   onNextHall: () => void
   hasPrev: boolean
@@ -19,9 +17,7 @@ interface HallViewProps {
 
 export function HallView({
   hall,
-  mode,
   onOpenExhibit,
-  onSwitchMode,
   onPrevHall,
   onNextHall,
   hasPrev,
@@ -49,14 +45,6 @@ export function HallView({
               ))}
             </div>
           </div>
-          <button
-            type="button"
-            onClick={onSwitchMode}
-            className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-ash hover:text-rice transition-colors"
-          >
-            <Grid3X3 size={14} />
-            {mode === 'guided' ? 'Free Explore' : 'Guided Tour'}
-          </button>
         </div>
 
         <motion.div
@@ -130,8 +118,7 @@ export function HallView({
       </main>
 
       {/* Guided tour controls */}
-      {mode === 'guided' && (
-        <footer className="py-6 md:py-10 border-t border-stone/20">
+      <footer className="py-6 md:py-10 border-t border-stone/20">
           <div className="max-w-[var(--board-max)] mx-auto px-6 md:px-[var(--board-gutter)] flex items-center justify-between">
             <button
               type="button"
@@ -158,7 +145,6 @@ export function HallView({
             </button>
           </div>
         </footer>
-      )}
     </div>
   )
 }

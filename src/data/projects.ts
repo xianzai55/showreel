@@ -148,6 +148,8 @@ const posterImages: GalleryImage[] = [
   { src: '/images/摄影与设计/hb3.png', alt: '海报作品 03', caption: '海报 · 03' },
 ]
 
+const websiteImages: GalleryImage[] = []
+
 export const designCollections: DesignCollection[] = [
   {
     id: 'photography',
@@ -155,6 +157,13 @@ export const designCollections: DesignCollection[] = [
     titleEn: 'Photography',
     description: '海岸、田野、林荫与街巷 —— 一些被放慢的瞬间。横向滑动浏览。',
     images: photographyImages,
+  },
+  {
+    id: 'website',
+    title: '网站',
+    titleEn: 'Website',
+    description: '网站设计作品。待补充图片后横向滑动浏览。',
+    images: websiteImages,
   },
   {
     id: 'poster',
