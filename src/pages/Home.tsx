@@ -132,7 +132,7 @@ export function Home() {
             kicker="Curated Spaces"
             title="展览"
             titleEn="Exhibitions"
-            blurb="五座可漫游的数字展馆 —— 苏州山水、天龙山石窟、北齐壁画、体乐里体育博物馆，与 Green Shoots of arts。点击进入，随导览或自由穿行其间。"
+            blurb="六座可漫游的数字展馆 —— 苏州山水、天龙山石窟、北齐壁画、体乐里、Green Shoots of arts，以及 The Weingreen Museum。点击进入，随导览顺序步入每间展厅。"
             cover={exhibitions[0].cover}
             coverAlt={exhibitions[0].coverAlt}
             to="/exhibition"
