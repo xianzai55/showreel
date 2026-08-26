@@ -46,9 +46,11 @@ export function Media({
     <img
       src={url}
       alt={alt}
-      loading="lazy"
-      decoding="async"
+      // 不使用 loading=lazy：站点图片总量可控，立即加载能避免初次进入展厅/设计集时大量占位空白
+      // 同时防止在某些浏览器/视口下懒加载未触发、长时间停留在"加载中"
+      decoding="sync"
       onLoad={onLoad}
+      onError={onLoad}
       className={className}
     />
   )

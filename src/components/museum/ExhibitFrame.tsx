@@ -1,5 +1,4 @@
 import { ZoomIn } from 'lucide-react'
-import { useState } from 'react'
 import type { Exhibit } from '../../data/onlineMuseum'
 import { Media } from '../Media'
 
@@ -22,7 +21,6 @@ export function ExhibitFrame({
   size = 'md',
   layout = 'vertical',
 }: ExhibitFrameProps) {
-  const [loaded, setLoaded] = useState(false)
 
   return (
     <button
@@ -33,16 +31,10 @@ export function ExhibitFrame({
       <div
         className={`relative overflow-hidden bg-[#1a0f12] border border-stone/30 ${sizeClasses[size]} aspect-square shadow-lg`}
       >
-        {!loaded && (
-          <div className="absolute inset-0 animate-pulse bg-charcoal" />
-        )}
         <Media
           src={exhibit.image}
           alt={exhibit.alt}
-          className={`w-full h-full object-cover transition-all duration-700 ease-out ${
-            loaded ? 'opacity-100' : 'opacity-0'
-          } group-hover:scale-[1.05]`}
-          onLoad={() => setLoaded(true)}
+          className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-[1.05]"
         />
         <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/25 transition-colors duration-500 flex items-center justify-center">
           <ZoomIn
