@@ -39,7 +39,11 @@ export function MuseumLobby({
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="w-full"
           >
-            <GuidedTour images={exhibition.tourImages} layout={exhibition.tourLayout} />
+            <GuidedTour
+              images={exhibition.tourImages}
+              layout={exhibition.tourLayout}
+              gapClassName={exhibition.tourGapClassName}
+            />
             <div className="mt-8 flex justify-end">
               <button
                 type="button"

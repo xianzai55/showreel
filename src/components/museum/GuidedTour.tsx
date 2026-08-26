@@ -5,6 +5,8 @@ interface GuidedTourProps {
   images: { src: string; alt: string }[]
   /** layout: 'hero-first' → 首图独占最上面一行，其余按序排在下一行 */
   layout?: 'hero-first'
+  /** 网格间隙类；省略则用默认间隙 */
+  gapClassName?: string
 }
 
 /**
@@ -19,8 +21,10 @@ interface GuidedTourProps {
  *   7 张 → 2-4 列
  *   8 张 → 2-4 列
  */
-export function GuidedTour({ images, layout }: GuidedTourProps) {
+export function GuidedTour({ images, layout, gapClassName }: GuidedTourProps) {
   if (images.length === 0) return null
+
+  const gap = gapClassName ?? 'gap-4 md:gap-6'
 
   const motionProps = {
     initial: { opacity: 0, y: 24 } as const,
@@ -40,7 +44,7 @@ export function GuidedTour({ images, layout }: GuidedTourProps) {
           <div className="w-full overflow-hidden bg-stone/10">
             <Media src={hero.src} alt={hero.alt} className="w-full h-auto block opacity-95" />
           </div>
-          <div className={`grid gap-4 md:gap-6 items-start ${gridClassFor(rest.length)}`}>
+          <div className={`grid ${gap} items-start ${gridClassFor(rest.length)}`}>
             {rest.map((img) => (
               <div key={img.src} className="overflow-hidden bg-stone/10">
                 <Media src={img.src} alt={img.alt} className="w-full h-auto block opacity-95" />
@@ -60,7 +64,7 @@ export function GuidedTour({ images, layout }: GuidedTourProps) {
       {...motionProps}
       className="w-full"
     >
-      <div className={`grid gap-4 md:gap-6 items-start ${gridClass}`}>
+      <div className={`grid ${gap} items-start ${gridClass}`}>
         {images.map((img) => (
           <div key={img.src} className="overflow-hidden bg-stone/10">
             {/* w-full h-auto：完整展示整张图，不切割不裁剪 */}

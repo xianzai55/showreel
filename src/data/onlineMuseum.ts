@@ -51,6 +51,8 @@ export interface Exhibition {
   tourImages: { src: string; alt: string }[]
   /** tour 排版方式：hero-first = 首图独占最上面一行，其余按序排在下一行；省略则用自适应网格 */
   tourLayout?: 'hero-first'
+  /** tour 图片网格的间隙类；省略则用默认间隙（不影响其他展览） */
+  tourGapClassName?: string
   halls: Hall[]
 }
 
@@ -941,16 +943,16 @@ const greenShootsExhibition: Exhibition = {
   cover: '/images/Green Shoots of arts/IMG_8637.MP4',
   coverAlt: 'Green Shoots of arts · 展览封面',
   // 按指令：去掉主视觉视频与新芽·现场01/02（最顶上两张），保留下端 现场03-10
+  // 再按指令删去第一行最后一张（现场06）与第二行第二张（现场08），剩余 6 张
   tourImages: [
     { src: '/images/Green Shoots of arts/IMG_8599.JPEG', alt: 'Green Shoots of arts · 现场 03' },
     { src: '/images/Green Shoots of arts/IMG_8601.JPEG', alt: 'Green Shoots of arts · 现场 04' },
     { src: '/images/Green Shoots of arts/IMG_8628.JPEG', alt: 'Green Shoots of arts · 现场 05' },
-    { src: '/images/Green Shoots of arts/IMG_8636.JPG', alt: 'Green Shoots of arts · 现场 06' },
     { src: '/images/Green Shoots of arts/IMG_8639.JPEG', alt: 'Green Shoots of arts · 现场 07' },
-    { src: '/images/Green Shoots of arts/IMG_8643.JPEG', alt: 'Green Shoots of arts · 现场 08' },
     { src: '/images/Green Shoots of arts/IMG_8647.JPEG', alt: 'Green Shoots of arts · 现场 09' },
     { src: '/images/Green Shoots of arts/IMG_8690.JPEG', alt: 'Green Shoots of arts · 现场 10' },
   ],
+  tourGapClassName: 'gap-6 md:gap-8',
   accent: '#d6d3cc',
   accentSecondary: '#70706c',
   halls: greenShootsHalls,
