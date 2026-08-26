@@ -49,6 +49,8 @@ export interface Exhibition {
   accentSecondary: string
   /** Start Guided Tour 入口右侧展示的拼贴图片；空数组则保持原 cover 视图 */
   tourImages: { src: string; alt: string }[]
+  /** tour 排版方式：hero-first = 首图独占最上面一行，其余按序排在下一行；省略则用自适应网格 */
+  tourLayout?: 'hero-first'
   halls: Hall[]
 }
 
@@ -232,11 +234,12 @@ const digitalLandscapeExhibition: Exhibition = {
   mediumEn: 'Body Interaction / Digital Image / Spatial Narrative',
   cover: '/images/苏州山水全图卷/01首图.jpg',
   coverAlt: '数字山水全景：苏州青绿山水城镇',
+  // tourLayout: 'hero-first' → 01首图独占最上面一行，其余三张按 ren_02 → fang_02 → ren_06 顺序排在下一行
+  tourLayout: 'hero-first',
   tourImages: [
     { src: '/images/苏州山水全图卷/01首图.jpg', alt: '苏州山水全图卷 · 全景' },
-    { src: '/images/苏州山水全图卷/fang_01.jpg', alt: '苏州山水全图卷 · 塔院' },
-    { src: '/images/苏州山水全图卷/fang_02.jpg', alt: '苏州山水全图卷 · 山水长卷' },
     { src: '/images/苏州山水全图卷/ren_02.jpg', alt: '苏州山水全图卷 · 山径' },
+    { src: '/images/苏州山水全图卷/fang_02.jpg', alt: '苏州山水全图卷 · 山水长卷' },
     { src: '/images/苏州山水全图卷/ren_06.jpg', alt: '苏州山水全图卷 · 街市' },
   ],
   accent: '#d6d3cc',
@@ -590,8 +593,8 @@ const arMuseumHalls: Hall[] = [
   {
     id: 'arm-hall-01',
     order: 1,
-    name: '召唤厅',
-    nameEn: 'Hall of Summoning',
+    name: '书画厅',
+    nameEn: 'Hall of Calligraphy & Painting',
     subtitle: 'AR 锚定 / 虚实叠合',
     subtitleEn: 'AR Anchoring · Reality & Virtuality',
     description:
@@ -688,8 +691,8 @@ const arMuseumHalls: Hall[] = [
   {
     id: 'arm-hall-03',
     order: 3,
-    name: '身体厅',
-    nameEn: 'Hall of Bodies',
+    name: '体验厅',
+    nameEn: 'Hall of Experience',
     subtitle: '马球 / 蹴鞠 / 棋艺',
     subtitleEn: 'Polo · Cuju · Weiqi',
     description:
@@ -756,7 +759,7 @@ const arMuseumExhibition: Exhibition = {
     '文物的沉默不是结束，而是等待一个被身体重新激活的瞬间。',
   statementEn:
     "The silence of an artefact is not an ending, but a moment waiting to be re-activated by the body.",
-  year: '2024',
+  year: '2021',
   location: '中国 · 数字博物馆',
   locationEn: 'China · Digital Museum',
   medium: 'AR / 3D 美术 / 交互原型',

@@ -3,12 +3,14 @@ import { Media } from '../Media'
 
 interface GuidedTourProps {
   images: { src: string; alt: string }[]
+  /** layout: 'hero-first' → 首图独占最上面一行，其余按序排在下一行 */
+  layout?: 'hero-first'
 }
 
 /**
  * Start Guided Tour 的图片陈列视图。
- * 仅做简单等宽等高的网格排版：每张图完整展示、自然等比，
- * 不切割、不裁剪、不重复、不交错叠放。
+ * 完整等比展示，不切割、不裁剪、不重复、不交错叠放。
+ *  - hero-first：首张独占一行，其余横向排开
  *   1 张 → 单列
  *   2 张 → 2 列
  *   3 张 → 3 列
@@ -17,17 +19,45 @@ interface GuidedTourProps {
  *   7 张 → 2-4 列
  *   8 张 → 2-4 列
  */
-export function GuidedTour({ images }: GuidedTourProps) {
+export function GuidedTour({ images, layout }: GuidedTourProps) {
   if (images.length === 0) return null
+
+  const motionProps = {
+    initial: { opacity: 0, y: 24 } as const,
+    animate: { opacity: 1, y: 0 } as const,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
+  }
+
+  if (layout === 'hero-first') {
+    const [hero, ...rest] = images
+    return (
+      <motion.div
+        key={images.map((i) => i.src).join('|')}
+        {...motionProps}
+        className="w-full"
+      >
+        <div className="flex flex-col gap-4 md:gap-6">
+          <div className="w-full overflow-hidden bg-stone/10">
+            <Media src={hero.src} alt={hero.alt} className="w-full h-auto block opacity-95" />
+          </div>
+          <div className={`grid gap-4 md:gap-6 items-start ${gridClassFor(rest.length)}`}>
+            {rest.map((img) => (
+              <div key={img.src} className="overflow-hidden bg-stone/10">
+                <Media src={img.src} alt={img.alt} className="w-full h-auto block opacity-95" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    )
+  }
 
   const gridClass = gridClassFor(images.length)
 
   return (
     <motion.div
       key={images.map((i) => i.src).join('|')}
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      {...motionProps}
       className="w-full"
     >
       <div className={`grid gap-4 md:gap-6 items-start ${gridClass}`}>
