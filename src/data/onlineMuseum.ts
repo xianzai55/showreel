@@ -75,7 +75,7 @@ const digitalLandscapeHalls: Hall[] = [
         titleEn: 'Landscape Panorama',
         caption: '可漫游的数字山水全景',
         captionEn: 'The walkable digital landscape in full view',
-        image: '/images/苏州山水全图卷/fang_01.jpg',
+        image: '/images/苏州山水全图卷/毕设1.png',
         alt: '数字山水全景',
         material: 'Digital Painting',
         period: '2024',
@@ -88,7 +88,7 @@ const digitalLandscapeHalls: Hall[] = [
         titleEn: 'Suzhou Landscape',
         caption: '以苏州园林为底本的水墨长卷',
         captionEn: 'An ink scroll based on Suzhou gardens',
-        image: '/images/苏州山水全图卷/ren_01.jpg',
+        image: '/images/苏州山水全图卷/fang_02.jpg',
         alt: '苏州山水全景',
         material: 'Digital Painting',
         period: '2024',
@@ -121,7 +121,7 @@ const digitalLandscapeHalls: Hall[] = [
       '城镇厅把全景拉近，呈现山水城镇中的几处日常 —— 塔院晨雾、桥下渔樵、渔村泊舟、街市叫卖。每一个小图都是进入山水的一个入口。',
     descriptionEn:
       'This hall zooms into the landscape town, presenting its daily corners: the pagoda in morning mist, the life under the bridge, the fishing village at rest, the market in motion. Each small image is an entrance into the whole landscape.',
-    atmosphereImage: '/images/苏州山水全图卷/fang_02.jpg',
+    atmosphereImage: '/images/苏州山水全图卷/fang_03.jpg',
     atmosphereAlt: '塔院与山林',
     exhibits: [
       {
@@ -143,7 +143,7 @@ const digitalLandscapeHalls: Hall[] = [
         titleEn: 'Under the Bridge',
         caption: '桥下停泊的小船与渔樵身影',
         captionEn: 'Small boats and the silhouette of a fisherman under the bridge',
-        image: '/images/苏州山水全图卷/fang_03.jpg',
+        image: '/images/苏州山水全图卷/ren_01.jpg',
         alt: '桥下渔樵',
         material: 'Digital Painting',
         period: '2024',
@@ -198,7 +198,7 @@ const digitalLandscapeHalls: Hall[] = [
         titleEn: 'Distant Hills',
         caption: '远山以几笔墨色淡入留白',
         captionEn: 'Distant hills dissolving into emptiness with a few strokes',
-        image: '/images/苏州山水全图卷/毕设1.png',
+        image: '/images/苏州山水全图卷/fang_01.jpg',
         alt: '远景',
         material: 'Digital Painting',
         period: '2024',
@@ -591,7 +591,7 @@ const arMuseumHalls: Hall[] = [
         titleEn: 'App Entry',
         caption: 'AR 应用的首页与召唤入口',
         captionEn: 'Home screen and the entry point for AR summoning',
-        image: '/images/体乐里体育博物馆/图片 (1).png',
+        image: '/images/体乐里体育博物馆/AR1.png',
         alt: 'AR 应用首页',
         material: 'Application Interface',
         period: '2024',
@@ -617,7 +617,7 @@ const arMuseumHalls: Hall[] = [
         titleEn: 'Exhibition Title Wall',
         caption: '「体乐里」三字题写的入口门',
         captionEn: 'The entrance wall inscribed with the project title',
-        image: '/images/体乐里体育博物馆/AR1.png',
+        image: '/images/体乐里体育博物馆/图片.png',
         alt: '博物馆入口题字',
         material: 'Spatial Type',
         period: '2024',
@@ -637,7 +637,7 @@ const arMuseumHalls: Hall[] = [
       '古代运动不是抽象的数字，而是被青铜戈、箭镞与棋具这些真实器物所托起。器物厅是博物馆展柜的延伸，把每一件器物转译为可被旋转、放大、阅读铭文的数字对象。',
     descriptionEn:
       'Ancient sport was never abstract — it was supported by real artefacts such as bronze ge, arrowheads and gaming tools. This hall extends the museum vitrine, translating each object into a digital one that can be rotated, enlarged and read.',
-    atmosphereImage: '/images/体乐里体育博物馆/AR1.png',
+    atmosphereImage: '/images/体乐里体育博物馆/图片 (1).png',
     atmosphereAlt: '青铜戈的数字展示界面',
     exhibits: [
       {
@@ -660,7 +660,7 @@ const arMuseumHalls: Hall[] = [
         titleEn: 'Wall of Motion',
         caption: '冰上运动历史影像在展墙上循环播放',
         captionEn: 'Historical ice-sport imagery loops on the gallery wall',
-        image: '/images/体乐里体育博物馆/AR1.png',
+        image: '/images/体乐里体育博物馆/图片 (2).png',
         alt: '冰上运动影像墙',
         material: 'Moving Image',
         period: '2024',
@@ -680,7 +680,7 @@ const arMuseumHalls: Hall[] = [
       '身体厅聚焦于被转译为 3D 数字对象的运动人物。每一个角色都代表一种被放回身体的运动 —— 马球的奔马、蹴鞠的脚法、棋艺的沉思。',
     descriptionEn:
       'This hall focuses on the sports figures translated into 3D digital objects. Each character represents a sport returned to the body: the gallop of polo, the footwork of cuju, the contemplation of weiqi.',
-    atmosphereImage: '/images/体乐里体育博物馆/AR1.png',
+    atmosphereImage: '/images/体乐里体育博物馆/图片 (2).png',
     atmosphereAlt: '马球人物 3D 数字模型',
     exhibits: [
       {
@@ -745,8 +745,8 @@ const arMuseumExhibition: Exhibition = {
   locationEn: 'China · Digital Museum',
   medium: 'AR / 3D 美术 / 交互原型',
   mediumEn: 'AR / 3D Art / Interaction Prototype',
-  cover: '/images/体乐里体育博物馆/AR1.png',
-  coverAlt: 'AR 虚拟展厅内部视角',
+  cover: '/images/体乐里体育博物馆/图片.png',
+  coverAlt: '体乐里 · 入口主题墙',
   accent: '#d6d3cc',
   accentSecondary: '#70706c',
   halls: arMuseumHalls,
