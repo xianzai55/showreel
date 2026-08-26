@@ -93,7 +93,7 @@ export function Home() {
             transition={{ duration: 0.7, ease }}
             className="font-mono text-[11px] tracking-[0.35em] uppercase text-ash block mb-6"
           >
-            Digital Spatial Narrative Portfolio
+            Digital Spatial Narratives · A Walkable Portfolio
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
@@ -132,7 +132,7 @@ export function Home() {
             kicker="Curated Spaces"
             title="展览"
             titleEn="Exhibitions"
-            blurb="六座可漫游的数字展馆 —— 苏州山水、天龙山石窟、北齐壁画、体乐里、Green Shoots of arts，以及 The Weingreen Museum。点击进入，随导览顺序步入每间展厅。"
+            blurb="六座可漫游的数字展馆 —— 苏州山水、天龙山石窟、北齐壁画、体乐里、Green Shoots of arts，以及 The Weingreen Museum。点击进入，循导览时序，一步步步入每间展厅。"
             cover={exhibitions[0].cover}
             coverAlt={exhibitions[0].coverAlt}
             to="/exhibition"

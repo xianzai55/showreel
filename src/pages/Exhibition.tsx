@@ -24,7 +24,7 @@ export function Exhibition() {
             展览目录
           </h1>
           <p className="mt-5 text-base md:text-lg text-rice/60 font-light max-w-2xl leading-relaxed">
-            六座数字展馆，各自由若干可漫游的展厅构成。点击任一展览，随导览顺序进入，点开作品可放大端详。
+            六座可漫游的数字展馆，各自由若干展厅构成。点击任一展览循导览步入，点开作品即可放大端详、左右翻阅。
           </p>
         </motion.header>
 
