@@ -41,7 +41,7 @@ export function Media({
         muted
         loop
         playsInline
-        preload="metadata"
+        preload={animate ? 'auto' : 'metadata'}
         autoPlay={animate}
         controls={controls}
         poster={videoPoster(src)}

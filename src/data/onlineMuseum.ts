@@ -232,7 +232,7 @@ const digitalLandscapeExhibition: Exhibition = {
   locationEn: 'Jiangnan · Digital Landscape Gallery',
   medium: '体感交互 / 数字影像 / 空间叙事',
   mediumEn: 'Body Interaction / Digital Image / Spatial Narrative',
-  cover: '/images/苏州山水全图卷/01首图.jpg',
+  cover: '/images/苏州山水全图卷/毕设1.jpg',
   coverAlt: '数字山水全景：苏州青绿山水城镇',
   // tourLayout: 'hero-first' → 01首图独占最上面一行，其余三张按 ren_02 → fang_02 → ren_06 顺序排在下一行
   tourLayout: 'hero-first',
@@ -752,7 +752,7 @@ const arMuseumExhibition: Exhibition = {
   subtitle: '从展柜到身体的中国古代运动',
   subtitleEn: 'From Vitrine to Body — Chinese Ancient Sports',
   preface:
-    '从中国古代体育史出发，将文献、器物与运动图像转译为可交互的数字对象。三间展厅 —— 召唤厅、器物厅、身体厅 —— 邀请你从应用入口进入，让 AR 把博物馆展柜里的静止文物放回它们原本被使用的身体情境中。',
+    '从中国古代体育史出发，将文献、器物与运动图像转译为可交互的数字对象。三间展厅 —— 书画厅、器物厅、体验厅 —— 邀请你从应用入口进入，让 AR 把博物馆展柜里的静止文物放回它们原本被使用的历史情境中。',
   prefaceEn:
     'Starting from the history of Chinese ancient sport, this project translates documents, artefacts and motion images into interactive digital objects. Three halls — Summoning, Artifacts, Bodies — invite you to step from the app entry and let AR return these still artefacts to the bodily situations they were once used in.',
   statement:
