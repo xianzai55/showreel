@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Compass } from 'lucide-react'
+import { Compass, X } from 'lucide-react'
 import type { Exhibition, Hall } from '../../data/onlineMuseum'
 import { GuidedTour } from './GuidedTour'
 import { Media } from '../Media'
@@ -32,7 +32,7 @@ export function MuseumLobby({
     <div className="min-h-screen flex flex-col justify-center pt-24 md:pt-28 pb-16 px-6 md:px-[var(--board-gutter)]">
       <div className="max-w-[var(--board-max)] mx-auto w-full">
         {tourView ? (
-          // 只出现图片陈列：不再显示原有文字
+          // 只出现图片陈列：不显示任何文字，仅右下角放一个纯图标关闭按钮便于退出
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -44,9 +44,10 @@ export function MuseumLobby({
               <button
                 type="button"
                 onClick={onLeaveTour}
-                className="inline-flex items-center gap-3 px-6 py-3 border border-rice/60 text-rice text-xs uppercase tracking-[0.2em] hover:bg-rice/5 transition-colors"
+                aria-label="Back to cover"
+                className="pointer-events-auto inline-flex items-center justify-center w-11 h-11 border border-rice/50 text-rice/80 hover:text-rice hover:bg-rice/5 transition-colors"
               >
-                Back to Cover
+                <X size={18} />
               </button>
             </div>
           </motion.div>

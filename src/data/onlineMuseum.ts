@@ -937,7 +937,17 @@ const greenShootsExhibition: Exhibition = {
   mediumEn: 'Cross-media / Curation / Digital Exhibition',
   cover: '/images/Green Shoots of arts/IMG_8637.MP4',
   coverAlt: 'Green Shoots of arts · 展览封面',
-  tourImages: [],
+  // 按指令：去掉主视觉视频与新芽·现场01/02（最顶上两张），保留下端 现场03-10
+  tourImages: [
+    { src: '/images/Green Shoots of arts/IMG_8599.JPEG', alt: 'Green Shoots of arts · 现场 03' },
+    { src: '/images/Green Shoots of arts/IMG_8601.JPEG', alt: 'Green Shoots of arts · 现场 04' },
+    { src: '/images/Green Shoots of arts/IMG_8628.JPEG', alt: 'Green Shoots of arts · 现场 05' },
+    { src: '/images/Green Shoots of arts/IMG_8636.JPG', alt: 'Green Shoots of arts · 现场 06' },
+    { src: '/images/Green Shoots of arts/IMG_8639.JPEG', alt: 'Green Shoots of arts · 现场 07' },
+    { src: '/images/Green Shoots of arts/IMG_8643.JPEG', alt: 'Green Shoots of arts · 现场 08' },
+    { src: '/images/Green Shoots of arts/IMG_8647.JPEG', alt: 'Green Shoots of arts · 现场 09' },
+    { src: '/images/Green Shoots of arts/IMG_8690.JPEG', alt: 'Green Shoots of arts · 现场 10' },
+  ],
   accent: '#d6d3cc',
   accentSecondary: '#70706c',
   halls: greenShootsHalls,
