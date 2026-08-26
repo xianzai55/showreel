@@ -61,6 +61,15 @@ export function Media({
       onLoad={onLoad}
       onError={onLoad}
       className={className}
+      // 图片保护：禁止右键菜单、拖拽保存与选中，降低被访问者直接下载的概率
+      draggable={false}
+      onContextMenu={(e) => e.preventDefault()}
+      onDragStart={(e) => e.preventDefault()}
+      style={{
+        userSelect: 'none',
+        WebkitUserSelect: 'none',
+        WebkitTouchCallout: 'none',
+      }}
     />
   )
 }
