@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/showreel/',
+  base: '/SR/',
   plugins: [react(), tailwindcss()],
   build: {
     target: 'es2022',
